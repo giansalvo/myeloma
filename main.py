@@ -1,7 +1,7 @@
 from sklearn.datasets import make_regression, make_classification, make_blobs
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 import numpy as np
 import pandas as pd
 from pandas.plotting import scatter_matrix
@@ -66,8 +66,8 @@ def write_header(f):
     print(add_virgolette(FIELD_AGE), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette(FIELD_SEER_CAUSE_SPECIFIC), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette(FIELD_SEER_OTHER_CAUSE), file=f, end=FIELD_SEPARATOR)
-    print(add_virgolette(FIELD_SURVIVAL), file=f)
-    # print(add_virgolette(FIELD_COD_TO_SITE), file=f, end=FIELD_SEPARATOR)
+    print(add_virgolette(FIELD_SURVIVAL), file=f, end=FIELD_SEPARATOR)
+    print(add_virgolette(FIELD_COD_TO_SITE), file=f)
     # print(add_virgolette(FIELD_VITAL_STATUS), file=f, end=FIELD_SEPARATOR)
     # print(add_virgolette(FIELD_RADIATION), file=f, end=FIELD_SEPARATOR)
     # print(add_virgolette(FIELD_CHEMOTHERAPY), file=f, end=FIELD_SEPARATOR)
@@ -111,8 +111,8 @@ def clean_csv(path_input, path_output):
                 else:
                     print(1, end=FIELD_SEPARATOR, file=foutput)
                     print(0, end=FIELD_SEPARATOR, file=foutput)
-                print(row[FIELD_N_SURVIVAL], file=foutput)
-                # print(row[FIELD_N_COD_TO_SITE], end=FIELD_SEPARATOR, file=foutput)
+                print(row[FIELD_N_SURVIVAL], end=FIELD_SEPARATOR, file=foutput)
+                print(row[FIELD_N_COD_TO_SITE], file=foutput)
                 # print(row[FIELD_N_VITAL_STATUS], end=FIELD_SEPARATOR, file=foutput)
                 # print(row[FIELD_N_RADIATION], end=FIELD_SEPARATOR, file=foutput)
                 # print(row[FIELD_N_CHEMOTHERAPY], end=FIELD_SEPARATOR, file=foutput)
@@ -143,11 +143,10 @@ def prepare_dataset():
 def explore_dataset(path_input):
     with open(path_input, 'r') as csv_file:
         df = pd.read_csv(path_input, sep=FIELD_SEPARATOR)
-        # df.info()
-        df.describe()
         df.hist(figsize=(20,15))
         plt.savefig('myeloma_hist.png')
     return df
+
 
 def split_train_test(data, test_ratio):
     shuffled_indices = np.random.permutation(len(data))
@@ -163,7 +162,16 @@ def main():
     clean_csv(PATH_ORIG, PATH_WORK)
     # prepare_dataset()
     myeloma = explore_dataset(PATH_WORK)
+
     train_set, test_set = split_train_test(myeloma, TEST_RATIO)
+
+    ohe = OneHotEncoder()
+    transformed = ohe.fit_transform(myeloma[[FIELD_COD_TO_SITE]])
+    myeloma[ohe.categories_[0]] = transformed.toarray()
+    myeloma.drop(FIELD_COD_TO_SITE, axis=1, inplace=True)
+    print(myeloma.head())
+    myeloma.info()
+    myeloma.describe()
 
     # compute correlation
     corr_matrix = myeloma.corr()
