@@ -2,6 +2,8 @@ from sklearn.datasets import make_regression, make_classification, make_blobs
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
 from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import KFold, cross_val_score, train_test_split
 import numpy as np
@@ -69,11 +71,11 @@ def write_header(f):
     print(add_virgolette(FIELD_SEER_CAUSE_SPECIFIC), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette(FIELD_SEER_OTHER_CAUSE), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette(FIELD_SURVIVAL), file=f, end=FIELD_SEPARATOR)
-    print(add_virgolette(FIELD_COD_TO_SITE), file=f)
+    print(add_virgolette(FIELD_COD_TO_SITE), file=f, end=FIELD_SEPARATOR)
     # print(add_virgolette(FIELD_VITAL_STATUS), file=f, end=FIELD_SEPARATOR)
     # print(add_virgolette(FIELD_RADIATION), file=f, end=FIELD_SEPARATOR)
     # print(add_virgolette(FIELD_CHEMOTHERAPY), file=f, end=FIELD_SEPARATOR)
-    # print(add_virgolette(FIELD_MONTHS_FROM_DIAG_TO_TREAT), file=f, end=FIELD_SEPARATOR)
+    print(add_virgolette(FIELD_MONTHS_FROM_DIAG_TO_TREAT), file=f)
     # print(add_virgolette(FIELD_PRIMARY_SITE), file=f, end=FIELD_SEPARATOR)
     # print(add_virgolette(FIELD_HIST_BEHAV), file=f)
     return(0)
@@ -114,11 +116,11 @@ def clean_csv(path_input, path_output):
                     print(1, end=FIELD_SEPARATOR, file=foutput)
                     print(0, end=FIELD_SEPARATOR, file=foutput)
                 print(row[FIELD_N_SURVIVAL], end=FIELD_SEPARATOR, file=foutput)
-                print(row[FIELD_N_COD_TO_SITE], file=foutput)
+                print(row[FIELD_N_COD_TO_SITE], end=FIELD_SEPARATOR, file=foutput)
                 # print(row[FIELD_N_VITAL_STATUS], end=FIELD_SEPARATOR, file=foutput)
                 # print(row[FIELD_N_RADIATION], end=FIELD_SEPARATOR, file=foutput)
                 # print(row[FIELD_N_CHEMOTHERAPY], end=FIELD_SEPARATOR, file=foutput)
-                # print(row[FIELD_N_MONTHS_FROM_DIAG_TO_TREAT], end=FIELD_SEPARATOR, file=foutput)
+                print(row[FIELD_N_MONTHS_FROM_DIAG_TO_TREAT], file=foutput)
                 # print(row[FIELD_N_PRIMARY_SITE], end=FIELD_SEPARATOR, file=foutput)
                 # print(row[FIELD_N_HIST_BEHAV], file=foutput)
                 line_count += 1
@@ -135,8 +137,31 @@ def prepare_dataset(path_input):
         return myeloma
 
 def explore_dataset(df):
-    df.hist(figsize=(20,15))
-    plt.savefig('myeloma_hist.png')
+    plt.title(FIELD_SURVIVAL)
+    df[FIELD_SURVIVAL].hist(figsize=(20,15))
+    plt.savefig('myeloma_hist1.png')
+    plt.close()
+
+    plt.title(FIELD_AGE)
+    df[FIELD_AGE].hist(figsize=(20, 15))
+    plt.savefig('myeloma_hist2.png')
+    plt.close()
+
+    plt.title(FIELD_YEAR_FOLLOW_UP)
+    df[FIELD_YEAR_FOLLOW_UP].hist(figsize=(20, 15))
+    plt.savefig('myeloma_hist3.png')
+    plt.close()
+
+    plt.title(FIELD_YEAR_DEATH)
+    df[FIELD_YEAR_DEATH].hist(figsize=(20, 15))
+    plt.savefig('myeloma_hist4.png')
+    plt.close()
+
+    plt.title(FIELD_MONTHS_FROM_DIAG_TO_TREAT)
+    df[FIELD_MONTHS_FROM_DIAG_TO_TREAT].hist(figsize=(20, 15))
+    plt.savefig('myeloma_hist5.png')
+    plt.close()
+
     print(df.head())
     df.info()
     df.describe()
@@ -175,12 +200,32 @@ def main():
 
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.30)
 
+    # linear regression
+    print("LinearRegression")
     reg = LinearRegression()
     kfold = KFold(n_splits=10)
     cv_results = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring='r2')
+    print("cv_results: ", cv_results)
+    print("Mean: ", round(np.mean(cv_results) * 100, 2))
+    print("Std Var: ", round(np.std(cv_results) * 100, 2))
 
-    print("cv_results: " + str(cv_results))
-    print("mean: " + str(round(np.mean(cv_results) * 100, 2)))
+    # linear regression
+    print("DecisionTreeRegressor")
+    reg = DecisionTreeRegressor()
+    kfold = KFold(n_splits=10)
+    cv_results = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring='r2')
+    print("cv_results: ", cv_results)
+    print("Mean: ", round(np.mean(cv_results) * 100, 2))
+    print("Std Var: ", round(np.std(cv_results) * 100, 2))
+
+    # linear regression
+    print("RandomForestRegressor")
+    reg = RandomForestRegressor()
+    kfold = KFold(n_splits=10)
+    cv_results = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring='r2')
+    print("cv_results: ", cv_results)
+    print("Mean: ", round(np.mean(cv_results) * 100, 2))
+    print("Std Var: ", round(np.std(cv_results) * 100, 2))
 
 if __name__ == '__main__':
     main()
