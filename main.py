@@ -1,7 +1,9 @@
 from sklearn.datasets import make_regression, make_classification, make_blobs
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
-from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.model_selection import KFold, cross_val_score, train_test_split
 import numpy as np
 import pandas as pd
 from pandas.plotting import scatter_matrix
@@ -123,29 +125,31 @@ def clean_csv(path_input, path_output):
             print(f'Processed {line_count} lines.')
 
 
-def prepare_dataset():
-    # creating a data frame
-    # with open(PATH_WORK, 'r') as csv_file:
-    # csv_reader = csv.reader(csv_file, delimiter=';')
-    # train = pd.DataFrame(csv_reader)
-    # print(train.head())
-    # feature_cols = ['A', 'B']
-    # X = train.l oc[:, feature_cols]
-    # print(str(X.shape))
-    heart = pd.read_csv('myeloma_work.csv', sep=';')
-    y = heart.iloc[:, 5]
-    X = heart.iloc[:, :5]
-
-    LR = LogisticRegression(random_state=0, solver='lbfgs', multi_class='ovr').fit(X, y)
-    LR.predict(X.iloc[460:, :])
-    round(LR.score(X, y), 4)
-
-def explore_dataset(path_input):
+def prepare_dataset(path_input):
     with open(path_input, 'r') as csv_file:
-        df = pd.read_csv(path_input, sep=FIELD_SEPARATOR)
-        df.hist(figsize=(20,15))
-        plt.savefig('myeloma_hist.png')
-    return df
+        myeloma = pd.read_csv(path_input, sep=FIELD_SEPARATOR)
+        ohe = OneHotEncoder()
+        transformed = ohe.fit_transform(myeloma[[FIELD_COD_TO_SITE]])
+        myeloma[ohe.categories_[0]] = transformed.toarray()
+        myeloma.drop(FIELD_COD_TO_SITE, axis=1, inplace=True)
+        return myeloma
+
+def explore_dataset(df):
+    df.hist(figsize=(20,15))
+    plt.savefig('myeloma_hist.png')
+    print(df.head())
+    df.info()
+    df.describe()
+
+    # compute correlation
+    corr_matrix = df.corr()
+    print(corr_matrix[FIELD_SURVIVAL].sort_values(ascending=False))
+
+    # scatter plots
+    attributes = [FIELD_SURVIVAL, FIELD_AGE, FIELD_YEAR_FOLLOW_UP, FIELD_YEAR_DEATH]
+    scatter_matrix(df[attributes], figsize=(12, 8))
+    plt.savefig('myeloma_scatter.png')
+
 
 
 def split_train_test(data, test_ratio):
@@ -160,27 +164,23 @@ def split_train_test(data, test_ratio):
 def main():
     np.random.seed(74)
     clean_csv(PATH_ORIG, PATH_WORK)
-    # prepare_dataset()
-    myeloma = explore_dataset(PATH_WORK)
+    myeloma = prepare_dataset(PATH_WORK)
+    explore_dataset(myeloma)
 
     train_set, test_set = split_train_test(myeloma, TEST_RATIO)
 
-    ohe = OneHotEncoder()
-    transformed = ohe.fit_transform(myeloma[[FIELD_COD_TO_SITE]])
-    myeloma[ohe.categories_[0]] = transformed.toarray()
-    myeloma.drop(FIELD_COD_TO_SITE, axis=1, inplace=True)
-    print(myeloma.head())
-    myeloma.info()
-    myeloma.describe()
+    X = train_set
+    Y = X[FIELD_SURVIVAL].values
+    X = X.drop(FIELD_SURVIVAL, axis=1).values
 
-    # compute correlation
-    corr_matrix = myeloma.corr()
-    print(corr_matrix[FIELD_SURVIVAL].sort_values(ascending=False))
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.30)
 
-    # scatter plots
-    attributes = [FIELD_SURVIVAL, FIELD_AGE, FIELD_YEAR_FOLLOW_UP, FIELD_YEAR_DEATH]
-    scatter_matrix(myeloma[attributes], figsize=(12, 8))
-    plt.savefig('myeloma_scatter.png')
+    reg = LinearRegression()
+    kfold = KFold(n_splits=10)
+    cv_results = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring='r2')
+
+    print("cv_results: " + str(cv_results))
+    print("mean: " + str(round(np.mean(cv_results) * 100, 2)))
 
 if __name__ == '__main__':
     main()
