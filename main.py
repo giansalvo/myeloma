@@ -1,11 +1,15 @@
-from sklearn.datasets import make_regression, make_classification, make_blobs
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import OneHotEncoder
-from sklearn.model_selection import KFold, cross_val_score, train_test_split
+from sklearn.model_selection import KFold, StratifiedKFold, cross_val_score, cross_val_predict, train_test_split
+from sklearn.metrics import PredictionErrorDisplay
+from sklearn.metrics import roc_curve
+
+from sklearn.svm import SVC
+from sklearn.datasets import make_classification
 import numpy as np
 import pandas as pd
 from pandas.plotting import scatter_matrix
@@ -185,6 +189,37 @@ def split_train_test(data, test_ratio):
     return data.iloc[train_indices], data.iloc[test_indices]
 
 
+def display_scores(scores):
+        print("Scores: ", scores)
+        print("Mean: ", scores.mean)
+        print("Standard deviation: ", scores.std())
+
+def display_pred_error(regressor, X_train, Y_train, kfold, fname):
+        y_pred = cross_val_predict(regressor, X_train, Y_train, cv=kfold)
+        fig, axs = plt.subplots(ncols=2, figsize=(8, 4))
+        PredictionErrorDisplay.from_predictions(
+            Y_train,
+            y_pred=y_pred,
+            kind="actual_vs_predicted",
+            subsample=100,
+            ax=axs[0],
+            random_state=0,
+        )
+        axs[0].set_title("Actual vs. Predicted values")
+        PredictionErrorDisplay.from_predictions(
+            Y_train,
+            y_pred=y_pred,
+            kind="residual_vs_predicted",
+            subsample=100,
+            ax=axs[1],
+            random_state=0,
+        )
+        axs[1].set_title("Residuals vs. Predicted Values")
+        fig.suptitle("Plotting cross-validated predictions")
+        plt.tight_layout()
+        plt.savefig(fname)
+        plt.close()
+
 
 def main():
     np.random.seed(74)
@@ -200,25 +235,25 @@ def main():
 
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.30)
 
+    #########################################
     # linear regression
     print("LinearRegression")
     reg = LinearRegression()
     kfold = KFold(n_splits=10)
-    cv_results = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring='r2')
-    print("cv_results: ", cv_results)
-    print("Mean: ", round(np.mean(cv_results) * 100, 2))
-    print("Std Var: ", round(np.std(cv_results) * 100, 2))
+    scores = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring='r2')
+    display_scores(scores)
+    display_pred_error(reg, X_train, Y_train, kfold, 'myeloma_pred_err_lr.png')
 
-    # linear regression
+
+    # DecisionTreeRegressor
     print("DecisionTreeRegressor")
     reg = DecisionTreeRegressor()
     kfold = KFold(n_splits=10)
     cv_results = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring='r2')
-    print("cv_results: ", cv_results)
-    print("Mean: ", round(np.mean(cv_results) * 100, 2))
-    print("Std Var: ", round(np.std(cv_results) * 100, 2))
+    display_scores(scores)
+    display_pred_error(reg, X_train, Y_train, kfold, 'myeloma_pred_err_DTR.png')
 
-    # linear regression
+    # RandomForestRegressor
     print("RandomForestRegressor")
     reg = RandomForestRegressor()
     kfold = KFold(n_splits=10)
@@ -226,6 +261,11 @@ def main():
     print("cv_results: ", cv_results)
     print("Mean: ", round(np.mean(cv_results) * 100, 2))
     print("Std Var: ", round(np.std(cv_results) * 100, 2))
+    display_scores(scores)
+    display_pred_error(reg, X_train, Y_train, kfold, 'myeloma_pred_err_RF.png')
+
+    # #############################################################
+
 
 if __name__ == '__main__':
     main()
