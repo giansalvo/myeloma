@@ -20,6 +20,7 @@ PATH_WORK = 'myeloma_work.csv'
 FIELD_SEPARATOR = ';'
 
 TEST_RATIO = 0.2
+N_SPLIT = 10
 
 FIELD_YEAR_OF_DIAGNOSIS = "Year of diagnosis (1975-2019 by 5)"
 FIELD_PATIENT_ID = "Patient ID"
@@ -236,11 +237,11 @@ def main():
     # linear regression
     print("LinearRegression")
     reg = LinearRegression()
-    kfold = KFold(n_splits=10)
-    scores = cross_val_score(reg, X_train, Y_train, cv=kfold,
-                             scoring='neg_mean_squared_error')
-    tree_rmse_scores = np.sqrt(-scores)
-    display_scores(tree_rmse_scores)
+    kfold = KFold(n_splits=N_SPLIT)
+    scores = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring='r2')
+    # scores = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring='neg_mean_squared_error')
+    # scores = np.sqrt(-scores)
+    display_scores(scores)
     display_pred_error(reg, X_train, Y_train, kfold, 'myeloma_pred_err_lr.png')
     reg.fit(X_train, Y_train)
     joblib.dump(reg, "model_linear_regr.pkl")
@@ -249,7 +250,7 @@ def main():
     # DecisionTreeRegressor
     print("DecisionTreeRegressor")
     reg = DecisionTreeRegressor()
-    kfold = KFold(n_splits=10)
+    kfold = KFold(n_splits=N_SPLIT)
     scores = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring='r2')
     display_scores(scores)
     display_pred_error(reg, X_train, Y_train, kfold, 'myeloma_pred_err_DTR.png')
@@ -260,7 +261,7 @@ def main():
     # RandomForestRegressor
     print("RandomForestRegressor")
     reg = RandomForestRegressor()
-    kfold = KFold(n_splits=10)
+    kfold = KFold(n_splits=N_SPLIT)
     scores = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring='r2')
     display_scores(scores)
     display_pred_error(reg, X_train, Y_train, kfold, 'myeloma_pred_err_RF.png')
