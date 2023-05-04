@@ -5,9 +5,9 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import KFold, StratifiedKFold, cross_val_score, cross_val_predict, train_test_split
-from sklearn.metrics import PredictionErrorDisplay
-from sklearn.metrics import roc_curve
-
+from sklearn.metrics import roc_auc_score, PredictionErrorDisplay, RocCurveDisplay, mean_squared_error, auc
+from sklearn import svm
+import joblib
 from sklearn.svm import SVC
 from sklearn.datasets import make_classification
 import numpy as np
@@ -68,8 +68,8 @@ def add_virgolette(s):
 
 def write_header(f):
     print(add_virgolette(FIELD_YEAR_OF_DIAGNOSIS), file=f, end=FIELD_SEPARATOR)
-    print(add_virgolette(FIELD_PATIENT_ID), file=f, end=FIELD_SEPARATOR)
-    print(add_virgolette(FIELD_YEAR_FOLLOW_UP), file=f, end=FIELD_SEPARATOR)
+    # print(add_virgolette(FIELD_PATIENT_ID), file=f, end=FIELD_SEPARATOR)
+    # print(add_virgolette(FIELD_YEAR_FOLLOW_UP), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette(FIELD_YEAR_DEATH), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette(FIELD_AGE), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette(FIELD_SEER_CAUSE_SPECIFIC), file=f, end=FIELD_SEPARATOR)
@@ -103,8 +103,10 @@ def clean_csv(path_input, path_output):
                 if sequence != "1st of 2 or more primaries":
                     continue
                 print(row[FIELD_N_YEAR_OF_DIAGNOSIS], end=FIELD_SEPARATOR, file=foutput)
-                print(row[FIELD_N_PATIENT_ID], end=FIELD_SEPARATOR, file=foutput)
-                print(row[FIELD_N_YEAR_FOLLOW_UP], end=FIELD_SEPARATOR, file=foutput)
+                # skip "Patient ID"
+                # print(row[FIELD_N_PATIENT_ID], end=FIELD_SEPARATOR, file=foutput)
+                # skip "Year of Follow up" because is the same as "Year of Death"
+                # print(row[FIELD_N_YEAR_FOLLOW_UP], end=FIELD_SEPARATOR, file=foutput)
                 print(row[FIELD_N_YEAR_DEATH], end=FIELD_SEPARATOR, file=foutput)
                 age = row[FIELD_N_AGE].split()[0]
                 if age == "90+":
@@ -137,34 +139,25 @@ def prepare_dataset(path_input):
         ohe = OneHotEncoder()
         transformed = ohe.fit_transform(myeloma[[FIELD_COD_TO_SITE]])
         myeloma[ohe.categories_[0]] = transformed.toarray()
+        myeloma[ohe.categories_[0]] = myeloma[ohe.categories_[0]].astype(int)   # convert to int
         myeloma.drop(FIELD_COD_TO_SITE, axis=1, inplace=True)
         return myeloma
 
+
+def plot_graph(df, title, fname):
+    plt.title(title, fontsize=40)
+    df[title].hist(figsize=(20, 15))
+    plt.xticks(fontsize=30)
+    plt.yticks(fontsize=30)
+    plt.savefig(fname)
+    plt.close()
+
+
 def explore_dataset(df):
-    plt.title(FIELD_SURVIVAL)
-    df[FIELD_SURVIVAL].hist(figsize=(20,15))
-    plt.savefig('myeloma_hist1.png')
-    plt.close()
-
-    plt.title(FIELD_AGE)
-    df[FIELD_AGE].hist(figsize=(20, 15))
-    plt.savefig('myeloma_hist2.png')
-    plt.close()
-
-    plt.title(FIELD_YEAR_FOLLOW_UP)
-    df[FIELD_YEAR_FOLLOW_UP].hist(figsize=(20, 15))
-    plt.savefig('myeloma_hist3.png')
-    plt.close()
-
-    plt.title(FIELD_YEAR_DEATH)
-    df[FIELD_YEAR_DEATH].hist(figsize=(20, 15))
-    plt.savefig('myeloma_hist4.png')
-    plt.close()
-
-    plt.title(FIELD_MONTHS_FROM_DIAG_TO_TREAT)
-    df[FIELD_MONTHS_FROM_DIAG_TO_TREAT].hist(figsize=(20, 15))
-    plt.savefig('myeloma_hist5.png')
-    plt.close()
+    plot_graph(df, FIELD_SURVIVAL, 'myeloma_hist1.png')
+    plot_graph(df, FIELD_AGE, 'myeloma_hist2.png')
+    plot_graph(df, FIELD_YEAR_DEATH, 'myeloma_hist4.png')
+    plot_graph(df, FIELD_MONTHS_FROM_DIAG_TO_TREAT, 'myeloma_hist5.png')
 
     print(df.head())
     df.info()
@@ -175,10 +168,11 @@ def explore_dataset(df):
     print(corr_matrix[FIELD_SURVIVAL].sort_values(ascending=False))
 
     # scatter plots
-    attributes = [FIELD_SURVIVAL, FIELD_AGE, FIELD_YEAR_FOLLOW_UP, FIELD_YEAR_DEATH]
+    attributes = [FIELD_SURVIVAL, FIELD_AGE, FIELD_YEAR_DEATH]
     scatter_matrix(df[attributes], figsize=(12, 8))
     plt.savefig('myeloma_scatter.png')
 
+    print(df.value_counts())
 
 
 def split_train_test(data, test_ratio):
@@ -190,9 +184,9 @@ def split_train_test(data, test_ratio):
 
 
 def display_scores(scores):
-        print("Scores: ", scores)
-        print("Mean: ", scores.mean)
-        print("Standard deviation: ", scores.std())
+        print("Scores: ", np.round(scores, 4))
+        print("Mean: ", np.round(scores.mean(), 4))
+        print("Standard deviation: ", np.round(scores.std(), 4))
 
 def display_pred_error(regressor, X_train, Y_train, kfold, fname):
         y_pred = cross_val_predict(regressor, X_train, Y_train, cv=kfold)
@@ -217,6 +211,7 @@ def display_pred_error(regressor, X_train, Y_train, kfold, fname):
         axs[1].set_title("Residuals vs. Predicted Values")
         fig.suptitle("Plotting cross-validated predictions")
         plt.tight_layout()
+        plt.xticks(fontsize=15)
         plt.savefig(fname)
         plt.close()
 
@@ -234,37 +229,43 @@ def main():
     X = X.drop(FIELD_SURVIVAL, axis=1).values
 
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.30)
+    print("X_train, X_test, Y_train, Y_test",
+          X_train.shape, X_test.shape, Y_train.shape, Y_test.shape)
 
     #########################################
     # linear regression
     print("LinearRegression")
     reg = LinearRegression()
     kfold = KFold(n_splits=10)
-    scores = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring='r2')
-    display_scores(scores)
+    scores = cross_val_score(reg, X_train, Y_train, cv=kfold,
+                             scoring='neg_mean_squared_error')
+    tree_rmse_scores = np.sqrt(-scores)
+    display_scores(tree_rmse_scores)
     display_pred_error(reg, X_train, Y_train, kfold, 'myeloma_pred_err_lr.png')
+    reg.fit(X_train, Y_train)
+    joblib.dump(reg, "model_linear_regr.pkl")
 
-
+    #########################################
     # DecisionTreeRegressor
     print("DecisionTreeRegressor")
     reg = DecisionTreeRegressor()
     kfold = KFold(n_splits=10)
-    cv_results = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring='r2')
+    scores = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring='r2')
     display_scores(scores)
     display_pred_error(reg, X_train, Y_train, kfold, 'myeloma_pred_err_DTR.png')
+    reg.fit(X_train, Y_train)
+    joblib.dump(reg, "model_decision_tree_regr.pkl")
 
+    #########################################
     # RandomForestRegressor
     print("RandomForestRegressor")
     reg = RandomForestRegressor()
     kfold = KFold(n_splits=10)
-    cv_results = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring='r2')
-    print("cv_results: ", cv_results)
-    print("Mean: ", round(np.mean(cv_results) * 100, 2))
-    print("Std Var: ", round(np.std(cv_results) * 100, 2))
+    scores = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring='r2')
     display_scores(scores)
     display_pred_error(reg, X_train, Y_train, kfold, 'myeloma_pred_err_RF.png')
-
-    # #############################################################
+    reg.fit(X_train, Y_train)
+    joblib.dump(reg, "model_rand_forest_regr.pkl")
 
 
 if __name__ == '__main__':
