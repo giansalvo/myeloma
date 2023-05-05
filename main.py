@@ -1,15 +1,39 @@
+"""
+    Models for estimate the survival time period for Myeloma affected patients
+
+    Copyright (c) 2023 Giansalvo Gusinu
+
+    Code adapted from following articles/repositories:
+    https://yann-leguilly.gitlab.io/post/2019-12-14-tensorflow-tfdata-segmentation/
+    https://github.com/dhassault/tf-semantic-example
+
+    Permission is hereby granted, free of charge, to any person obtaining a
+    copy of this software and associated documentation files (the "Software"),
+    to deal in the Software without restriction, including without limitation
+    the rights to use, copy, modify, merge, publish, distribute, sublicense,
+    and/or sell copies of the Software, and to permit persons to whom the
+    Software is furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+    THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+    DEALINGS IN THE SOFTWARE.
+"""
 import matplotlib.pyplot as plt
-from sklearn.linear_model import LogisticRegression
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import OneHotEncoder
-from sklearn.model_selection import KFold, StratifiedKFold, cross_val_score, cross_val_predict, train_test_split
+from sklearn.model_selection import KFold, cross_val_score, cross_val_predict, train_test_split
 from sklearn.metrics import roc_auc_score, PredictionErrorDisplay, RocCurveDisplay, mean_squared_error, auc, r2_score
-from sklearn import svm
+from sklearn.svm import LinearSVR, SVC
 import joblib
-from sklearn.svm import SVC
-from sklearn.datasets import make_classification
 import numpy as np
 import pandas as pd
 from pandas.plotting import scatter_matrix
@@ -201,6 +225,8 @@ def display_pred_error(regressor, X_train, Y_train, kfold, fname):
             random_state=0,
         )
         axs[0].set_title("Actual vs. Predicted values")
+        plt.yticks(fontsize=10)
+        plt.xticks(fontsize=10)
         PredictionErrorDisplay.from_predictions(
             Y_train,
             y_pred=y_pred,
@@ -212,7 +238,8 @@ def display_pred_error(regressor, X_train, Y_train, kfold, fname):
         axs[1].set_title("Residuals vs. Predicted Values")
         fig.suptitle("Plotting cross-validated predictions")
         plt.tight_layout()
-        plt.xticks(fontsize=15)
+        plt.yticks(fontsize=10)
+        plt.xticks(fontsize=10)
         plt.savefig(fname)
         plt.close()
 
@@ -222,6 +249,7 @@ def evaluate_regressor(reg, X_train, Y_train, scoring, fname):
     scores = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring=scoring)
     display_scores(scores)
     display_pred_error(reg, X_train, Y_train, kfold, fname)
+
 
 def main():
     np.random.seed(74)
@@ -323,6 +351,23 @@ def main():
     plt.xticks(fontsize=10)
     plt.yticks(fontsize=10)
     plt.savefig("myeloma_pred_scattered_RF.png")
+
+    # #########################################
+    # # LinearSVR
+    # print("\nLinearSVR")
+    # reg = LinearSVR(epsilon=1.5)
+    # evaluate_regressor(reg, X_train, Y_train, 'r2', 'myeloma_pred_err_SVM.png')
+    # reg.fit(X_train, Y_train)
+    # # save the model on file
+    # joblib.dump(reg, "model_rand_forest_regr.pkl")
+    #
+    # # evaluate on test set last regressor
+    # print("\nEvaluate on testset")
+    # pred_testset = reg.predict(X_test)
+    # testset_mse = mean_squared_error(Y_test, pred_testset)
+    # testset_rmse = np.sqrt(testset_mse)
+    # print(f"testset_rmse: {testset_rmse:.2f} months")
+
 
 if __name__ == '__main__':
     main()
