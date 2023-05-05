@@ -1,10 +1,10 @@
-#load car package
-install.packages("car")
+#load packages
+#install.packages("car")
 library(car)
-
-install.packages("ggeffects")
+#install.packages("ggeffects")
 library(ggeffects)
-
+#install.packages("sjPlot")
+library('sjPlot')
 
 ds <- read.table("myeloma_work_R.csv", header = T, sep = ";")
 
@@ -19,6 +19,7 @@ boxplot(ds$age)
 boxplot(ds$death)
 
 boxplot(ds$age ~ ds$death_specific)
+boxplot(ds$death ~ ds$death_specific)
 
 
 survival.glm<-glm(survival ~ age + death + death_specific + death_other, 
@@ -59,6 +60,5 @@ ggplot(ggpredict(model1, terms = c("age [1,5,10]", "death", "year_diagnosis")),
 
 
 ########################
-install.packages("sjPlot")
-library('sjPlot')
+model1 <- lm(data = ds, survival ~ age + death + year_diagnosis)
 plot_model(model1, type = 'diag')
