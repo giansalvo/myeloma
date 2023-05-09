@@ -30,6 +30,7 @@ import seaborn as sns
 from sklearn.preprocessing import OneHotEncoder
 from tensorflow import keras
 from tensorflow.keras import layers
+from tensorflow.keras.callbacks import EarlyStopping
 
 # FIELD_YEAR_OF_DIAGNOSIS = "Year of diagnosis (1975-2019 by 5)"
 # FIELD_PATIENT_ID = "Patient ID"
@@ -62,12 +63,12 @@ FIELD_SURVIVAL = "F"
 FIELD_COD_TO_SITE = "G"
 FIELD_MONTHS_FROM_DIAG_TO_TREAT = "H"
 
-def one_hot_encoding(dataset, FIELD_COD_TO_SITE):
+def one_hot_encoding(dataset, column):
     ohe = OneHotEncoder()
-    transformed = ohe.fit_transform(dataset[[FIELD_COD_TO_SITE]])
+    transformed = ohe.fit_transform(dataset[[column]])
     dataset[ohe.categories_[0]] = transformed.toarray()
     dataset[ohe.categories_[0]] = dataset[ohe.categories_[0]].astype(int)  # convert to int
-    dataset.drop(FIELD_COD_TO_SITE, axis=1, inplace=True)
+    dataset.drop(column, axis=1, inplace=True)
     return dataset
 
 
@@ -76,7 +77,7 @@ def normalization(train_dataset, train_features):
     print(train_dataset.describe().transpose()[['mean', 'std']])
 
     normalizer = tf.keras.layers.Normalization(axis=-1)
-    temp = np.asarray(train_features)
+    temp = np.array(train_features)
     print("temp " + str(temp.shape))
     normalizer.adapt(temp)
     # Check normalization on screen
@@ -87,9 +88,10 @@ def normalization(train_dataset, train_features):
 def build_and_compile_model(norm):
   model = keras.Sequential([
       norm,
-      layers.Dense(32, activation='relu'),
-      layers.Dense(32, activation='relu'),
-      layers.Dense(1)
+      layers.Dense(256, kernel_initializer='normal', activation='relu'),
+      layers.Dense(256, kernel_initializer='normal', activation='relu'),
+      layers.Dense(256, kernel_initializer='normal', activation='relu'),
+      layers.Dense(1, activation='linear')
   ])
 
   model.compile(loss='mean_absolute_error',
@@ -99,7 +101,7 @@ def build_and_compile_model(norm):
 def plot_loss(history):
   plt.plot(history.history['loss'], label='loss')
   plt.plot(history.history['val_loss'], label='val_loss')
-  plt.ylim([0, 10])
+  # plt.ylim([0, 10])
   plt.xlabel('Epoch')
   plt.ylabel('Error [SURVIVAL]')
   plt.legend()
@@ -116,9 +118,6 @@ def plot_scatter(x, y, train_features, train_labels):
   plt.legend()
   plt.savefig("myeloma_scatter_train.png")
   plt.close()
-
-
-
 
 
 def main():
@@ -145,8 +144,12 @@ def main():
     print("Null values:")
     print(dataset.isna().sum())
 
-    # pandas drop empy records and colum in dataframe
+    # pandas drop empty records and colum in dataframe
     dataset = dataset.dropna()
+
+    dataset.hist(figsize=(12, 10))
+    plt.savefig("myeloma_hist.png")
+    plt.close()
 
     # ONE HOT ENCODER COD_TO_SITE
     dataset = one_hot_encoding(dataset, FIELD_COD_TO_SITE)
@@ -160,7 +163,6 @@ def main():
                                 FIELD_YEAR_DEATH,
                                 FIELD_AGE,
                                 FIELD_SEER_CAUSE_SPECIFIC,
-                                FIELD_SEER_OTHER_CAUSE,
                                 FIELD_SURVIVAL]], diag_kind='kde')
     plt.savefig("myeloma_compare.png")
     plt.close()
@@ -184,15 +186,19 @@ def main():
     dnn_model = build_and_compile_model(normalizer)
     dnn_model.summary()
 
+    early_stopping = EarlyStopping()
+
     history = dnn_model.fit(
         train_features,
         train_labels,
         validation_split=0.2,
-        verbose=0, epochs=100)
+        verbose=0, epochs=200,
+        callbacks=[early_stopping])
     plot_loss(history)
 
     # TODO ERROR
     # x = tf.linspace(0.0, 250, 251)
+    # print("x " + str(x))
     # y = dnn_model.predict(x)
     # plot_scatter(x,y, train_features, train_labels)
 
