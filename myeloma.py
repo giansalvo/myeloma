@@ -21,13 +21,12 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 # adapted from https://www.tensorflow.org/tutorials/keras/regression?hl=it#regression_using_a_dnn_and_multiple_inputs
-
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import tensorflow as tf
 import seaborn as sns
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import OneHotEncoder, MinMaxScaler
 from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.callbacks import EarlyStopping
@@ -72,10 +71,7 @@ def one_hot_encoding(dataset, column):
     return dataset
 
 
-def normalization(train_dataset, train_features):
-    #see how different the ranges of each feature are
-    print(train_dataset.describe().transpose()[['mean', 'std']])
-
+def normalization(train_features):
     normalizer = tf.keras.layers.Normalization(axis=-1)
     temp = np.array(train_features)
     print("temp " + str(temp.shape))
@@ -85,9 +81,9 @@ def normalization(train_dataset, train_features):
     return normalizer
 
 
-def build_and_compile_model(norm):
+def build_and_compile_model(train):
   model = keras.Sequential([
-      norm,
+      layers.Dense(128, kernel_initializer='normal', input_dim=train.shape[1], activation='relu'),
       layers.Dense(256, kernel_initializer='normal', activation='relu'),
       layers.Dense(256, kernel_initializer='normal', activation='relu'),
       layers.Dense(256, kernel_initializer='normal', activation='relu'),
@@ -98,7 +94,7 @@ def build_and_compile_model(norm):
                 optimizer=tf.keras.optimizers.Adam(0.001))
   return model
 
-def plot_loss(history):
+def plot_loss(history, fname):
   plt.plot(history.history['loss'], label='loss')
   plt.plot(history.history['val_loss'], label='val_loss')
   # plt.ylim([0, 10])
@@ -106,7 +102,7 @@ def plot_loss(history):
   plt.ylabel('Error [SURVIVAL]')
   plt.legend()
   plt.grid(True)
-  plt.savefig("myeloma_plot_loss")
+  plt.savefig(fname)
   plt.close()
 
 
@@ -118,6 +114,10 @@ def plot_scatter(x, y, train_features, train_labels):
   plt.legend()
   plt.savefig("myeloma_scatter_train.png")
   plt.close()
+
+
+def min_max_scaling(series):
+    return (series - series.min()) / (series.max() - series.min())
 
 
 def main():
@@ -179,11 +179,20 @@ def main():
     test_labels = test_features.pop(FIELD_SURVIVAL)
     print("train_label " + str(train_labels.shape))
     print("test_labels " + str(test_labels.shape))
+    print("train_features.head()\n" + str(train_features.head().transpose()))
+    print("train_labels.head()\n" + str(train_labels.head().transpose()))
 
-    # Normalizzation
-    normalizer = normalization(train_dataset, train_features)
+    # Normalization
+    # see how different the ranges of each feature are
+    print(train_dataset.describe().transpose()[['mean', 'std']])
 
-    dnn_model = build_and_compile_model(normalizer)
+    scaler = MinMaxScaler()
+    scaler.fit(train_features)
+    scaled = scaler.fit_transform(train_features)
+    train_features = pd.DataFrame(scaled, columns=train_features.columns)
+    print(train_features.head())
+
+    dnn_model = build_and_compile_model(train_features)
     dnn_model.summary()
 
     early_stopping = EarlyStopping()
@@ -194,13 +203,19 @@ def main():
         validation_split=0.2,
         verbose=0, epochs=200,
         callbacks=[early_stopping])
-    plot_loss(history)
+    plot_loss(history, "myeloma_plot_loss.png")
 
     # TODO ERROR
     # x = tf.linspace(0.0, 250, 251)
     # print("x " + str(x))
     # y = dnn_model.predict(x)
     # plot_scatter(x,y, train_features, train_labels)
+
+    scaler = MinMaxScaler()
+    scaler.fit(test_features)
+    scaled = scaler.fit_transform(test_features)
+    test_features = pd.DataFrame(scaled, columns=test_features.columns)
+    print(test_features.head())
 
     # evaluate on test set
     test_results = {}
