@@ -27,6 +27,7 @@ import pandas as pd
 import tensorflow as tf
 import seaborn as sns
 from sklearn.preprocessing import OneHotEncoder, MinMaxScaler
+from sklearn.model_selection import KFold, train_test_split
 from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.callbacks import EarlyStopping
@@ -52,6 +53,9 @@ from tensorflow.keras.callbacks import EarlyStopping
 # FIELD_PRIMARY_SITE = "Primary Site - labeled"
 # FIELD_HIST_BEHAV = "ICD-O-3 Hist/behav, malignant"
 
+KFOLD_NUM = 10
+TEMP_WEIGHT_FNAME = 'dnn_model.keras'
+RANDOM_SEED = 74
 
 FIELD_YEAR_OF_DIAGNOSIS = "A"
 FIELD_YEAR_DEATH = "B"
@@ -186,6 +190,7 @@ def main():
     # see how different the ranges of each feature are
     print(train_dataset.describe().transpose()[['mean', 'std']])
 
+    # Normalize train_features
     scaler = MinMaxScaler()
     scaler.fit(train_features)
     scaled = scaler.fit_transform(train_features)
@@ -211,17 +216,43 @@ def main():
     # y = dnn_model.predict(x)
     # plot_scatter(x,y, train_features, train_labels)
 
+    # Normalize test_features
     scaler = MinMaxScaler()
     scaler.fit(test_features)
     scaled = scaler.fit_transform(test_features)
     test_features = pd.DataFrame(scaled, columns=test_features.columns)
     print(test_features.head())
 
+    # TODO NOT WORKING PROPERLY
+    kf = KFold(n_splits=KFOLD_NUM, random_state=RANDOM_SEED, shuffle=True)
+    results = []
+    dnn_model.save(TEMP_WEIGHT_FNAME)
+    i = 0
+    for (X_i, Y_i) in kf.split(train_dataset):
+        print("Fold n.{}".format(i))
+        reloaded = tf.keras.models.load_model(TEMP_WEIGHT_FNAME)
+        x_train = train_features.iloc[X_i]
+        y_train = train_labels.iloc[X_i]
+        res = reloaded.evaluate(x_train, y_train, batch_size=128, verbose=0)
+        results.append(res)
+        i += 1
+    print("\nEvaluation:")
+    print("NOT WORKING results: ", results)
+    mean = np.mean(np.array(results))
+    std = np.std(np.array(results), ddof=1)
+    print("NOT WORKING Mean: {:.4f} +/- Std:{:.4f})".format(mean, std))
+
+    # evaluate on train set
+    train_results = {}
+    train_results['dnn_model'] = dnn_model.evaluate(train_features, train_labels, verbose=0)
+    print("Evaluation result on train set: " + str(train_results))
+    # test set performance
+    print(pd.DataFrame(train_results, index=['Mean absolute error [SURVIVAL]']).T)
+
     # evaluate on test set
     test_results = {}
-    test_results['dnn_model'] = dnn_model.evaluate(
-        test_features, test_labels, verbose=0)
-    print("Test_result " + str(test_results))
+    test_results['dnn_model'] = dnn_model.evaluate(test_features, test_labels, verbose=0)
+    print("Evaluation result on test set: " + str(test_results))
     #test set performance
     print(pd.DataFrame(test_results, index=['Mean absolute error [SURVIVAL]']).T)
 
@@ -247,11 +278,6 @@ def main():
 
     #save the model for future use
     dnn_model.save('dnn_model.keras')
-
-    #reuse the saved model
-    # reloaded = tf.keras.models.load_model('dnn_model.keras')
-    # test_results['reloaded'] = reloaded.evaluate(
-    #     test_features, test_labels, verbose=0)
 
 if __name__ == '__main__':
     main()
