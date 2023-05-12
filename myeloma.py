@@ -75,19 +75,18 @@ def one_hot_encoding(dataset, column):
     return dataset
 
 
-def normalization(train_features):
-    normalizer = tf.keras.layers.Normalization(axis=-1)
-    temp = np.array(train_features)
-    print("temp " + str(temp.shape))
-    normalizer.adapt(temp)
-    # Check normalization on screen
-    print("Normalizer: " + str(normalizer.mean.numpy()))
-    return normalizer
+def normalization2(pd_data):
+    scaler = MinMaxScaler()
+    scaler.fit(pd_data)
+    scaled = scaler.fit_transform(pd_data)
+    scaled = pd.DataFrame(scaled, columns=pd_data.columns)
+    print(scaled.head())
+    return scaled
 
 
-def build_and_compile_model(train):
+def build_and_compile_model(num_input):
   model = keras.Sequential([
-      layers.Dense(128, kernel_initializer='normal', input_dim=train.shape[1], activation='relu'),
+      layers.Dense(128, kernel_initializer='normal', input_dim=num_input, activation='relu'),
       layers.Dense(256, kernel_initializer='normal', activation='relu'),
       layers.Dense(256, kernel_initializer='normal', activation='relu'),
       layers.Dense(256, kernel_initializer='normal', activation='relu'),
@@ -128,6 +127,7 @@ def main():
     # Make NumPy printouts easier to read.
     np.set_printoptions(precision=3, suppress=True)
     print(tf.__version__)
+    tf.random.set_seed(RANDOM_SEED)
 
     column_names = [FIELD_YEAR_OF_DIAGNOSIS,
                     FIELD_YEAR_DEATH,
@@ -158,6 +158,9 @@ def main():
     # ONE HOT ENCODER COD_TO_SITE
     dataset = one_hot_encoding(dataset, FIELD_COD_TO_SITE)
 
+    # Normalization
+    print(dataset.describe().transpose()[['mean', 'std']])
+
     # split dataset train and test
     train_dataset = dataset.sample(frac=0.8, random_state=0)
     test_dataset = dataset.drop(train_dataset.index)
@@ -181,23 +184,14 @@ def main():
     # remove column "survival"
     train_labels = train_features.pop(FIELD_SURVIVAL)
     test_labels = test_features.pop(FIELD_SURVIVAL)
-    print("train_label " + str(train_labels.shape))
-    print("test_labels " + str(test_labels.shape))
     print("train_features.head()\n" + str(train_features.head().transpose()))
     print("train_labels.head()\n" + str(train_labels.head().transpose()))
 
-    # Normalization
-    # see how different the ranges of each feature are
-    print(train_dataset.describe().transpose()[['mean', 'std']])
+    # Normalization of input
+    train_features = normalization2(train_features)
+    test_features = normalization2(test_features)
 
-    # Normalize train_features
-    scaler = MinMaxScaler()
-    scaler.fit(train_features)
-    scaled = scaler.fit_transform(train_features)
-    train_features = pd.DataFrame(scaled, columns=train_features.columns)
-    print(train_features.head())
-
-    dnn_model = build_and_compile_model(train_features)
+    dnn_model = build_and_compile_model(train_features.shape[1])
     dnn_model.summary()
 
     early_stopping = EarlyStopping()
@@ -215,13 +209,6 @@ def main():
     # print("x " + str(x))
     # y = dnn_model.predict(x)
     # plot_scatter(x,y, train_features, train_labels)
-
-    # Normalize test_features
-    scaler = MinMaxScaler()
-    scaler.fit(test_features)
-    scaled = scaler.fit_transform(test_features)
-    test_features = pd.DataFrame(scaled, columns=test_features.columns)
-    print(test_features.head())
 
     # TODO NOT WORKING PROPERLY
     kf = KFold(n_splits=KFOLD_NUM, random_state=RANDOM_SEED, shuffle=True)
