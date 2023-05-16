@@ -28,6 +28,7 @@ import tensorflow as tf
 import seaborn as sns
 from sklearn.preprocessing import OneHotEncoder, MinMaxScaler
 from sklearn.model_selection import KFold, train_test_split
+from sklearn.model_selection import ShuffleSplit
 from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.callbacks import EarlyStopping
@@ -56,6 +57,9 @@ from tensorflow.keras.callbacks import EarlyStopping
 KFOLD_NUM = 10
 TEMP_WEIGHT_FNAME = 'dnn_model.keras'
 RANDOM_SEED = 74
+TRAIN_SIZE = 0.8
+VAL_SIZE   = 0.2
+TEST_SIZE  = 0.2
 
 FIELD_YEAR_OF_DIAGNOSIS = "A"
 FIELD_YEAR_DEATH = "B"
@@ -86,10 +90,9 @@ def normalization2(pd_data):
 
 def build_and_compile_model(num_input):
   model = keras.Sequential([
-      layers.Dense(128, kernel_initializer='normal', input_dim=num_input, activation='relu'),
-      layers.Dense(256, kernel_initializer='normal', activation='relu'),
-      layers.Dense(256, kernel_initializer='normal', activation='relu'),
-      layers.Dense(256, kernel_initializer='normal', activation='relu'),
+      layers.Dense(64, kernel_initializer='normal', input_dim=num_input, activation='relu'),
+      layers.Dense(64, kernel_initializer='normal', input_dim=num_input, activation='relu'),
+      layers.Dense(64, kernel_initializer='normal', input_dim=num_input, activation='relu'),
       layers.Dense(1, activation='linear')
   ])
 
@@ -128,6 +131,7 @@ def main():
     np.set_printoptions(precision=3, suppress=True)
     print(tf.__version__)
     tf.random.set_seed(RANDOM_SEED)
+    tf.config.run_functions_eagerly(False)
 
     column_names = [FIELD_YEAR_OF_DIAGNOSIS,
                     FIELD_YEAR_DEATH,
@@ -199,50 +203,54 @@ def main():
     history = dnn_model.fit(
         train_features,
         train_labels,
-        validation_split=0.2,
+        validation_split=VAL_SIZE,
         verbose=0, epochs=200,
         callbacks=[early_stopping])
     plot_loss(history, "myeloma_plot_loss.png")
 
-    # TODO ERROR
-    # x = tf.linspace(0.0, 250, 251)
-    # print("x " + str(x))
-    # y = dnn_model.predict(x)
-    # plot_scatter(x,y, train_features, train_labels)
-
-    # TODO NOT WORKING PROPERLY
-    kf = KFold(n_splits=KFOLD_NUM, random_state=RANDOM_SEED, shuffle=True)
     results = []
     dnn_model.save(TEMP_WEIGHT_FNAME)
     i = 0
-    for (X_i, Y_i) in kf.split(train_dataset):
-        print("Fold n.{}".format(i))
+    ss = ShuffleSplit(n_splits=KFOLD_NUM, random_state=RANDOM_SEED, test_size=VAL_SIZE, train_size=TRAIN_SIZE)
+    for i, (X_i, Y_i) in enumerate(ss.split(train_dataset)):
+        print("Fold n.{} ".format(i), end="")
+        # for j in range(10):
+        #     print(X_i[j], end=", ")
+        # print("")
         reloaded = tf.keras.models.load_model(TEMP_WEIGHT_FNAME)
         x_train = train_features.iloc[X_i]
         y_train = train_labels.iloc[X_i]
-        res = reloaded.evaluate(x_train, y_train, batch_size=128, verbose=0)
+        res = reloaded.evaluate(x_train, y_train, batch_size=64, verbose=0)
         results.append(res)
         i += 1
-    print("\nEvaluation:")
-    print("NOT WORKING results: ", results)
+    print("\nEvaluation on train set:")
+    print("Scores: ", results)
     mean = np.mean(np.array(results))
     std = np.std(np.array(results), ddof=1)
-    print("NOT WORKING Mean: {:.4f} +/- Std:{:.4f})".format(mean, std))
+    print("Mean: {:.4f} +/- Std:{:.4f})".format(mean, std))
 
-    # evaluate on train set
-    train_results = {}
-    train_results['dnn_model'] = dnn_model.evaluate(train_features, train_labels, verbose=0)
-    print("Evaluation result on train set: " + str(train_results))
-    # test set performance
-    print(pd.DataFrame(train_results, index=['Mean absolute error [SURVIVAL]']).T)
+    results = []
+    dnn_model.save(TEMP_WEIGHT_FNAME)
+    i = 0
+    ss = ShuffleSplit(n_splits=KFOLD_NUM, random_state=RANDOM_SEED, test_size=TEST_SIZE, train_size=TRAIN_SIZE)
+    for i, (X_i, Y_i) in enumerate(ss.split(test_dataset)):
+        print("Fold n.{} ".format(i), end="")
+        # for j in range(10):
+        #     print(X_i[j], end=", ")
+        # print("")
+        reloaded = tf.keras.models.load_model(TEMP_WEIGHT_FNAME)
+        x_test = test_features.iloc[Y_i]
+        y_test = test_labels.iloc[Y_i]
+        res = reloaded.evaluate(x_test, y_test, batch_size=128, verbose=0)
+        results.append(res)
+        i += 1
+    print("\nEvaluation on test set:")
+    print("Scores: ", results)
+    mean = np.mean(np.array(results))
+    std = np.std(np.array(results), ddof=1)
+    print("Mean: {:.4f} +/- Std:{:.4f})".format(mean, std))
 
     # evaluate on test set
-    test_results = {}
-    test_results['dnn_model'] = dnn_model.evaluate(test_features, test_labels, verbose=0)
-    print("Evaluation result on test set: " + str(test_results))
-    #test set performance
-    print(pd.DataFrame(test_results, index=['Mean absolute error [SURVIVAL]']).T)
-
     #make predictions on the testset and plot
     test_predictions = dnn_model.predict(test_features).flatten()
     a = plt.axes(aspect='equal')
