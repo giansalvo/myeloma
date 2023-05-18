@@ -54,6 +54,7 @@ from tensorflow.keras.callbacks import EarlyStopping
 # FIELD_PRIMARY_SITE = "Primary Site - labeled"
 # FIELD_HIST_BEHAV = "ICD-O-3 Hist/behav, malignant"
 
+CSV_FNAME = "myeloma_work.csv"
 KFOLD_NUM = 10
 TEMP_WEIGHT_FNAME = 'dnn_model.keras'
 RANDOM_SEED = 74
@@ -78,25 +79,23 @@ def one_hot_encoding(dataset, column):
     dataset.drop(column, axis=1, inplace=True)
     return dataset
 
+def min_max_scaling(series):
+    return (series - series.min()) / (series.max() - series.min())
 
-def normalization2(pd_data):
-    scaler = MinMaxScaler()
-    scaler.fit(pd_data)
-    scaled = scaler.fit_transform(pd_data)
-    scaled = pd.DataFrame(scaled, columns=pd_data.columns)
-    print(scaled.head())
-    return scaled
+def normalization2(df):
+    for col in df.columns:
+        df[col] = min_max_scaling(df[col])
+    return df
 
 
 def build_and_compile_model(num_input):
   model = keras.Sequential([
-      layers.Dense(64, kernel_initializer='normal', input_dim=num_input, activation='relu'),
-      layers.Dense(64, kernel_initializer='normal', input_dim=num_input, activation='relu'),
-      layers.Dense(64, kernel_initializer='normal', input_dim=num_input, activation='relu'),
-      layers.Dense(1, activation='linear')
+        layers.Dense(256, kernel_initializer='he_normal', input_dim=num_input, activation='relu'),
+        layers.Dense(1, activation='sigmoid')
   ])
 
-  model.compile(loss='mean_absolute_error',
+  # mean_absolute_error
+  model.compile(loss='mean_squared_error',
                 optimizer=tf.keras.optimizers.Adam(0.001))
   return model
 
@@ -122,10 +121,6 @@ def plot_scatter(x, y, train_features, train_labels):
   plt.close()
 
 
-def min_max_scaling(series):
-    return (series - series.min()) / (series.max() - series.min())
-
-
 def main():
     # Make NumPy printouts easier to read.
     np.set_printoptions(precision=3, suppress=True)
@@ -142,7 +137,7 @@ def main():
                     FIELD_COD_TO_SITE,
                     FIELD_MONTHS_FROM_DIAG_TO_TREAT]
 
-    raw_dataset = pd.read_csv("myeloma_work.csv", names=column_names,
+    raw_dataset = pd.read_csv(CSV_FNAME, names=column_names,
                               na_values='?', comment='\t', header=1,
                               sep=';', skipinitialspace=True)
     dataset = raw_dataset.copy()
@@ -162,11 +157,20 @@ def main():
     # ONE HOT ENCODER COD_TO_SITE
     dataset = one_hot_encoding(dataset, FIELD_COD_TO_SITE)
 
-    # Normalization
+    # look at the data
     print(dataset.describe().transpose()[['mean', 'std']])
 
+    print("Before normalization:")
+    print(dataset.describe().transpose())
+    # Normalization of all dataset (features and labels)
+    y_min = dataset[FIELD_SURVIVAL].min()
+    y_max = dataset[FIELD_SURVIVAL].max()
+    dataset = normalization2(dataset)
+    print("after normalization:")
+    print(dataset.describe().transpose())
+
     # split dataset train and test
-    train_dataset = dataset.sample(frac=0.8, random_state=0)
+    train_dataset = dataset.sample(frac=TRAIN_SIZE, random_state=0)
     test_dataset = dataset.drop(train_dataset.index)
 
     # Visual inspection of the data
@@ -184,32 +188,27 @@ def main():
     #  Split features from labels
     train_features = train_dataset.copy()
     test_features = test_dataset.copy()
-
     # remove column "survival"
     train_labels = train_features.pop(FIELD_SURVIVAL)
     test_labels = test_features.pop(FIELD_SURVIVAL)
     print("train_features.head()\n" + str(train_features.head().transpose()))
     print("train_labels.head()\n" + str(train_labels.head().transpose()))
 
-    # Normalization of input
-    train_features = normalization2(train_features)
-    test_features = normalization2(test_features)
-
-    dnn_model = build_and_compile_model(train_features.shape[1])
-    dnn_model.summary()
+    model = build_and_compile_model(train_features.shape[1])
+    model.summary()
 
     early_stopping = EarlyStopping()
 
-    history = dnn_model.fit(
+    history = model.fit(
         train_features,
         train_labels,
         validation_split=VAL_SIZE,
-        verbose=0, epochs=200,
-        callbacks=[early_stopping])
+        verbose=0, epochs=200)
     plot_loss(history, "myeloma_plot_loss.png")
 
+    # EVALUATE ON TRAIN SET
     results = []
-    dnn_model.save(TEMP_WEIGHT_FNAME)
+    model.save(TEMP_WEIGHT_FNAME)
     i = 0
     ss = ShuffleSplit(n_splits=KFOLD_NUM, random_state=RANDOM_SEED, test_size=VAL_SIZE, train_size=TRAIN_SIZE)
     for i, (X_i, Y_i) in enumerate(ss.split(train_dataset)):
@@ -220,6 +219,9 @@ def main():
         reloaded = tf.keras.models.load_model(TEMP_WEIGHT_FNAME)
         x_train = train_features.iloc[X_i]
         y_train = train_labels.iloc[X_i]
+        # denormalization
+        # x_train = x_train * (y_max - y_min) + y_min
+        y_train = y_train * (y_max - y_min) + y_min
         res = reloaded.evaluate(x_train, y_train, batch_size=64, verbose=0)
         results.append(res)
         i += 1
@@ -229,8 +231,9 @@ def main():
     std = np.std(np.array(results), ddof=1)
     print("Mean: {:.4f} +/- Std:{:.4f})".format(mean, std))
 
+    # EVALUATE ON TEST SET
     results = []
-    dnn_model.save(TEMP_WEIGHT_FNAME)
+    model.save(TEMP_WEIGHT_FNAME)
     i = 0
     ss = ShuffleSplit(n_splits=KFOLD_NUM, random_state=RANDOM_SEED, test_size=TEST_SIZE, train_size=TRAIN_SIZE)
     for i, (X_i, Y_i) in enumerate(ss.split(test_dataset)):
@@ -241,6 +244,9 @@ def main():
         reloaded = tf.keras.models.load_model(TEMP_WEIGHT_FNAME)
         x_test = test_features.iloc[Y_i]
         y_test = test_labels.iloc[Y_i]
+        # denormalization
+        # x_test = x_test * (y_max - y_min) + y_min
+        y_test = y_test * (y_max - y_min) + y_min
         res = reloaded.evaluate(x_test, y_test, batch_size=128, verbose=0)
         results.append(res)
         i += 1
@@ -252,7 +258,7 @@ def main():
 
     # evaluate on test set
     #make predictions on the testset and plot
-    test_predictions = dnn_model.predict(test_features).flatten()
+    test_predictions = model.predict(test_features).flatten()
     a = plt.axes(aspect='equal')
     plt.scatter(test_labels, test_predictions)
     plt.xlabel('True Values [Survival]')
@@ -272,7 +278,7 @@ def main():
     plt.savefig("myeloma_error_distrib.png")
 
     #save the model for future use
-    dnn_model.save('dnn_model.keras')
+    model.save('dnn_model.keras')
 
 if __name__ == '__main__':
     main()
