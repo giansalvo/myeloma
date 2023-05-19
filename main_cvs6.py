@@ -41,7 +41,7 @@ from sklearn.neural_network import MLPRegressor
 from xgboost import XGBRegressor
 from catboost import CatBoostRegressor
 from sklearn.metrics import get_scorer_names, mean_absolute_error, median_absolute_error, roc_auc_score, r2_score, explained_variance_score
-
+import seaborn as sns
 import joblib
 import numpy as np
 import pandas as pd
@@ -186,41 +186,138 @@ def clean_csv(path_input, path_output):
 def prepare_dataset(path_input):
     with open(path_input, 'r') as csv_file:
         myeloma = pd.read_csv(path_input, sep=FIELD_SEPARATOR)
+
+        ######################################################################
         ohe = OneHotEncoder()
         transformed = ohe.fit_transform(myeloma[[FIELD_COD_TO_SITE]])
         myeloma[ohe.categories_[0]] = transformed.toarray()
         myeloma[ohe.categories_[0]] = myeloma[ohe.categories_[0]].astype(int)   # convert to int
         myeloma.drop(FIELD_COD_TO_SITE, axis=1, inplace=True)
-        ###
+
+        counts = []
+        names = []
+        for cat in enumerate(ohe.categories_[0]):
+            label = cat[1]
+            names.append(label)
+            counts.append(myeloma[label].value_counts()[1])
+
+        fig, ax = plt.subplots()
+        bar_container = ax.bar(names, counts)
+        ax.set(ylabel='count', title="COD to site")
+        ax.bar_label(bar_container, fmt='{:,.0f}')
+        plt.savefig("myel_hist_COD.png")
+        plt.close()
+
+        ######################################################################
         ohe = OneHotEncoder()
         transformed = ohe.fit_transform(myeloma[[FIELD_RACE]])
         myeloma[ohe.categories_[0]] = transformed.toarray()
         myeloma[ohe.categories_[0]] = myeloma[ohe.categories_[0]].astype(int)   # convert to int
         myeloma.drop(FIELD_RACE, axis=1, inplace=True)
-        ###
+
+        counts = []
+        names = []
+        for cat in enumerate(ohe.categories_[0]):
+            label = cat[1]
+            names.append(label)
+            counts.append(myeloma[label].value_counts()[1])
+
+        fig, ax = plt.subplots()
+        # counts = [r1, r2, r3, r4, r5]
+        # names = ["C40.2", "C41.0", "41.2", "C41.4", "C41.9"]
+        bar_container = ax.bar(names, counts)
+        ax.set(ylabel='count', title="Race")
+        ax.bar_label(bar_container, fmt='{:,.0f}')
+        plt.savefig("myel_hist_race.png")
+        plt.close()
+
+
+        ######################################################################
         ohe = OneHotEncoder()
         transformed = ohe.fit_transform(myeloma[[FIELD_SEX]])
         myeloma[ohe.categories_[0]] = transformed.toarray()
         myeloma[ohe.categories_[0]] = myeloma[ohe.categories_[0]].astype(int)  # convert to int
         myeloma.drop(FIELD_SEX, axis=1, inplace=True)
-        ###
+
+        counts = []
+        names = []
+        for cat in enumerate(ohe.categories_[0]):
+            label = cat[1]
+            names.append(label)
+            counts.append(myeloma[label].value_counts()[1])
+
+        fig, ax = plt.subplots()
+        bar_container = ax.bar(names, counts)
+        ax.set(ylabel='count', title="SEX")
+        ax.bar_label(bar_container, fmt='{:,.0f}')
+        plt.savefig("myel_hist_sex.png")
+        plt.close()
+
+        ######################################################################
         ohe = OneHotEncoder()
         transformed = ohe.fit_transform(myeloma[[FIELD_EMD]])
         myeloma[ohe.categories_[0]] = transformed.toarray()
         myeloma[ohe.categories_[0]] = myeloma[ohe.categories_[0]].astype(int)  # convert to int
         myeloma.drop(FIELD_EMD, axis=1, inplace=True)
-        ###
+
+        counts = []
+        names = []
+        for cat in enumerate(ohe.categories_[0]):
+            label = cat[1]
+            names.append(label)
+            counts.append(myeloma[label].value_counts()[1])
+
+        fig, ax = plt.subplots()
+        bar_container = ax.bar(names, counts)
+        ax.set(ylabel='count', title="EMD")
+        ax.bar_label(bar_container, fmt='{:,.0f}')
+        plt.savefig("myel_hist_EMD.png")
+        plt.close()
+
+        ######################################################################
         ohe = OneHotEncoder()
         transformed = ohe.fit_transform(myeloma[[FIELD_EMD_SITE]])
         myeloma[ohe.categories_[0]] = transformed.toarray()
         myeloma[ohe.categories_[0]] = myeloma[ohe.categories_[0]].astype(int)  # convert to int
         myeloma.drop(FIELD_EMD_SITE, axis=1, inplace=True)
-        ###
+
+        counts = []
+        names = []
+        for cat in enumerate(ohe.categories_[0]):
+            label = cat[1]
+            names.append(label)
+            counts.append(myeloma[label].value_counts()[1])
+
+        fig, ax = plt.subplots()
+        # counts = [r1, r2, r3, r4, r5]
+        # names = ["C40.2", "C41.0", "41.2", "C41.4", "C41.9"]
+        bar_container = ax.bar(names, counts)
+        ax.set(ylabel='count', title="EMD Site")
+        ax.bar_label(bar_container, fmt='{:,.0f}')
+        plt.savefig("myel_hist_EMD_site.png")
+        plt.close()
+
+
+        ######################################################################
         ohe = OneHotEncoder()
         transformed = ohe.fit_transform(myeloma[[FIELD_SEER_SPECIFIC]])
         myeloma[ohe.categories_[0]] = transformed.toarray()
         myeloma[ohe.categories_[0]] = myeloma[ohe.categories_[0]].astype(int)  # convert to int
         myeloma.drop(FIELD_SEER_SPECIFIC, axis=1, inplace=True)
+
+        counts = []
+        names = []
+        for cat in enumerate(ohe.categories_[0]):
+            label = cat[1]
+            names.append(label)
+            counts.append(myeloma[label].value_counts()[1])
+
+        fig, ax = plt.subplots()
+        bar_container = ax.bar(names, counts)
+        ax.set(ylabel='count', title="SEER Specific")
+        ax.bar_label(bar_container, fmt='{:,.0f}')
+        plt.savefig("myel_hist_SEER_specific.png")
+        plt.close()
 
         return myeloma
 
@@ -234,12 +331,41 @@ def plot_graph(df, title, fname):
     plt.close()
 
 
-def explore_dataset(df):
-    plot_graph(df, FIELD_AGE, 'myeloma_hist1.png')
-    plot_graph(df, FIELD_SURVIVAL_1, 'myeloma_hist2.png')
-    plot_graph(df, FIELD_SURVIVAL_2, 'myeloma_hist3.png')
+# def plot_EMD(df, title=None, fname=None):
+#     FIELD_R1 = "9734/3: Extraosseous plasmacytoma"
+#     FIELD_R2 = "9731/3: Solitary plasmacytoma of bone"
+#     r1 = df[FIELD_R1].value_counts()[1]
+#     r2 = df[FIELD_R2].value_counts()[1]
+#
+#     fig, ax = plt.subplots()
+#     counts = [r1, r2]
+#     names = [FIELD_R1, FIELD_R2]
+#     bar_container = ax.bar(names, counts)
+#     ax.set(ylabel='count', title=title)
+#     ax.bar_label(bar_container, fmt='{:,.0f}')
+#     plt.savefig(fname)
 
-    print(df.head())
+
+# def plot_sex(df, title=None, fname=None):
+#     nmale = df['Male'].value_counts()[1]
+#     nfemale = df['Female'].value_counts()[1]
+#
+#     fig, ax = plt.subplots()
+#     counts = [nmale, nfemale]
+#     names = ["Male", "Female"]
+#     bar_container = ax.bar(names, counts)
+#     ax.set(ylabel='count', title=title)
+#     ax.bar_label(bar_container, fmt='{:,.0f}')
+#     plt.savefig(fname)
+
+def explore_dataset(df):
+    plot_graph(df, FIELD_AGE, 'myel_hist_age.png')
+    plot_graph(df, FIELD_SURVIVAL_1, 'myel_hist_survival1.png')
+    plot_graph(df, FIELD_SURVIVAL_2, 'myel_hist_survival2.png')
+    # plot_sex(df, title="Sex", fname="myel_hist_sex.png")
+    # # plot_race(df, title="Race", fname="myel_hist_race.png")
+    # plot_EMD(df, title="EMD", fname="myel_hist_emd.png")
+
     df.info()
     df.describe()
 
@@ -321,6 +447,7 @@ def evaluate_regressor(reg, X_train, Y_train, scoring, fname):
 
 def main():
     np.random.seed(74)
+
     clean_csv(PATH_ORIG, PATH_WORK)
     myeloma = prepare_dataset(PATH_WORK)
     explore_dataset(myeloma)
