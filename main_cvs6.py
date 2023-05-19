@@ -75,7 +75,7 @@ FIELD_N_SEER_SPECIFIC = 6
 FIELD_N_SURVIVAL_1 = 7
 FIELD_N_SURVIVAL_2 = 8
 
-ef regression_roc_auc_score(y_true, y_pred, num_rounds=10000):
+def regression_roc_auc_score(y_true, y_pred, num_rounds=10000):
     """
     Computes Regression-ROC-AUC-score.
 
