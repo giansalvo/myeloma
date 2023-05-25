@@ -61,7 +61,7 @@ PATH_BENCHMARK = 'myeloma_benchmark.csv'
 FIELD_SEPARATOR = ';'
 
 TEST_RATIO = 0.2
-N_SPLIT = 10
+N_SPLIT = 5
 
 FIELD_AGE = "Age recode with single ages and 90+"
 FIELD_RACE = "Race recode (W, B, AI, API)"
@@ -542,10 +542,10 @@ def main():
         "OrthogonalMatchingPursuit()",
         # "OrthogonalMatchingPursuitCV()",
         # "PLSCanonical()",
-        "PLSRegression()",
+        # "PLSRegression()",
         "PassiveAggressiveRegressor()",
         # "PoissonRegressor()",
-        "QuantileRegressor()",
+        # "QuantileRegressor()",
         "RANSACRegressor()",
         "RadiusNeighborsRegressor()",
         "RandomForestRegressor()",
@@ -576,6 +576,11 @@ def main():
         pred_test = model.fit(X_train, Y_train).predict(X_test)
         for metricname in metricnames:
             metrics.loc[modelname, metricname] = eval(f'{metricname}(Y_test, pred_test)')
+            kfold = KFold(n_splits=N_SPLIT)
+            # scores = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring=metricname)
+            # display_scores(scores)
+            fname = "pred_err_" + modelname + "_" + metricname + ".png"
+            display_pred_error(model, X_train, Y_train, kfold, fname)
 
     # print results of benchmarks
     with open(PATH_BENCHMARK, "w") as f:
