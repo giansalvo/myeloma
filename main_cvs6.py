@@ -6,6 +6,7 @@
     Code adapted from following articles/repositories:
     https://yann-leguilly.gitlab.io/post/2019-12-14-tensorflow-tfdata-segmentation/
     https://github.com/dhassault/tf-semantic-example
+    https://stackoverflow.com/questions/46852222/how-can-i-import-all-of-sklearns-regressors
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -26,21 +27,27 @@
     DEALINGS IN THE SOFTWARE.
 """
 import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
-from sklearn.tree import DecisionTreeRegressor
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import *
+from sklearn.multioutput import *
+from sklearn.tree import DecisionTreeRegressor, ExtraTreeRegressor
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import KFold, cross_val_score, cross_val_predict, train_test_split
 from sklearn.metrics import roc_auc_score, PredictionErrorDisplay, RocCurveDisplay, mean_squared_error, auc, r2_score
-from sklearn.neighbors import KNeighborsRegressor
 from sklearn.metrics import get_scorer_names, mean_absolute_error, median_absolute_error, roc_auc_score, r2_score, explained_variance_score
-from sklearn.svm import LinearSVR, SVC
-from sklearn.svm import SVR
-from sklearn.ensemble import GradientBoostingRegressor
+# from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+from sklearn.gaussian_process import GaussianProcessRegressor
+from sklearn.neighbors import *
+from sklearn.svm import *
+from sklearn.kernel_ridge import KernelRidge
+from sklearn.isotonic import IsotonicRegression
+from sklearn.linear_model import *
+from sklearn.ensemble import *
+from sklearn.compose import TransformedTargetRegressor
 from sklearn.neural_network import MLPRegressor
+from sklearn.multioutput import *
+from sklearn.cross_decomposition import *
 from xgboost import XGBRegressor
 from catboost import CatBoostRegressor
-from sklearn.metrics import get_scorer_names, mean_absolute_error, median_absolute_error, roc_auc_score, r2_score, explained_variance_score
 import seaborn as sns
 import joblib
 import numpy as np
@@ -48,8 +55,9 @@ import pandas as pd
 from pandas.plotting import scatter_matrix
 import csv          # importing the csv module
 
-PATH_ORIG = '20230515_v6.csv'
-PATH_WORK = 'myeloma_cvs6.csv'
+PATH_INPUT = '20230515_v6.csv'
+PATH_OUTPUT = 'myeloma_cvs6.csv'
+PATH_BENCHMARK = 'myeloma_benchmark.csv'
 FIELD_SEPARATOR = ';'
 
 TEST_RATIO = 0.2
@@ -331,33 +339,6 @@ def plot_graph(df, title, fname):
     plt.close()
 
 
-# def plot_EMD(df, title=None, fname=None):
-#     FIELD_R1 = "9734/3: Extraosseous plasmacytoma"
-#     FIELD_R2 = "9731/3: Solitary plasmacytoma of bone"
-#     r1 = df[FIELD_R1].value_counts()[1]
-#     r2 = df[FIELD_R2].value_counts()[1]
-#
-#     fig, ax = plt.subplots()
-#     counts = [r1, r2]
-#     names = [FIELD_R1, FIELD_R2]
-#     bar_container = ax.bar(names, counts)
-#     ax.set(ylabel='count', title=title)
-#     ax.bar_label(bar_container, fmt='{:,.0f}')
-#     plt.savefig(fname)
-
-
-# def plot_sex(df, title=None, fname=None):
-#     nmale = df['Male'].value_counts()[1]
-#     nfemale = df['Female'].value_counts()[1]
-#
-#     fig, ax = plt.subplots()
-#     counts = [nmale, nfemale]
-#     names = ["Male", "Female"]
-#     bar_container = ax.bar(names, counts)
-#     ax.set(ylabel='count', title=title)
-#     ax.bar_label(bar_container, fmt='{:,.0f}')
-#     plt.savefig(fname)
-
 def explore_dataset(df):
     plot_graph(df, FIELD_AGE, 'myel_hist_age.png')
     plot_graph(df, FIELD_SURVIVAL_1, 'myel_hist_survival1.png')
@@ -377,16 +358,6 @@ def explore_dataset(df):
     scatter_matrix(df[attributes], figsize=(12, 8))
     plt.savefig('myeloma_scatter1.png')
     print(df.value_counts())
-
-    # compute correlation with survival 2
-    corr_matrix = df.corr()
-    print(corr_matrix[FIELD_SURVIVAL_2].sort_values(ascending=False))
-    # scatter plots
-    attributes = [FIELD_AGE, FIELD_SURVIVAL_1, FIELD_SURVIVAL_2]
-    scatter_matrix(df[attributes], figsize=(12, 8))
-    plt.savefig('myeloma_scatter2.png')
-    print(df.value_counts())
-
 
 
 def split_train_test(data, test_ratio):
@@ -448,8 +419,8 @@ def evaluate_regressor(reg, X_train, Y_train, scoring, fname):
 def main():
     np.random.seed(74)
 
-    clean_csv(PATH_ORIG, PATH_WORK)
-    myeloma = prepare_dataset(PATH_WORK)
+    clean_csv(PATH_INPUT, PATH_OUTPUT)
+    myeloma = prepare_dataset(PATH_OUTPUT)
     explore_dataset(myeloma)
 
     train_set, test_set = split_train_test(myeloma, TEST_RATIO)
@@ -467,15 +438,10 @@ def main():
     print("\nLinearRegression")
     reg = LinearRegression()
     evaluate_regressor(reg, X_train, Y_train, 'r2','myeloma_pred_err_lr.png')
-    # save the model on file
-    reg.fit(X_train, Y_train)
-    joblib.dump(reg, "model_linear_regr.pkl")
-    # get params
-    # params = reg.get_params(deep=True)
-    # print("Parameters: ", params)
 
     # evaluate on test set this regressor
     print("\nEvaluate on testset")
+    reg.fit(X_train, Y_train)
     pred_testset = reg.predict(X_test)
     testset_mse = mean_squared_error(Y_test, pred_testset)
     testset_rmse = np.sqrt(testset_mse)
@@ -488,7 +454,6 @@ def main():
     plt.ylabel("Predicted Value")
     plt.xticks(fontsize=10)
     plt.yticks(fontsize=10)
-
     plt.savefig("myeloma_pred_scattered_LR.png")
 
     #########################################
@@ -497,14 +462,10 @@ def main():
     reg = DecisionTreeRegressor()
     evaluate_regressor(reg, X_train, Y_train, 'r2', 'myeloma_pred_err_DTR.png')
     # save the model on file
-    reg.fit(X_train, Y_train)
-    joblib.dump(reg, "model_decision_tree_regr.pkl")
-    # get params
-    # params = reg.get_params(deep=True)
-    # print("Parameters: ", params)
 
     # evaluate on test set this regressor
     print("\nEvaluate on testset")
+    reg.fit(X_train, Y_train)
     pred_testset = reg.predict(X_test)
     testset_mse = mean_squared_error(Y_test, pred_testset)
     testset_rmse = np.sqrt(testset_mse)
@@ -517,7 +478,6 @@ def main():
     plt.ylabel("Predicted Value")
     plt.xticks(fontsize=10)
     plt.yticks(fontsize=10)
-
     plt.savefig("myeloma_pred_scattered_DT.png")
 
     #########################################
@@ -525,14 +485,10 @@ def main():
     print("\nRandomForestRegressor")
     reg = RandomForestRegressor()
     evaluate_regressor(reg, X_train, Y_train, 'r2', 'myeloma_pred_err_RF.png')
-    reg.fit(X_train, Y_train)
-    # save the model on file
-    joblib.dump(reg, "model_rand_forest_regr.pkl")
-    # params = reg.get_params(deep=True)
-    # print("Parameters: ", params)
 
     # evaluate on test set last regressor
     print("\nEvaluate on testset")
+    reg.fit(X_train, Y_train)
     pred_testset = reg.predict(X_test)
     testset_mse = mean_squared_error(Y_test, pred_testset)
     testset_rmse = np.sqrt(testset_mse)
@@ -547,56 +503,95 @@ def main():
     plt.yticks(fontsize=10)
     plt.savefig("myeloma_pred_scattered_RF.png")
 
-    # #########################################
-    # # LinearSVR
-    # print("\nLinearSVR")
-    # reg = LinearSVR(epsilon=1.5)
-    # evaluate_regressor(reg, X_train, Y_train, 'r2', 'myeloma_pred_err_SVM.png')
-    # reg.fit(X_train, Y_train)
-    # # save the model on file
-    # joblib.dump(reg, "model_rand_forest_regr.pkl")
-    #
-    # # evaluate on test set last regressor
-    # print("\nEvaluate on testset")
-    # pred_testset = reg.predict(X_test)
-    # testset_mse = mean_squared_error(Y_test, pred_testset)
-    # testset_rmse = np.sqrt(testset_mse)
-    # print(f"testset_rmse: {testset_rmse:.2f} months")
 
-
-### https://medium.com/towards-data-science/how-to-calculate-roc-auc-score-for-regression-models-c0be4fdf76bb
+    # inspired by https://medium.com/towards-data-science/how-to-calculate-roc-auc-score-for-regression-models-c0be4fdf76bb
     modelnames = [
-        # "DummyRegressor()",
-        "KNeighborsRegressor()",
-        "LinearRegression()",
-        "SVR()",
-        "MLPRegressor(hidden_layer_sizes=(16, 16))",
+        "ARDRegression()",
+        "AdaBoostRegressor()",
+        "BaggingRegressor()",
+        "BayesianRidge()",
+        # "CCA()",
         "DecisionTreeRegressor()",
+        "ElasticNet()",
+        "ElasticNetCV()",
+        "ExtraTreeRegressor()",
+        # "GammaRegressor()",
+        "GaussianProcessRegressor()",
         "GradientBoostingRegressor()",
-        "XGBRegressor()"
-        ]
+        "HistGradientBoostingRegressor()",
+        # "HuberRegressor()",
+        # "IsotonicRegression()",
+        "KNeighborsRegressor()",
+        "KernelRidge()",
+        # "Lars()",
+        # "LarsCV()",
+        "Lasso()",
+        "LassoCV()",
+        # "LassoLars()",
+        # "LassoLarsCV()",
+        # "LassoLarsIC()",
+        "LinearRegression()",
+        # "LinearSVR()",
+        # "MLPRegressor(hidden_layer_sizes=(16, 16))",
+        # "MultiOutputRegressor()",
+        # "MultiTaskElasticNet()",
+        # "MultiTaskElasticNetCV()",
+        # "MultiTaskLasso()",
+        # "MultiTaskLassoCV()",
+        "NuSVR()",
+        "OrthogonalMatchingPursuit()",
+        # "OrthogonalMatchingPursuitCV()",
+        # "PLSCanonical()",
+        "PLSRegression()",
+        "PassiveAggressiveRegressor()",
+        # "PoissonRegressor()",
+        "QuantileRegressor()",
+        "RANSACRegressor()",
+        "RadiusNeighborsRegressor()",
+        "RandomForestRegressor()",
+        # "RegressorChain()",
+        "Ridge()",
+        # "RidgeCV()",
+        "SGDRegressor()",
+        "SVR()",
+        # "StackingRegressor()",
+        "TheilSenRegressor()",
+        "TransformedTargetRegressor()",
+        # "TweedieRegressor()",
+        # "VotingRegressor()"
+    ]
 
     metricnames = [
-        "mean_absolute_error",
-        "median_absolute_error",
-        "r2_score",
+        "mean_absolute_error",      # MAE
+        "median_absolute_error",    # MedAE
+        "r2_score",                 # r2
         "explained_variance_score",
         "regression_roc_auc_score"
     ]
     metrics = pd.DataFrame(index=modelnames, columns=metricnames)
+    # Compute benchmarks
     for modelname in modelnames:
+        print("Fitting model: ", modelname)
         model = eval(modelname)
         pred_test = model.fit(X_train, Y_train).predict(X_test)
         for metricname in metricnames:
             metrics.loc[modelname, metricname] = eval(f'{metricname}(Y_test, pred_test)')
 
-    for modelname in modelnames:
-        print(modelname + str("\t\t\t"), end=" ")
+    # print results of benchmarks
+    with open(PATH_BENCHMARK, "w") as f:
+        # print header
+        print("Regressor Model; ", file=f, end="")
         for metricname in metricnames:
-            # fname = str(modelname)+"_" + str(metricname)
-            # evaluate_regressor(modelname, X_train, Y_train, metricname, fname)
-            print(f"{metrics.loc[modelname][metricname]:.2f}\t\t", end=" ")
-        print("")
+            print(metricname + FIELD_SEPARATOR, file=f, end="")
+        print("", file=f, end="\n")
+        for modelname in modelnames:
+            print(modelname + FIELD_SEPARATOR, file=f, end=" ")
+            for metricname in metricnames:
+                # fname = str(modelname)+"_" + str(metricname)
+                # evaluate_regressor(modelname, X_train, Y_train, metricname, fname)
+                val = metrics.loc[modelname][metricname]
+                print(format(val).replace('.', ',') + FIELD_SEPARATOR, file=f, end=" ")
+            print("", file=f)
 
 
 if __name__ == '__main__':
