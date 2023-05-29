@@ -26,6 +26,8 @@
     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
     DEALINGS IN THE SOFTWARE.
 """
+import os
+
 import matplotlib.pyplot as plt
 from sklearn.linear_model import *
 from sklearn.multioutput import *
@@ -54,11 +56,13 @@ import numpy as np
 import pandas as pd
 from pandas.plotting import scatter_matrix
 import csv          # importing the csv module
+import os
 
 PATH_INPUT = '20230515_v6.csv'
 PATH_OUTPUT = 'myeloma_cvs6.csv'
 PATH_BENCHMARK = 'myeloma_benchmark.csv'
 FIELD_SEPARATOR = ';'
+PATH_PRED_ERR = "./pred_err"
 
 TEST_RATIO = 0.2
 N_SPLIT = 5
@@ -70,8 +74,7 @@ FIELD_EMD = "EMD"
 FIELD_EMD_SITE = "EMD Site - labeled"
 FIELD_COD_TO_SITE = "COD to site recode"
 FIELD_SEER_SPECIFIC = "SEER cause-specific death classification"
-FIELD_SURVIVAL_1 = "survival month (1st Dx)"
-FIELD_SURVIVAL_2 = "survival month (2nd EMD)"
+FIELD_SURVIVAL = "Survival"
 
 FIELD_N_AGE = 0
 FIELD_N_RACE = 1
@@ -80,8 +83,7 @@ FIELD_N_EMD = 3
 FIELD_N_EMD_SITE = 4
 FIELD_N_COD_TO_SITE = 5
 FIELD_N_SEER_SPECIFIC = 6
-FIELD_N_SURVIVAL_1 = 7
-FIELD_N_SURVIVAL_2 = 8
+FIELD_N_SURVIVAL= 7
 
 def regression_roc_auc_score(y_true, y_pred, num_rounds=10000):
     """
@@ -158,8 +160,7 @@ def write_header(f):
     print(add_virgolette(FIELD_EMD_SITE), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette(FIELD_COD_TO_SITE), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette(FIELD_SEER_SPECIFIC), file=f, end=FIELD_SEPARATOR)
-    print(add_virgolette(FIELD_SURVIVAL_1), file=f, end=FIELD_SEPARATOR)
-    print(add_virgolette(FIELD_SURVIVAL_2), file=f)
+    print(add_virgolette(FIELD_SURVIVAL), file=f)
     return(0)
 
 
@@ -185,8 +186,7 @@ def clean_csv(path_input, path_output):
                 print(row[FIELD_N_EMD_SITE], end=FIELD_SEPARATOR, file=foutput)
                 print(row[FIELD_N_COD_TO_SITE], end=FIELD_SEPARATOR, file=foutput)
                 print(row[FIELD_N_SEER_SPECIFIC], end=FIELD_SEPARATOR, file=foutput)
-                print(row[FIELD_N_SURVIVAL_1], end=FIELD_SEPARATOR, file=foutput)
-                print(row[FIELD_N_SURVIVAL_2], file=foutput)
+                print(row[FIELD_N_SURVIVAL], file=foutput)
                 line_count += 1
             print(f'Processed {line_count} lines.')
 
@@ -341,8 +341,7 @@ def plot_graph(df, title, fname):
 
 def explore_dataset(df):
     plot_graph(df, FIELD_AGE, 'myel_hist_age.png')
-    plot_graph(df, FIELD_SURVIVAL_1, 'myel_hist_survival1.png')
-    plot_graph(df, FIELD_SURVIVAL_2, 'myel_hist_survival2.png')
+    plot_graph(df, FIELD_SURVIVAL, 'myel_hist_survival.png')
     # plot_sex(df, title="Sex", fname="myel_hist_sex.png")
     # # plot_race(df, title="Race", fname="myel_hist_race.png")
     # plot_EMD(df, title="EMD", fname="myel_hist_emd.png")
@@ -352,9 +351,9 @@ def explore_dataset(df):
 
     # compute correlation
     corr_matrix = df.corr()
-    print(corr_matrix[FIELD_SURVIVAL_1].sort_values(ascending=False))
+    print(corr_matrix[FIELD_SURVIVAL].sort_values(ascending=False))
     # scatter plots
-    attributes = [FIELD_AGE, FIELD_SURVIVAL_1, FIELD_SURVIVAL_2]
+    attributes = [FIELD_AGE, FIELD_SURVIVAL]
     scatter_matrix(df[attributes], figsize=(12, 8))
     plt.savefig('myeloma_scatter1.png')
     print(df.value_counts())
@@ -396,7 +395,7 @@ def display_pred_error(regressor, X_train, Y_train, kfold, fname):
             random_state=0,
         )
         axs[1].set_title("Residuals vs. Predicted Values")
-        fig.suptitle("Plotting cross-validated predictions")
+        fig.suptitle("Plotting cross-validated predictions " + str(regressor))
         plt.tight_layout()
         plt.yticks(fontsize=10)
         plt.xticks(fontsize=10)
@@ -418,6 +417,8 @@ def evaluate_regressor(reg, X_train, Y_train, scoring, fname):
 
 def main():
     np.random.seed(74)
+    if not os.path.exists(PATH_PRED_ERR):
+        os.makedirs(PATH_PRED_ERR)
 
     clean_csv(PATH_INPUT, PATH_OUTPUT)
     myeloma = prepare_dataset(PATH_OUTPUT)
@@ -426,8 +427,8 @@ def main():
     train_set, test_set = split_train_test(myeloma, TEST_RATIO)
 
     X = train_set
-    Y = X[FIELD_SURVIVAL_2].values
-    X = X.drop(FIELD_SURVIVAL_2, axis=1).values
+    Y = X[FIELD_SURVIVAL].values
+    X = X.drop(FIELD_SURVIVAL, axis=1).values
 
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.30)
     print("X_train, X_test, Y_train, Y_test",
@@ -437,7 +438,8 @@ def main():
     # linear regression
     print("\nLinearRegression")
     reg = LinearRegression()
-    evaluate_regressor(reg, X_train, Y_train, 'r2','myeloma_pred_err_lr.png')
+    fpath = os.path.join(PATH_PRED_ERR, 'err_DTR.png')
+    evaluate_regressor(reg, X_train, Y_train, 'r2',fpath)
 
     # evaluate on test set this regressor
     print("\nEvaluate on testset")
@@ -460,7 +462,8 @@ def main():
     # DecisionTreeRegressor
     print("\nDecisionTreeRegression")
     reg = DecisionTreeRegressor()
-    evaluate_regressor(reg, X_train, Y_train, 'r2', 'myeloma_pred_err_DTR.png')
+    path = os.path.join(PATH_PRED_ERR, 'myeloma_pred_err_DTR.png')
+    evaluate_regressor(reg, X_train, Y_train, 'r2', path)
     # save the model on file
 
     # evaluate on test set this regressor
@@ -484,7 +487,8 @@ def main():
     # RandomForestRegressor
     print("\nRandomForestRegressor")
     reg = RandomForestRegressor()
-    evaluate_regressor(reg, X_train, Y_train, 'r2', 'myeloma_pred_err_RF.png')
+    fpath = os.path.join(PATH_PRED_ERR, 'err_RF.png')
+    evaluate_regressor(reg, X_train, Y_train, 'r2', fpath)
 
     # evaluate on test set last regressor
     print("\nEvaluate on testset")
@@ -546,7 +550,7 @@ def main():
         "PassiveAggressiveRegressor()",
         # "PoissonRegressor()",
         # "QuantileRegressor()",
-        "RANSACRegressor()",
+        # "RANSACRegressor()",
         "RadiusNeighborsRegressor()",
         "RandomForestRegressor()",
         # "RegressorChain()",
@@ -579,7 +583,7 @@ def main():
             kfold = KFold(n_splits=N_SPLIT)
             # scores = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring=metricname)
             # display_scores(scores)
-            fname = "pred_err_" + modelname + "_" + metricname + ".png"
+            fname = os.path.join(PATH_PRED_ERR, modelname + "_" + metricname + ".png")
             display_pred_error(model, X_train, Y_train, kfold, fname)
 
     # print results of benchmarks
