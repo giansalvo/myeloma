@@ -580,11 +580,8 @@ def main():
         pred_test = model.fit(X_train, Y_train).predict(X_test)
         for metricname in metricnames:
             metrics.loc[modelname, metricname] = eval(f'{metricname}(Y_test, pred_test)')
-            kfold = KFold(n_splits=N_SPLIT)
-            # scores = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring=metricname)
-            # display_scores(scores)
             fname = os.path.join(PATH_PRED_ERR, modelname + "_" + metricname + ".png")
-            display_pred_error(model, X_train, Y_train, kfold, fname)
+            display_pred_error(model, X_train, Y_train, N_SPLIT, fname)
 
     # print results of benchmarks
     with open(PATH_BENCHMARK, "w") as f:
