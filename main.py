@@ -27,21 +27,40 @@
 """
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
-from sklearn.tree import DecisionTreeRegressor
+from sklearn.tree import DecisionTreeRegressor, ExtraTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import KFold, cross_val_score, cross_val_predict, train_test_split
 from sklearn.metrics import roc_auc_score, PredictionErrorDisplay, RocCurveDisplay, mean_squared_error, auc, r2_score
 from sklearn.svm import LinearSVR, SVC
+from sklearn.gaussian_process import GaussianProcessRegressor
+from sklearn.neighbors import *
+from sklearn.svm import *
+from sklearn.kernel_ridge import KernelRidge
+from sklearn.isotonic import IsotonicRegression
+from sklearn.linear_model import *
+from sklearn.ensemble import *
+from sklearn.metrics import *
+from sklearn.compose import TransformedTargetRegressor
+from sklearn.neural_network import MLPRegressor
+from sklearn.multioutput import *
+from sklearn.cross_decomposition import *
+from xgboost import XGBRegressor
+from catboost import CatBoostRegressor
+import seaborn as sns
 import joblib
 import numpy as np
 import pandas as pd
 from pandas.plotting import scatter_matrix
 import csv          # importing the csv module
+import os
 
 PATH_ORIG = 'myeloma_input.csv'
 PATH_WORK = 'myeloma_work.csv'
+PATH_BENCHMARK_TRAIN= "bench_train.csv"
+PATH_BENCHMARK_TEST = "bench_test.csv"
 FIELD_SEPARATOR = ';'
+PATH_PRED_ERR = "pred1_err"
 
 TEST_RATIO = 0.2
 N_SPLIT = 10
@@ -208,7 +227,7 @@ def split_train_test(data, test_ratio):
     return data.iloc[train_indices], data.iloc[test_indices]
 
 
-def display_pred_error(regressor, X_train, Y_train, kfold, fname, score):
+def display_pred_error(regressor, X_train, Y_train, kfold, fname, metric, score):
         y_pred = cross_val_predict(regressor, X_train, Y_train, cv=kfold)
         fig, axs = plt.subplots(ncols=2, figsize=(8, 4))
         PredictionErrorDisplay.from_predictions(
@@ -233,7 +252,7 @@ def display_pred_error(regressor, X_train, Y_train, kfold, fname, score):
         )
         axs[1].set_title("Residuals vs. Predicted Values")
         fig.suptitle("Plotting cross-validated predictions: " + str(regressor))
-        axs[0].plot(0, 0, label="R^2 = " + str(score), color="none")
+        axs[0].plot(0, 0, label=str(metric) + " = " + str(score), color="none")
         axs[0].legend(loc="upper left")
         plt.tight_layout()
         plt.yticks(fontsize=10)
@@ -253,11 +272,13 @@ def evaluate_regressor(reg, X_train, Y_train, scoring, fname):
     print("Scores: ", np.round(scores, 4))
     print("Mean: ", np.round(scores.mean(), 4))
     print("Standard deviation: ", np.round(scores.std(), 4))
-    display_pred_error(reg, X_train, Y_train, kfold, fname, np.round(scores.mean(), 4))
+    display_pred_error(reg, X_train, Y_train, kfold, fname, str(scoring), np.round(scores.mean()))
 
 
 def main():
     np.random.seed(74)
+    if not os.path.exists(PATH_PRED_ERR):
+        os.makedirs(PATH_PRED_ERR)
     clean_csv(PATH_ORIG, PATH_WORK)
     myeloma = prepare_dataset(PATH_WORK)
     explore_dataset(myeloma)
@@ -340,6 +361,97 @@ def main():
     plt.xticks(fontsize=10)
     plt.yticks(fontsize=10)
     plt.savefig("pred_scattered_RF.png")
+
+    ###############################################################################
+    # inspired by https://medium.com/towards-data-science/how-to-calculate-roc-auc-score-for-regression-models-c0be4fdf76bb
+    modelnames = [
+        "ARDRegression()",
+        "AdaBoostRegressor()",
+        "BaggingRegressor()",
+        "BayesianRidge()",
+        # "CCA()",
+        "DecisionTreeRegressor()",
+        "ElasticNet()",
+        "ElasticNetCV()",
+        "ExtraTreeRegressor()",
+        # "GammaRegressor()",
+        "GaussianProcessRegressor()",
+        "GradientBoostingRegressor()",
+        "HistGradientBoostingRegressor()",
+        # "HuberRegressor()",
+        # "IsotonicRegression()",
+        "KNeighborsRegressor()",
+        "KernelRidge()",
+        # "Lars()",
+        # "LarsCV()",
+        "Lasso()",
+        "LassoCV()",
+        # "LassoLars()",
+        # "LassoLarsCV()",
+        # "LassoLarsIC()",
+        "LinearRegression()",
+        # "LinearSVR()",
+        # "MLPRegressor(hidden_layer_sizes=(16, 16))",
+        # "MultiOutputRegressor()",
+        # "MultiTaskElasticNet()",
+        # "MultiTaskElasticNetCV()",
+        # "MultiTaskLasso()",
+        # "MultiTaskLassoCV()",
+        "NuSVR()",
+        "OrthogonalMatchingPursuit()",
+        # "OrthogonalMatchingPursuitCV()",
+        # "PLSCanonical()",
+        # "PLSRegression()",
+        "PassiveAggressiveRegressor()",
+        # "PoissonRegressor()",
+        # "QuantileRegressor()",
+        # "RANSACRegressor()",
+        "RadiusNeighborsRegressor()",
+        "RandomForestRegressor()",
+        # "RegressorChain()",
+        "Ridge()",
+        # "RidgeCV()",
+        "SGDRegressor()",
+        "SVR()",
+        # "StackingRegressor()",
+        "TheilSenRegressor()",
+        "TransformedTargetRegressor()",
+        # "TweedieRegressor()",
+        # "VotingRegressor()"
+    ]
+
+    metricnames = [
+        "mean_absolute_error",  # MAE
+        "median_absolute_error",  # MedAE
+        "r2_score",  # r2
+        "explained_variance_score"
+        #"regression_roc_auc_score"
+    ]
+    metrics = pd.DataFrame(index=modelnames, columns=metricnames)
+    # Compute benchmarks
+    for modelname in modelnames:
+        print("Fitting model: ", modelname)
+        model = eval(modelname)
+        pred_test = model.fit(X_train, Y_train).predict(X_test)
+        for metricname in metricnames:
+            metrics.loc[modelname, metricname] = eval(f'{metricname}(Y_test, pred_test)')
+            fname = os.path.join(PATH_PRED_ERR, modelname + "_" + metricname + ".png")
+            display_pred_error(model, X_train, Y_train, N_SPLIT, fname, metricname, metrics.loc[modelname, metricname].round(4))
+
+    # print results of benchmarks
+    with open(PATH_BENCHMARK_TRAIN, "w") as f:
+        # print header
+        print("Regressor Model; ", file=f, end="")
+        for metricname in metricnames:
+            print(metricname + FIELD_SEPARATOR, file=f, end="")
+        print("", file=f, end="\n")
+        for modelname in modelnames:
+            print(modelname + FIELD_SEPARATOR, file=f, end=" ")
+            for metricname in metricnames:
+                val = metrics.loc[modelname][metricname]
+                print(format(val).replace('.', ',') + FIELD_SEPARATOR, file=f, end=" ")
+            print("", file=f)
+
 
 
 if __name__ == '__main__':
