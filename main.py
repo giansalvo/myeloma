@@ -179,10 +179,10 @@ def plot_graph(df, title, fname):
 
 
 def explore_dataset(df):
-    plot_graph(df, FIELD_SURVIVAL, 'myeloma_hist1.png')
-    plot_graph(df, FIELD_AGE, 'myeloma_hist2.png')
-    plot_graph(df, FIELD_YEAR_DEATH, 'myeloma_hist4.png')
-    plot_graph(df, FIELD_MONTHS_FROM_DIAG_TO_TREAT, 'myeloma_hist5.png')
+    plot_graph(df, FIELD_SURVIVAL, 'hist_survival.png')
+    plot_graph(df, FIELD_AGE, 'hist_age.png')
+    plot_graph(df, FIELD_YEAR_DEATH, 'hist_death.png')
+    plot_graph(df, FIELD_MONTHS_FROM_DIAG_TO_TREAT, 'hist_diag_to_treat.png')
 
     print(df.head())
     df.info()
@@ -208,12 +208,7 @@ def split_train_test(data, test_ratio):
     return data.iloc[train_indices], data.iloc[test_indices]
 
 
-def display_scores(scores):
-        print("Scores: ", np.round(scores, 4))
-        print("Mean: ", np.round(scores.mean(), 4))
-        print("Standard deviation: ", np.round(scores.std(), 4))
-
-def display_pred_error(regressor, X_train, Y_train, kfold, fname):
+def display_pred_error(regressor, X_train, Y_train, kfold, fname, score):
         y_pred = cross_val_predict(regressor, X_train, Y_train, cv=kfold)
         fig, axs = plt.subplots(ncols=2, figsize=(8, 4))
         PredictionErrorDisplay.from_predictions(
@@ -224,6 +219,7 @@ def display_pred_error(regressor, X_train, Y_train, kfold, fname):
             ax=axs[0],
             random_state=0,
         )
+        plt.ylim(-1.5, 2.0)
         axs[0].set_title("Actual vs. Predicted values")
         plt.yticks(fontsize=10)
         plt.xticks(fontsize=10)
@@ -236,7 +232,9 @@ def display_pred_error(regressor, X_train, Y_train, kfold, fname):
             random_state=0,
         )
         axs[1].set_title("Residuals vs. Predicted Values")
-        fig.suptitle("Plotting cross-validated predictions")
+        fig.suptitle("Plotting cross-validated predictions: " + str(regressor))
+        axs[0].plot(0, 0, label="R^2 = " + str(score), color="none")
+        axs[0].legend(loc="upper left")
         plt.tight_layout()
         plt.yticks(fontsize=10)
         plt.xticks(fontsize=10)
@@ -245,10 +243,17 @@ def display_pred_error(regressor, X_train, Y_train, kfold, fname):
 
 
 def evaluate_regressor(reg, X_train, Y_train, scoring, fname):
+    # scoring = {'accuracy': 'accuracy',
+    #            'recall': 'recall',
+    #            'precision': 'precision',
+    #            'roc_auc': 'roc_auc'}
+    # cross_validate...
     kfold = KFold(n_splits=N_SPLIT)
     scores = cross_val_score(reg, X_train, Y_train, cv=kfold, scoring=scoring)
-    display_scores(scores)
-    display_pred_error(reg, X_train, Y_train, kfold, fname)
+    print("Scores: ", np.round(scores, 4))
+    print("Mean: ", np.round(scores.mean(), 4))
+    print("Standard deviation: ", np.round(scores.std(), 4))
+    display_pred_error(reg, X_train, Y_train, kfold, fname, np.round(scores.mean(), 4))
 
 
 def main():
@@ -271,102 +276,70 @@ def main():
     # linear regression
     print("\nLinearRegression")
     reg = LinearRegression()
-    evaluate_regressor(reg, X_train, Y_train, 'r2','myeloma_pred_err_lr.png')
-    # save the model on file
-    reg.fit(X_train, Y_train)
-    joblib.dump(reg, "model_linear_regr.pkl")
-    # get params
-    params = reg.get_params(deep=True)
-    print("Parameters: ", params)
-
+    evaluate_regressor(reg, X_train, Y_train, 'r2','pred_err_lr_train.png')
     # evaluate on test set this regressor
+    reg.fit(X_train, Y_train)
     print("\nEvaluate on testset")
     pred_testset = reg.predict(X_test)
+    evaluate_regressor(reg, X_test, pred_testset, 'r2', 'pred_err_lr_test.png')
     testset_mse = mean_squared_error(Y_test, pred_testset)
     testset_rmse = np.sqrt(testset_mse)
     print(f"testset_rmse: {testset_rmse:.2f} months")
 
     # Plot outputs
     plt.close()
-    plt.scatter(Y_test, pred_testset, color="blue")
+    plt.scatter(Y_test, pred_testset)
     plt.xlabel("Actual Value")
     plt.ylabel("Predicted Value")
     plt.xticks(fontsize=10)
     plt.yticks(fontsize=10)
-
-    plt.savefig("myeloma_pred_scattered_LR.png")
+    plt.savefig("pred_scattered_LR.png")
 
     #########################################
     # DecisionTreeRegressor
     print("\nDecisionTreeRegression")
     reg = DecisionTreeRegressor()
-    evaluate_regressor(reg, X_train, Y_train, 'r2', 'myeloma_pred_err_DTR.png')
-    # save the model on file
-    reg.fit(X_train, Y_train)
-    joblib.dump(reg, "model_decision_tree_regr.pkl")
-    # get params
-    params = reg.get_params(deep=True)
-    print("Parameters: ", params)
-
+    evaluate_regressor(reg, X_train, Y_train, 'r2', 'pred_err_DTR_train.png')
     # evaluate on test set this regressor
+    reg.fit(X_train, Y_train)
     print("\nEvaluate on testset")
     pred_testset = reg.predict(X_test)
     testset_mse = mean_squared_error(Y_test, pred_testset)
     testset_rmse = np.sqrt(testset_mse)
     print(f"testset_rmse: {testset_rmse:.2f} months")
+    evaluate_regressor(reg, X_test, pred_testset, 'r2', 'pred_err_DTR_test.png')
 
     # Plot outputs
     plt.close()
-    plt.scatter(Y_test, pred_testset, color="blue")
+    plt.scatter(Y_test, pred_testset)
     plt.xlabel("Actual Value")
     plt.ylabel("Predicted Value")
     plt.xticks(fontsize=10)
     plt.yticks(fontsize=10)
-
-    plt.savefig("myeloma_pred_scattered_DT.png")
+    plt.savefig("pred_scattered_DT.png")
 
     #########################################
     # RandomForestRegressor
     print("\nRandomForestRegressor")
     reg = RandomForestRegressor()
-    evaluate_regressor(reg, X_train, Y_train, 'r2', 'myeloma_pred_err_RF.png')
+    evaluate_regressor(reg, X_train, Y_train, 'r2', 'pred_err_RF_train.png')
+    # evaluate on test set this regressor
     reg.fit(X_train, Y_train)
-    # save the model on file
-    joblib.dump(reg, "model_rand_forest_regr.pkl")
-    params = reg.get_params(deep=True)
-    print("Parameters: ", params)
-
-    # evaluate on test set last regressor
     print("\nEvaluate on testset")
     pred_testset = reg.predict(X_test)
     testset_mse = mean_squared_error(Y_test, pred_testset)
     testset_rmse = np.sqrt(testset_mse)
     print(f"testset_rmse: {testset_rmse:.2f} months")
+    evaluate_regressor(reg, X_test, pred_testset, 'r2', 'pred_err_RF_test.png')
 
     # Plot outputs
     plt.close()
-    plt.scatter(Y_test, pred_testset, color="blue")
+    plt.scatter(Y_test, pred_testset)
     plt.xlabel("Actual Value")
     plt.ylabel("Predicted Value")
     plt.xticks(fontsize=10)
     plt.yticks(fontsize=10)
-    plt.savefig("myeloma_pred_scattered_RF.png")
-
-    # #########################################
-    # # LinearSVR
-    # print("\nLinearSVR")
-    # reg = LinearSVR(epsilon=1.5)
-    # evaluate_regressor(reg, X_train, Y_train, 'r2', 'myeloma_pred_err_SVM.png')
-    # reg.fit(X_train, Y_train)
-    # # save the model on file
-    # joblib.dump(reg, "model_rand_forest_regr.pkl")
-    #
-    # # evaluate on test set last regressor
-    # print("\nEvaluate on testset")
-    # pred_testset = reg.predict(X_test)
-    # testset_mse = mean_squared_error(Y_test, pred_testset)
-    # testset_rmse = np.sqrt(testset_mse)
-    # print(f"testset_rmse: {testset_rmse:.2f} months")
+    plt.savefig("pred_scattered_RF.png")
 
 
 if __name__ == '__main__':
