@@ -208,6 +208,7 @@ def explore_dataset(df):
     df.describe()
 
     # compute correlation
+    print("Standard Person's r correlation:")
     corr_matrix = df.corr()
     print(corr_matrix[FIELD_SURVIVAL].sort_values(ascending=False))
 
