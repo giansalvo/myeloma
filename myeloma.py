@@ -36,6 +36,7 @@ from sklearn.model_selection import ShuffleSplit
 from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.callbacks import EarlyStopping
+import os
 
 # FIELD_YEAR_OF_DIAGNOSIS = "Year of diagnosis (1975-2019 by 5)"
 # FIELD_PATIENT_ID = "Patient ID"
@@ -58,6 +59,7 @@ from tensorflow.keras.callbacks import EarlyStopping
 # FIELD_PRIMARY_SITE = "Primary Site - labeled"
 # FIELD_HIST_BEHAV = "ICD-O-3 Hist/behav, malignant"
 
+PATH_OUTPUT = "dnn"
 CSV_FNAME = "myeloma_work.csv"
 KFOLD_NUM = 10
 TEMP_WEIGHT_FNAME = 'dnn_model.keras'
@@ -123,7 +125,8 @@ def plot_scatter(x, y, train_features, train_labels):
   plt.xlabel('XXX')
   plt.ylabel('YYY')
   plt.legend()
-  plt.savefig("myeloma_scatter_train.png")
+  fname = os.path.join(PATH_OUTPUT, "myeloma_scatter_train.png")
+  plt.savefig(fname)
   plt.close()
 
 
@@ -133,6 +136,8 @@ def main():
     print(tf.__version__)
     tf.random.set_seed(RANDOM_SEED)
     tf.config.run_functions_eagerly(False)
+    if not os.path.exists(PATH_OUTPUT):
+        os.makedirs(PATH_OUTPUT)
 
     column_names = [FIELD_YEAR_OF_DIAGNOSIS,
                     FIELD_YEAR_DEATH,
@@ -157,7 +162,8 @@ def main():
     dataset = dataset.dropna()
 
     dataset.hist(figsize=(12, 10))
-    plt.savefig("myeloma_hist.png")
+    fname = os.path.join(PATH_OUTPUT, "myeloma_hist.png")
+    plt.savefig(fname)
     plt.close()
 
     # ONE HOT ENCODER COD_TO_SITE
@@ -191,7 +197,8 @@ def main():
                                 FIELD_AGE,
                                 FIELD_SEER_CAUSE_SPECIFIC,
                                 FIELD_SURVIVAL]], diag_kind='kde')
-    plt.savefig("myeloma_compare.png")
+    fname = os.path.join(PATH_OUTPUT, "myeloma_compare.png")
+    plt.savefig(fname)
     plt.close()
 
     print("Analytic analysis of the dataset:")
@@ -216,7 +223,8 @@ def main():
         train_labels,
         validation_split=VAL_SIZE,
         verbose=0, epochs=200)
-    plot_loss(history, "myeloma_plot_loss.png")
+    fname = os.path.join(PATH_OUTPUT, "myeloma_plot_loss.png")
+    plot_loss(history, fname)
 
     print("*********************************")
 
@@ -289,7 +297,8 @@ def main():
     plt.xlim(lims)
     plt.ylim(lims)
     _ = plt.plot(lims, lims)
-    plt.savefig("myeloma_x_y.png")
+    fname = os.path.join(PATH_OUTPUT, "myeloma_x_y.png")
+    plt.savefig(fname)
     plt.close()
 
     #check the error distribution:
@@ -297,7 +306,9 @@ def main():
     plt.hist(error, bins=25)
     plt.xlabel('Prediction Error [Survival]')
     _ = plt.ylabel('Count')
-    plt.savefig("myeloma_error_distrib.png")
+    fname = os.path.join(PATH_OUTPUT, "myeloma_error_distrib.png")
+    plt.savefig(fname)
+    plt.close()
 
     #save the model for future use
     model.save('dnn_model.keras')
