@@ -1,6 +1,9 @@
+# VERSIONE 3
+#
 # MIT License
 #
 #   Copyright (c) 2023 Giansalvo Gusinu
+#   Copyright (c) 2023 Giuseppe A. Trunfio
 #   Copyright (c) 2017 François Chollet
 #
 # Permission is hereby granted, free of charge, to any person obtaining a
@@ -28,6 +31,7 @@ import tensorflow as tf
 import seaborn as sns
 from sklearn.preprocessing import OneHotEncoder, MinMaxScaler
 from sklearn.model_selection import KFold, train_test_split
+from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import ShuffleSplit
 from tensorflow import keras
 from tensorflow.keras import layers
@@ -89,15 +93,17 @@ def normalization2(df):
 
 
 def build_and_compile_model(num_input):
-  model = keras.Sequential([
+    model = keras.Sequential([
         layers.Dense(256, kernel_initializer='he_normal', input_dim=num_input, activation='relu'),
+        layers.Dense(128, kernel_initializer='he_normal', activation='relu'),
+        layers.Dense(64, kernel_initializer='he_normal', activation='relu'),
         layers.Dense(1, activation='sigmoid')
-  ])
+    ])
 
-  # mean_absolute_error
-  model.compile(loss='mean_squared_error',
-                optimizer=tf.keras.optimizers.Adam(0.001))
-  return model
+    # mean_absolute_error
+    model.compile(loss='mean_squared_error',
+                 optimizer=tf.keras.optimizers.Adam(0.001))
+    return model
 
 def plot_loss(history, fname):
   plt.plot(history.history['loss'], label='loss')
@@ -160,6 +166,12 @@ def main():
     # look at the data
     print(dataset.describe().transpose()[['mean', 'std']])
 
+    # Check linear correlation with other fields
+    print("Correlation Pearson:")
+    corr_matrix = dataset.corr()
+    cm = corr_matrix[FIELD_SURVIVAL].sort_values(ascending=False)
+    print(cm)
+
     print("Before normalization:")
     print(dataset.describe().transpose())
     # Normalization of all dataset (features and labels)
@@ -205,6 +217,16 @@ def main():
         validation_split=VAL_SIZE,
         verbose=0, epochs=200)
     plot_loss(history, "myeloma_plot_loss.png")
+
+    print("*********************************")
+
+    x = train_features
+    y = train_labels * (y_max - y_min) + y_min
+    res = model.evaluate(x, y, batch_size=64, verbose=0)
+    print("Result:", res)
+
+    print("*********************************")
+
 
     # EVALUATE ON TRAIN SET
     results = []
@@ -263,7 +285,7 @@ def main():
     plt.scatter(test_labels, test_predictions)
     plt.xlabel('True Values [Survival]')
     plt.ylabel('Predictions [Survival]')
-    lims = [0, 50]
+    lims = [0, 1]
     plt.xlim(lims)
     plt.ylim(lims)
     _ = plt.plot(lims, lims)
