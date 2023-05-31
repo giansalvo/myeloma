@@ -273,7 +273,7 @@ def evaluate_regressor(reg, X_train, Y_train, scoring, fname):
     print("Scores: ", np.round(scores, 4))
     print("Mean: ", np.round(scores.mean(), 4))
     print("Standard deviation: ", np.round(scores.std(), 4))
-    display_pred_error(reg, X_train, Y_train, kfold, fname, str(scoring), np.round(scores.mean()))
+    display_pred_error(reg, X_train, Y_train, kfold, fname, str(scoring), np.round(scores.mean(),4))
 
 
 def main():
@@ -440,7 +440,7 @@ def main():
             display_pred_error(model, X_train, Y_train, N_SPLIT, fname, metricname, metrics.loc[modelname, metricname].round(4))
 
     # print results of benchmarks
-    with open(PATH_BENCHMARK_TRAIN, "w") as f:
+    with open(PATH_BENCHMARK_TEST, "w") as f:
         # print header
         print("Regressor Model; ", file=f, end="")
         for metricname in metricnames:
