@@ -60,6 +60,7 @@ import os
 # FIELD_HIST_BEHAV = "ICD-O-3 Hist/behav, malignant"
 
 PATH_OUTPUT = "dnn"
+FPATH_BENCH = os.path.join(PATH_OUTPUT, "bench.txt")
 CSV_FNAME = "myeloma_work.csv"
 KFOLD_NUM = 10
 TEMP_WEIGHT_FNAME = 'dnn_model.keras'
@@ -67,6 +68,7 @@ RANDOM_SEED = 74
 TRAIN_SIZE = 0.8
 VAL_SIZE   = 0.2
 TEST_SIZE  = 0.2
+EPOCHS = 100
 
 FIELD_YEAR_OF_DIAGNOSIS = "A"
 FIELD_YEAR_DEATH = "B"
@@ -93,6 +95,10 @@ def normalization2(df):
         df[col] = min_max_scaling(df[col])
     return df
 
+def denormalization(X, X_max, X_min):
+    X = X * (X_max - X_min) + X_min
+    return X
+
 
 def build_and_compile_model(num_input):
     model = keras.Sequential([
@@ -103,6 +109,7 @@ def build_and_compile_model(num_input):
     ])
 
     # mean_absolute_error
+    # Valid loss function for correlation: Mean Squared Error, Mean Absolute Error
     model.compile(loss='mean_squared_error',
                  optimizer=tf.keras.optimizers.Adam(0.001))
     return model
@@ -128,6 +135,15 @@ def plot_scatter(x, y, train_features, train_labels):
   fname = os.path.join(PATH_OUTPUT, "myeloma_scatter_train.png")
   plt.savefig(fname)
   plt.close()
+
+def fit_net(model, x, y, val_size=10, epochs=EPOCHS):
+    early_stopping = EarlyStopping()
+    history = model.fit(
+        x,
+        y,
+        validation_split=VAL_SIZE,
+        verbose=0, epochs=epochs)
+    return history
 
 
 def main():
@@ -216,26 +232,6 @@ def main():
     model = build_and_compile_model(train_features.shape[1])
     model.summary()
 
-    early_stopping = EarlyStopping()
-
-    history = model.fit(
-        train_features,
-        train_labels,
-        validation_split=VAL_SIZE,
-        verbose=0, epochs=200)
-    fname = os.path.join(PATH_OUTPUT, "training_loss.png")
-    plot_loss(history, fname)
-
-    print("*********************************")
-
-    x = train_features
-    y = train_labels * (y_max - y_min) + y_min
-    res = model.evaluate(x, y, batch_size=64, verbose=0)
-    print("Result:", res)
-
-    print("*********************************")
-
-
     # EVALUATE ON TRAIN SET
     results = []
     model.save(TEMP_WEIGHT_FNAME)
@@ -243,27 +239,56 @@ def main():
     ss = ShuffleSplit(n_splits=KFOLD_NUM, random_state=RANDOM_SEED, test_size=VAL_SIZE, train_size=TRAIN_SIZE)
     for i, (X_i, Y_i) in enumerate(ss.split(train_dataset)):
         print("Fold n.{} ".format(i), end="")
-        # for j in range(10):
-        #     print(X_i[j], end=", ")
-        # print("")
-        reloaded = tf.keras.models.load_model(TEMP_WEIGHT_FNAME)
+        model = tf.keras.models.load_model(TEMP_WEIGHT_FNAME)
+
         x_train = train_features.iloc[X_i]
         y_train = train_labels.iloc[X_i]
+
+        history= fit_net(model, x_train, y_train, val_size=VAL_SIZE, epochs=EPOCHS)
+        fname = os.path.join(PATH_OUTPUT, "train_loss_" + str(i) + ".png")
+        plot_loss(history, fname)
+
         # denormalization
         # x_train = x_train * (y_max - y_min) + y_min
-        y_train = y_train * (y_max - y_min) + y_min
-        res = reloaded.evaluate(x_train, y_train, batch_size=64, verbose=0)
+        y_train = denormalization(y_train, y_max, y_min)
+        # y_train = y_train * (y_max - y_min) + y_min
+        res = model.evaluate(x_train, y_train, batch_size=64, verbose=0)
         results.append(res)
+
+        # make predictions on the testset and plot
+        train_predictions = model.predict(train_features).flatten()
+        a = plt.axes(aspect='equal')
+        plt.scatter(train_labels, train_predictions)
+        plt.xlabel('True Values [Survival]')
+        plt.ylabel('Predictions [Survival]')
+        lims = [0, 1]
+        plt.xlim(lims)
+        plt.ylim(lims)
+        _ = plt.plot(lims, lims)
+        fname = os.path.join(PATH_OUTPUT, "scatter_train_" + str(i) +".png")
+        plt.savefig(fname)
+        plt.close()
+
+        # check the error distribution:
+        error = train_predictions - train_labels
+        plt.hist(error, bins=25)
+        plt.xlabel('Prediction Error [Survival]')
+        _ = plt.ylabel('Count')
+        fname = os.path.join(PATH_OUTPUT, "error_distrib_train_" + str(i) + ".png")
+        plt.savefig(fname)
+        plt.close()
         i += 1
-    print("\nEvaluation on train set:")
-    print("Scores: ", results)
-    mean = np.mean(np.array(results))
-    std = np.std(np.array(results), ddof=1)
-    print("Mean: {:.4f} +/- Std:{:.4f})".format(mean, std))
+
+    with open(FPATH_BENCH, "a") as f:
+        print("\nEvaluation on train set:", file=f)
+        print("Scores: ", results, file=f)
+        mean = np.mean(np.array(results))
+        std = np.std(np.array(results), ddof=1)
+        print("Mean: {:.4f} +/- Std:{:.4f})".format(mean, std), file=f)
 
     # EVALUATE ON TEST SET
     results = []
-    model.save(TEMP_WEIGHT_FNAME)
+    tf.keras.models.load_model(TEMP_WEIGHT_FNAME)
     i = 0
     ss = ShuffleSplit(n_splits=KFOLD_NUM, random_state=RANDOM_SEED, test_size=TEST_SIZE, train_size=TRAIN_SIZE)
     for i, (X_i, Y_i) in enumerate(ss.split(test_dataset)):
@@ -271,47 +296,51 @@ def main():
         # for j in range(10):
         #     print(X_i[j], end=", ")
         # print("")
-        reloaded = tf.keras.models.load_model(TEMP_WEIGHT_FNAME)
+        model = tf.keras.models.load_model(TEMP_WEIGHT_FNAME)
         x_test = test_features.iloc[Y_i]
         y_test = test_labels.iloc[Y_i]
+
+        history = fit_net(model, x_test, y_test, val_size=VAL_SIZE, epochs=EPOCHS)
+        fname = os.path.join(PATH_OUTPUT, "test_loss_" + str(i) + ".png")
+        plot_loss(history, fname)
+
         # denormalization
         # x_test = x_test * (y_max - y_min) + y_min
-        y_test = y_test * (y_max - y_min) + y_min
-        res = reloaded.evaluate(x_test, y_test, batch_size=128, verbose=0)
+        y_test = denormalization(y_test, y_max, y_min)
+        res = model.evaluate(x_test, y_test, batch_size=128, verbose=0)
         results.append(res)
-        i += 1
-    print("\nEvaluation on test set:")
-    print("Scores: ", results)
-    mean = np.mean(np.array(results))
-    std = np.std(np.array(results), ddof=1)
-    print("Mean: {:.4f} +/- Std:{:.4f})".format(mean, std))
 
-    # evaluate on test set
-    #make predictions on the testset and plot
-    test_predictions = model.predict(test_features).flatten()
-    a = plt.axes(aspect='equal')
-    plt.scatter(test_labels, test_predictions)
-    plt.xlabel('True Values [Survival]')
-    plt.ylabel('Predictions [Survival]')
-    lims = [0, 1]
-    plt.xlim(lims)
-    plt.ylim(lims)
-    _ = plt.plot(lims, lims)
-    fname = os.path.join(PATH_OUTPUT, "scatter_test.png")
-    plt.savefig(fname)
-    plt.close()
+        # evaluate on test set
+        # make predictions on the testset and plot
+        test_predictions = model.predict(test_features).flatten()
+        a = plt.axes(aspect='equal')
+        plt.scatter(test_labels, test_predictions)
+        plt.xlabel('True Values [Survival]')
+        plt.ylabel('Predictions [Survival]')
+        lims = [0, 1]
+        plt.xlim(lims)
+        plt.ylim(lims)
+        _ = plt.plot(lims, lims)
+        fname = os.path.join(PATH_OUTPUT, "scatter_test_" +str(i) +".png")
+        plt.savefig(fname)
+        plt.close()
 
-    #check the error distribution:
-    error = test_predictions - test_labels
-    plt.hist(error, bins=25)
-    plt.xlabel('Prediction Error [Survival]')
-    _ = plt.ylabel('Count')
-    fname = os.path.join(PATH_OUTPUT, "error_distrib_test.png")
-    plt.savefig(fname)
-    plt.close()
+        # check the error distribution:
+        error = test_predictions - test_labels
+        plt.hist(error, bins=25)
+        plt.xlabel('Prediction Error [Survival]')
+        _ = plt.ylabel('Count')
+        fname = os.path.join(PATH_OUTPUT, "error_distrib_test_" + str(i) + ".png")
+        plt.savefig(fname)
+        plt.close()
+        i=i+1
+    with open(FPATH_BENCH, "a") as f:
+        print("\nEvaluation on test set:", file=f)
+        print("Scores: ", results, file=f)
+        mean = np.mean(np.array(results))
+        std = np.std(np.array(results), ddof=1)
+        print("Mean: {:.4f} +/- Std:{:.4f})".format(mean, std), file=f)
 
-    #save the model for future use
-    model.save('dnn_model.keras')
 
 if __name__ == '__main__':
     main()
