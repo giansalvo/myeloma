@@ -162,7 +162,7 @@ def main():
     dataset = dataset.dropna()
 
     dataset.hist(figsize=(12, 10))
-    fname = os.path.join(PATH_OUTPUT, "myeloma_hist.png")
+    fname = os.path.join(PATH_OUTPUT, "histograms_dataset.png")
     plt.savefig(fname)
     plt.close()
 
@@ -197,7 +197,7 @@ def main():
                                 FIELD_AGE,
                                 FIELD_SEER_CAUSE_SPECIFIC,
                                 FIELD_SURVIVAL]], diag_kind='kde')
-    fname = os.path.join(PATH_OUTPUT, "myeloma_compare.png")
+    fname = os.path.join(PATH_OUTPUT, "pariplot_train.png")
     plt.savefig(fname)
     plt.close()
 
@@ -223,7 +223,7 @@ def main():
         train_labels,
         validation_split=VAL_SIZE,
         verbose=0, epochs=200)
-    fname = os.path.join(PATH_OUTPUT, "myeloma_plot_loss.png")
+    fname = os.path.join(PATH_OUTPUT, "training_loss.png")
     plot_loss(history, fname)
 
     print("*********************************")
@@ -297,7 +297,7 @@ def main():
     plt.xlim(lims)
     plt.ylim(lims)
     _ = plt.plot(lims, lims)
-    fname = os.path.join(PATH_OUTPUT, "myeloma_x_y.png")
+    fname = os.path.join(PATH_OUTPUT, "scatter_test.png")
     plt.savefig(fname)
     plt.close()
 
@@ -306,7 +306,7 @@ def main():
     plt.hist(error, bins=25)
     plt.xlabel('Prediction Error [Survival]')
     _ = plt.ylabel('Count')
-    fname = os.path.join(PATH_OUTPUT, "myeloma_error_distrib.png")
+    fname = os.path.join(PATH_OUTPUT, "error_distrib_test.png")
     plt.savefig(fname)
     plt.close()
 
