@@ -69,6 +69,7 @@ TRAIN_SIZE = 0.8
 VAL_SIZE   = 0.2
 TEST_SIZE  = 0.2
 EPOCHS = 100
+PATIENCE = 20
 
 FIELD_YEAR_OF_DIAGNOSIS = "A"
 FIELD_YEAR_DEATH = "B"
@@ -137,12 +138,14 @@ def plot_scatter(x, y, train_features, train_labels):
   plt.close()
 
 def fit_net(model, x, y, val_size=10, epochs=EPOCHS):
-    early_stopping = EarlyStopping()
+    cb_list = [EarlyStopping(patience=20)]
     history = model.fit(
         x,
         y,
+        callbacks=cb_list,
         validation_split=VAL_SIZE,
-        verbose=0, epochs=epochs)
+        verbose=0, epochs=epochs,
+        )
     return history
 
 
@@ -261,6 +264,8 @@ def main():
         plt.scatter(train_labels, train_predictions)
         plt.xlabel('True Values [Survival]')
         plt.ylabel('Predictions [Survival]')
+        plt.suptitle("Scatter plot on trainset")
+        plt.title("Fold " + str(i))
         lims = [0, 1]
         plt.xlim(lims)
         plt.ylim(lims)
@@ -272,6 +277,8 @@ def main():
         # check the error distribution:
         error = train_predictions - train_labels
         plt.hist(error, bins=25)
+        plt.suptitle("Error distribution on trainset")
+        plt.title("fold: " + str(i))
         plt.xlabel('Prediction Error [Survival]')
         _ = plt.ylabel('Count')
         fname = os.path.join(PATH_OUTPUT, "error_distrib_train_" + str(i) + ".png")
@@ -315,6 +322,9 @@ def main():
         test_predictions = model.predict(test_features).flatten()
         a = plt.axes(aspect='equal')
         plt.scatter(test_labels, test_predictions)
+        plt.title("Test set, fold " + str(i))
+        plt.suptitle("Scatter plot on testset")
+        plt.title("Fold " + str(i))
         plt.xlabel('True Values [Survival]')
         plt.ylabel('Predictions [Survival]')
         lims = [0, 1]
@@ -330,6 +340,8 @@ def main():
         plt.hist(error, bins=25)
         plt.xlabel('Prediction Error [Survival]')
         _ = plt.ylabel('Count')
+        plt.suptitle("Error distribution on testset")
+        plt.title("fold: " + str(i))
         fname = os.path.join(PATH_OUTPUT, "error_distrib_test_" + str(i) + ".png")
         plt.savefig(fname)
         plt.close()
