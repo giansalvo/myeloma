@@ -37,6 +37,9 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.callbacks import EarlyStopping
 import os
+import sys
+from hyper_param import basic_net
+from hyper_param import hyper_net
 
 # FIELD_YEAR_OF_DIAGNOSIS = "Year of diagnosis (1975-2019 by 5)"
 # FIELD_PATIENT_ID = "Patient ID"
@@ -152,7 +155,11 @@ def fit_net(model, x, y, val_size=10, epochs=EPOCHS):
 def main():
     # Make NumPy printouts easier to read.
     np.set_printoptions(precision=3, suppress=True)
-    print(tf.__version__)
+    print("Python ver.: " + sys.version)
+    executable = os.path.realpath(sys.executable)
+    print("Python executable: " + str(executable))
+    print("tensorflow version: " + tf.__version__)
+    print("GPU: " + str(tf.config.list_physical_devices('GPU')))
     tf.random.set_seed(RANDOM_SEED)
     tf.config.run_functions_eagerly(False)
     if not os.path.exists(PATH_OUTPUT):
@@ -231,6 +238,9 @@ def main():
     test_labels = test_features.pop(FIELD_SURVIVAL)
     print("train_features.head()\n" + str(train_features.head().transpose()))
     print("train_labels.head()\n" + str(train_labels.head().transpose()))
+
+    # basic_net(train_features, train_labels, test_features, test_labels)
+    # hyper_net(train_features, train_labels, test_features, test_labels)
 
     model = build_and_compile_model(train_features.shape[1])
     model.summary()
