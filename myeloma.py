@@ -71,6 +71,7 @@ RANDOM_SEED = 74
 TRAIN_SIZE = 0.8
 VAL_SIZE   = 0.2
 TEST_SIZE  = 0.2
+BATCH_SIZE = 64
 EPOCHS = 100
 PATIENCE = 20
 
@@ -108,15 +109,29 @@ def build_and_compile_model(num_input):
     model = keras.Sequential([
         layers.Dense(256, kernel_initializer='he_normal', input_dim=num_input, activation='relu'),
         layers.Dense(128, kernel_initializer='he_normal', activation='relu'),
-        layers.Dense(64, kernel_initializer='he_normal', activation='relu'),
+        # layers.Dense(64, kernel_initializer='he_normal', activation='relu'),
         layers.Dense(1, activation='sigmoid')
     ])
+
+    # layers.Dense(64, kernel_initializer='he_normal', input_dim=num_input, activation='relu'),
+    # layers.Dense(128, kernel_initializer='he_normal', activation='relu'),
+    # layers.Dense(64, kernel_initializer='he_normal', activation='relu'),
+    # layers.Dense(1, activation='sigmoid')
 
     # mean_absolute_error
     # Valid loss function for correlation: Mean Squared Error, Mean Absolute Error
     model.compile(loss='mean_squared_error',
-                 optimizer=tf.keras.optimizers.Adam(0.001))
+                 optimizer=tf.keras.optimizers.Adam(0.001),
+                  metrics=["mean_absolute_error"])
+                  #, "r_squared"
     return model
+
+
+def r_squared(y_true, y_pred):
+    SS_res = K.sum(K.square(y_true - y_pred))
+    SS_tot = K.sum(K.square(y_true - K.mean(y_true)))
+    return (1 - SS_res / (SS_tot + K.epsilon()))
+
 
 def plot_loss(history, fname):
   plt.plot(history.history['loss'], label='loss')
@@ -140,13 +155,14 @@ def plot_scatter(x, y, train_features, train_labels):
   plt.savefig(fname)
   plt.close()
 
-def fit_net(model, x, y, val_size=10, epochs=EPOCHS):
+def fit_net(model, x, y, batch_size=BATCH_SIZE, val_size=VAL_SIZE, epochs=EPOCHS):
     cb_list = [EarlyStopping(patience=20)]
     history = model.fit(
         x,
         y,
+        batch_size=batch_size,
         callbacks=cb_list,
-        validation_split=VAL_SIZE,
+        validation_split=val_size,
         verbose=0, epochs=epochs,
         )
     return history
@@ -239,73 +255,79 @@ def main():
     print("train_features.head()\n" + str(train_features.head().transpose()))
     print("train_labels.head()\n" + str(train_labels.head().transpose()))
 
-    # basic_net(train_features, train_labels, test_features, test_labels)
+    ##################################################
+    # history = basic_net(train_features, train_labels, test_features, test_labels)
+    # fname = os.path.join(PATH_OUTPUT, "train_loss_basic.png")
+    # plot_loss(history, fname)
     # hyper_net(train_features, train_labels, test_features, test_labels)
+    ##################################################
 
     model = build_and_compile_model(train_features.shape[1])
     model.summary()
-
-    # EVALUATE ON TRAIN SET
-    results = []
     model.save(TEMP_WEIGHT_FNAME)
-    i = 0
-    ss = ShuffleSplit(n_splits=KFOLD_NUM, random_state=RANDOM_SEED, test_size=VAL_SIZE, train_size=TRAIN_SIZE)
-    for i, (X_i, Y_i) in enumerate(ss.split(train_dataset)):
-        print("Fold n.{} ".format(i), end="")
-        model = tf.keras.models.load_model(TEMP_WEIGHT_FNAME)
 
-        x_train = train_features.iloc[X_i]
-        y_train = train_labels.iloc[X_i]
-
-        history= fit_net(model, x_train, y_train, val_size=VAL_SIZE, epochs=EPOCHS)
-        fname = os.path.join(PATH_OUTPUT, "train_loss_" + str(i) + ".png")
-        plot_loss(history, fname)
-
-        # denormalization
-        # x_train = x_train * (y_max - y_min) + y_min
-        y_train = denormalization(y_train, y_max, y_min)
-        # y_train = y_train * (y_max - y_min) + y_min
-        res = model.evaluate(x_train, y_train, batch_size=64, verbose=0)
-        results.append(res)
-
-        # make predictions on the testset and plot
-        train_predictions = model.predict(train_features).flatten()
-        a = plt.axes(aspect='equal')
-        plt.scatter(train_labels, train_predictions)
-        plt.xlabel('True Values [Survival]')
-        plt.ylabel('Predictions [Survival]')
-        plt.suptitle("Scatter plot on trainset")
-        plt.title("Fold " + str(i))
-        lims = [0, 1]
-        plt.xlim(lims)
-        plt.ylim(lims)
-        _ = plt.plot(lims, lims)
-        fname = os.path.join(PATH_OUTPUT, "scatter_train_" + str(i) +".png")
-        plt.savefig(fname)
-        plt.close()
-
-        # check the error distribution:
-        error = train_predictions - train_labels
-        plt.hist(error, bins=25)
-        plt.suptitle("Error distribution on trainset")
-        plt.title("fold: " + str(i))
-        plt.xlabel('Prediction Error [Survival]')
-        _ = plt.ylabel('Count')
-        fname = os.path.join(PATH_OUTPUT, "error_distrib_train_" + str(i) + ".png")
-        plt.savefig(fname)
-        plt.close()
-        i += 1
-
-    with open(FPATH_BENCH, "a") as f:
-        print("\nEvaluation on train set:", file=f)
-        print("Scores: ", results, file=f)
-        mean = np.mean(np.array(results))
-        std = np.std(np.array(results), ddof=1)
-        print("Mean: {:.4f} +/- Std:{:.4f})".format(mean, std), file=f)
+    # # EVALUATE ON TRAIN SET
+    # results = []
+    # i = 0
+    # ss = ShuffleSplit(n_splits=KFOLD_NUM, random_state=RANDOM_SEED, test_size=VAL_SIZE, train_size=TRAIN_SIZE)
+    # for i, (X_i, Y_i) in enumerate(ss.split(train_dataset)):
+    #     print("Fold n.{} ".format(i), end="")
+    #     model = tf.keras.models.load_model(TEMP_WEIGHT_FNAME, custom_objects={"r_squared" : r_squared})
+    #
+    #
+    #     x_train = train_features.iloc[X_i]
+    #     y_train = train_labels.iloc[X_i]
+    #
+    #     history= fit_net(model, x_train, y_train, val_size=VAL_SIZE, epochs=EPOCHS)
+    #     fname = os.path.join(PATH_OUTPUT, "train_loss_" + str(i) + ".png")
+    #     plot_loss(history, fname)
+    #
+    #     # denormalization
+    #     # x_train = x_train * (y_max - y_min) + y_min
+    #     y_train = denormalization(y_train, y_max, y_min)
+    #     # y_train = y_train * (y_max - y_min) + y_min
+    #     res = model.evaluate(x_train, y_train, batch_size=64, verbose=0)
+    #     results.append(res[1])
+    #
+    #     # make predictions on the testset and plot
+    #     train_predictions = model.predict(train_features).flatten()
+    #     a = plt.axes(aspect='equal')
+    #     plt.scatter(train_labels, train_predictions)
+    #     plt.xlabel('True Values [Survival]')
+    #     plt.ylabel('Predictions [Survival]')
+    #     plt.suptitle("Scatter plot on trainset")
+    #     plt.title("Fold " + str(i))
+    #     lims = [0, 1]
+    #     plt.xlim(lims)
+    #     plt.ylim(lims)
+    #     _ = plt.plot(lims, lims)
+    #     fname = os.path.join(PATH_OUTPUT, "scatter_train_" + str(i) +".png")
+    #     plt.savefig(fname)
+    #     plt.close()
+    #
+    #     # check the error distribution:
+    #     error = train_predictions - train_labels
+    #     plt.hist(error, bins=25)
+    #     plt.suptitle("Error distribution on trainset")
+    #     plt.title("fold: " + str(i))
+    #     plt.xlabel('Prediction Error [Survival]')
+    #     _ = plt.ylabel('Count')
+    #     fname = os.path.join(PATH_OUTPUT, "error_distrib_train_" + str(i) + ".png")
+    #     plt.savefig(fname)
+    #     plt.close()
+    #     i += 1
+    #
+    # with open(FPATH_BENCH, "a") as f:
+    #     print("\nEvaluation on train set:", file=f)
+    #     print("Scores: ", results, file=f)
+    #     mean = np.mean(np.array(results))
+    #     std = np.std(np.array(results), ddof=1)
+    #     print("Mean: {:.4f} +/- Std:{:.4f})".format(mean, std), file=f)
 
     # EVALUATE ON TEST SET
     results = []
-    tf.keras.models.load_model(TEMP_WEIGHT_FNAME)
+    model = tf.keras.models.load_model(TEMP_WEIGHT_FNAME, custom_objects={"r_squared" : r_squared})
+
     i = 0
     ss = ShuffleSplit(n_splits=KFOLD_NUM, random_state=RANDOM_SEED, test_size=TEST_SIZE, train_size=TRAIN_SIZE)
     for i, (X_i, Y_i) in enumerate(ss.split(test_dataset)):
@@ -313,7 +335,7 @@ def main():
         # for j in range(10):
         #     print(X_i[j], end=", ")
         # print("")
-        model = tf.keras.models.load_model(TEMP_WEIGHT_FNAME)
+        model = tf.keras.models.load_model(TEMP_WEIGHT_FNAME, custom_objects={"r_squared": r_squared})
         x_test = test_features.iloc[Y_i]
         y_test = test_labels.iloc[Y_i]
 
