@@ -92,10 +92,8 @@ def add_virgolette(s):
 def write_header(f):
     print(add_virgolette("time"), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette("died"), file=f, end=FIELD_SEPARATOR)
+    print(add_virgolette("race"), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette("sex"), file=f)
-    # print(add_virgolette("race"), file=f, end=FIELD_SEPARATOR)
-    # print(add_virgolette("diagnostic_confirmation"), file=f, end=FIELD_SEPARATOR)
-    # print(add_virgolette("first_malignant"), file=f, end=FIELD_SEPARATOR)
     return(0)
 
 
@@ -114,7 +112,7 @@ def clean_csv(path_input, path_output):
                     continue
 
                 if year_death == "Alive at last contact":
-                    time = (2023 - 1975)*12
+                    time = 0
                     death_flag = 0
                 else:
                     year_diag = int(year_diag)
@@ -136,10 +134,12 @@ def clean_csv(path_input, path_output):
                     # bug
                     print("Error: sex out of range")
                     continue
+                race = row[FIELD_N_RACE]
 
                 # print record
                 print(str(time), end=FIELD_SEPARATOR, file=foutput)
                 print(str(death_flag), end=FIELD_SEPARATOR, file=foutput)
+                print(race, end=FIELD_SEPARATOR, file=foutput)
                 print(sex, file=foutput)
 
                 line_count += 1
@@ -161,19 +161,27 @@ def main():
     E = df['died']
 
     ax = plt.subplot(111)
-
     kmf = KaplanMeierFitter()
-
     for s in df['sex'].unique():
         flag = df['sex'] == s
-
         kmf.fit(T[flag], event_observed=E[flag], label=s)
         kmf.plot_survival_function(ax=ax)
-
     plt.title("Survival curves by Sex")
     plt.show()
-
+    plt.close()
     print(kmf.median_survival_time_)
+
+    ax = plt.subplot(111)
+    kmf = KaplanMeierFitter()
+    for s in df['race'].unique():
+        flag = df['race'] == s
+        kmf.fit(T[flag], event_observed=E[flag], label=s)
+        kmf.plot_survival_function(ax=ax)
+    plt.title("Survival curves by Race")
+    plt.show()
+    plt.close()
+    print(kmf.median_survival_time_)
+
 
 
 if __name__ == '__main__':

@@ -109,7 +109,7 @@ def clean_csv(path_input, path_output):
                     continue
 
                 if year_death == "Alive at last contact":
-                    time = (2023 - 1975)*12
+                    time = 0
                     death_flag = 0
                 else:
                     year_diag = int(year_diag)
