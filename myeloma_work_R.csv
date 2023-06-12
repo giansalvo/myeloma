@@ -1,0 +1,2068 @@
+year_diagnosis;death;age;death_specific;death_other;survival;COD_site;diagnosis_to_treat
+1987;1991;63;0;1;42;Lung and Bronchus;0
+1977;1998;54;1;0;249;Myeloma;0
+1987;1991;75;1;0;57;Myeloma;24
+1989;1991;75;1;0;27;Myeloma;1
+2000;2005;60;1;0;63;Myeloma;2
+1994;2005;70;1;0;127;Myeloma;10
+1983;2003;65;0;1;242;Acute Myeloid Leukemia;0
+1983;1990;61;0;1;83;Non-Hodgkin Lymphoma;0
+1995;1998;53;0;1;28;Lung and Bronchus;0
+1998;2000;82;1;0;24;Myeloma;0
+1990;1999;74;0;1;103;Breast;0
+2000;2002;66;0;1;21;Colon excluding Rectum;5
+1983;1999;62;0;1;198;In situ, benign or unknown behavior neoplasm;9
+1975;1984;53;1;0;106;Myeloma;0
+1979;1981;80;0;1;26;Diseases of Heart;0
+1978;1983;69;0;1;61;Other Acute Leukemia;1
+1979;1981;73;1;0;20;Myeloma;0
+1976;1977;84;0;1;9;Diseases of Heart;0
+1977;1983;56;0;1;68;Acute Myeloid Leukemia;0
+1979;1984;63;0;1;63;Lung and Bronchus;1
+1977;1977;80;1;0;2;Myeloma;0
+1976;1979;62;1;0;40;Myeloma;0
+1977;1980;71;1;0;39;Myeloma;0
+1979;1986;75;0;1;76;Pneumonia and Influenza;1
+1977;1980;82;1;0;37;Myeloma;1
+1976;1995;63;0;1;232;Urinary Bladder;0
+1979;1983;58;1;0;51;Myeloma;0
+1975;1985;55;1;0;118;Myeloma;1
+1977;1981;67;1;0;50;Myeloma;1
+1976;1979;70;1;0;34;Myeloma;0
+1978;2006;55;0;1;345;Cerebrovascular Diseases;0
+1975;1982;55;0;1;87;Diseases of Heart;2
+1976;1980;63;0;1;54;Lung and Bronchus;1
+1979;1986;66;0;1;83;Diseases of Heart;1
+1976;1990;72;0;1;161;Diseases of Heart;1
+1975;1984;55;0;1;117;Diseases of Heart;0
+1979;1986;54;0;1;85;Other Cause of Death;0
+1981;1983;70;1;0;24;Myeloma;1
+1977;1991;57;0;1;163;Stomach;0
+1978;1984;65;1;0;77;Myeloma;1
+1981;1992;59;0;1;131;Lung and Bronchus;1
+1982;1983;74;0;1;14;Myeloma;0
+1985;1998;56;0;1;149;Pneumonia and Influenza;0
+1984;2001;66;0;1;200;Diseases of Heart;1
+1985;1993;75;0;1;101;Other Cause of Death;0
+1985;1988;68;0;1;30;Pancreas;13
+1981;1992;54;1;0;128;Myeloma;0
+1983;1992;64;1;0;109;Myeloma;4
+1986;1986;80;1;0;3;Myeloma;0
+1981;1984;54;1;0;37;Myeloma;1
+1987;1994;58;1;0;87;Myeloma;0
+1984;1985;73;1;0;8;Myeloma;0
+1982;1989;62;1;0;83;Myeloma;0
+1982;1989;77;1;0;87;Myeloma;0
+1984;1985;65;0;1;11;Non-Hodgkin Lymphoma;0
+1986;1987;74;1;0;13;Myeloma;0
+1983;1987;73;1;0;48;Myeloma;0
+1982;1990;67;1;0;98;Myeloma;0
+1986;1987;53;1;0;12;Myeloma;2
+1980;1983;70;1;0;43;Myeloma;0
+1984;2016;55;0;1;381;Other Infectious and Parasitic Diseases including HIV;0
+1985;1985;70;1;0;7;Myeloma;0
+1984;2004;59;1;0;244;Myeloma;0
+1981;2006;47;0;1;306;Cerebrovascular Diseases;0
+1981;1982;68;1;0;14;Myeloma;0
+1981;1982;69;0;1;4;Acute Myeloid Leukemia;1
+1981;1987;74;1;0;78;Myeloma;0
+1982;1988;86;0;1;71;Diseases of Heart;0
+1985;1988;72;0;1;35;Diseases of Heart;0
+1985;1987;65;1;0;15;Myeloma;0
+1981;1985;69;1;0;45;Myeloma;0
+1984;1986;66;0;1;29;Tongue;0
+1985;1985;69;0;1;3;Stomach and Duodenal Ulcers;1
+1986;1994;62;0;1;94;Other Acute Leukemia;0
+1985;1988;64;0;1;33;Cerebrovascular Diseases;0
+1988;1992;71;1;0;51;Myeloma;0
+1982;1984;64;1;0;24;Myeloma;0
+1981;1983;76;0;1;17;Esophagus;1
+1985;1992;65;0;1;81;Other Acute Leukemia;1
+1986;1987;75;1;0;10;Myeloma;0
+1983;1987;75;1;0;42;Myeloma;0
+1983;1995;41;0;1;147;Other Infectious and Parasitic Diseases including HIV;0
+1983;1990;76;0;1;84;Non-Melanoma Skin;0
+1986;1987;49;0;1;11;Pancreas;0
+1986;1989;80;1;0;33;Myeloma;0
+1985;1994;75;1;0;102;Myeloma;0
+1984;1992;68;0;1;96;Lung and Bronchus;0
+1983;1984;75;1;0;10;Myeloma;0
+1988;1990;62;1;0;29;Myeloma;0
+1987;1991;57;0;1;57;Rectum and Rectosigmoid Junction;0
+1984;1987;66;0;1;44;Other Diseases of Arteries, Arterioles, Capillaries;3
+1985;1994;68;1;0;109;Myeloma;0
+1982;1984;64;0;1;14;Pancreas;2
+1982;1984;67;1;0;13;Myeloma;0
+1983;1983;78;0;1;2;Corpus Uteri;1
+1990;1992;71;1;0;29;Myeloma;0
+1987;1996;74;1;0;103;Myeloma;0
+1988;1994;62;0;1;73;Non-Hodgkin Lymphoma;0
+1989;1990;82;1;0;6;Myeloma;0
+1991;1993;72;0;1;22;Liver;0
+1987;1989;74;0;1;28;Lung and Bronchus;12
+1989;1995;50;0;1;74;Acute Myeloid Leukemia;0
+1991;1997;69;0;1;78;Colon excluding Rectum;2
+1990;2019;68;0;1;345;Diseases of Heart;0
+1990;1994;64;0;1;46;Lung and Bronchus;0
+1990;1996;78;1;0;71;Myeloma;0
+1988;1991;72;0;1;43;Melanoma of the Skin;0
+1991;1996;72;0;1;54;Pancreas;0
+1988;1995;62;0;1;77;Rectum and Rectosigmoid Junction;0
+1988;1995;74;1;0;82;Myeloma;1
+1990;1991;71;1;0;13;Myeloma;1
+1991;2006;48;1;0;184;Myeloma;0
+1991;1993;83;1;0;13;Myeloma;0
+1991;1998;69;0;1;79;Acute Myeloid Leukemia;0
+1989;1995;77;0;1;72;Nephritis, Nephrotic Syndrome and Nephrosis;0
+1989;2010;44;1;0;246;Miscellaneous Malignant Cancer;1
+1990;1995;53;1;0;59;Myeloma;0
+1992;1999;65;1;0;85;Myeloma;1
+1991;1996;68;0;1;63;Stomach;0
+1990;1997;75;0;1;80;Stomach;0
+1987;1990;63;0;1;35;Diabetes Mellitus;0
+1989;1995;81;1;0;63;Myeloma;2
+1991;2010;73;0;1;224;Pancreas;0
+1989;2017;56;0;1;338;Prostate;0
+1991;1992;70;1;0;11;Myeloma;0
+1991;1997;65;0;1;66;Diabetes Mellitus;0
+1988;1989;75;0;1;10;Hodgkin Lymphoma;0
+1990;1995;60;1;0;62;Myeloma;22
+1991;1992;81;1;0;3;Myeloma;0
+1992;1995;74;1;0;42;Myeloma;1
+1991;2020;51;0;1;345;Soft Tissue including Heart;0
+1989;1990;68;1;0;11;Myeloma;0
+1989;2014;41;1;0;297;Miscellaneous Malignant Cancer;0
+1989;1990;39;1;0;17;State DC not available or state DC available but no COD;1
+1989;1994;73;1;0;53;Myeloma;1
+1993;2001;66;1;0;105;Myeloma;0
+1995;1998;69;0;1;41;Diseases of Heart;1
+1994;1999;67;1;0;59;Myeloma;0
+1995;1996;69;1;0;21;Myeloma;1
+1994;1996;42;1;0;20;Myeloma;1
+1993;2014;63;1;0;255;Myeloma;1
+1994;1995;82;0;1;5;Lung and Bronchus;1
+1995;2000;72;1;0;58;Myeloma;0
+1990;1998;77;0;1;93;Diseases of Heart;0
+1995;2003;62;1;0;97;Myeloma;1
+1993;1997;77;1;0;47;Myeloma;4
+1994;1996;64;0;1;32;Lung and Bronchus;0
+1992;2013;56;1;0;247;Myeloma;2
+1993;1994;63;0;1;12;Lung and Bronchus;1
+1989;1993;83;0;1;54;Lung and Bronchus;0
+1995;1997;72;1;0;26;Myeloma;0
+1994;2012;67;0;1;222;Alzheimers (ICD-9 and 10 only);3
+1994;1996;70;0;1;31;Lung and Bronchus;0
+1995;1997;70;0;1;23;Colon excluding Rectum;0
+1994;2000;81;1;0;70;Myeloma;0
+1995;2012;61;0;1;203;Brain and Other Nervous System;2
+1994;1999;67;0;1;60;Urinary Bladder;1
+1993;2000;69;1;0;82;Myeloma;3
+1995;2007;76;1;0;144;Myeloma;0
+1995;2009;79;0;1;175;Accidents and Adverse Effects;1
+1993;2006;62;0;1;165;Non-Hodgkin Lymphoma;2
+1994;1996;74;1;0;26;Myeloma;0
+1994;2018;40;0;1;288;Diseases of Heart;1
+1994;2005;53;1;0;137;Myeloma;1
+1992;1994;69;0;1;19;Other Infectious and Parasitic Diseases including HIV;2
+1994;1994;65;0;1;9;Stomach;2
+1992;1993;71;0;1;11;Lung and Bronchus;0
+1992;1996;71;0;1;48;Esophagus;0
+1991;1994;81;1;0;32;Myeloma;0
+1992;1996;49;1;0;48;Myeloma;0
+1992;2006;53;1;0;173;Myeloma;1
+1998;2001;65;0;1;36;Aleukemic, Subleukemic and NOS;0
+1995;2013;51;0;1;206;Liver;1
+1998;2001;71;1;0;39;State DC not available or state DC available but no COD;0
+1996;1999;56;0;1;36;Colon excluding Rectum;0
+1995;1996;73;1;0;2;Myeloma;1
+1997;2014;35;0;1;202;Acute Myeloid Leukemia;6
+1998;2004;54;1;0;68;Myeloma;0
+1998;2004;72;0;1;76;Pneumonia and Influenza;3
+1997;1998;80;1;0;7;Myeloma;0
+1999;2005;72;0;1;78;Acute Lymphocytic Leukemia;3
+1999;2012;52;0;1;158;Acute Lymphocytic Leukemia;1
+1999;1999;71;0;1;5;Liver;0
+1999;2012;66;1;0;162;State DC not available or state DC available but no COD;0
+1999;2004;74;1;0;66;Myeloma;0
+1996;2002;68;0;1;74;Lung and Bronchus;2
+1998;2007;56;1;0;103;Myeloma;3
+1996;1999;63;0;1;36;Colon excluding Rectum;2
+1996;2011;52;1;0;183;Myeloma;0
+1997;2003;64;0;1;71;Diseases of Heart;0
+1998;2003;63;0;1;53;Lung and Bronchus;5
+1996;1999;64;1;0;36;Myeloma;0
+1997;1999;59;1;0;24;Myeloma;0
+1998;2002;79;0;1;42;Lung and Bronchus;0
+1998;2006;70;0;1;101;Lung and Bronchus;1
+1992;1994;72;0;1;24;Lung and Bronchus;0
+1997;1997;69;1;0;3;Miscellaneous Malignant Cancer;0
+1998;2001;71;1;0;40;Myeloma;2
+1998;2005;73;1;0;80;Myeloma;0
+1996;2013;46;1;0;205;Myeloma;1
+1996;2007;60;1;0;130;Myeloma;1
+1998;2006;49;0;1;96;Bones and Joints;0
+1998;2020;55;0;1;257;Acute Myeloid Leukemia;0
+1998;2017;40;1;0;229;Myeloma;0
+1997;1999;84;0;1;22;Liver;0
+1996;1999;69;1;0;38;Myeloma;0
+1996;2000;75;1;0;50;Myeloma;1
+1996;2010;78;0;1;166;Alzheimers (ICD-9 and 10 only);2
+1998;2002;67;1;0;41;Myeloma;0
+1997;1998;79;0;1;20;Diseases of Heart;7
+1996;2006;59;0;1;124;Diabetes Mellitus;2
+1997;1998;74;0;1;5;Lung and Bronchus;0
+1998;1998;76;1;0;2;Myeloma;0
+1997;2006;74;0;1;107;Liver;4
+1996;1998;72;0;1;27;Breast;1
+1996;2012;50;0;1;186;Vulva;0
+2000;2001;73;0;1;18;Stomach and Duodenal Ulcers;0
+2000;2017;56;0;1;203;Urinary Bladder;0
+2001;2009;60;1;0;101;Myeloma;1
+2001;2017;62;1;0;193;Myeloma;0
+2000;2003;82;0;1;30;Other Cause of Death;6
+2000;2001;81;1;0;19;Miscellaneous Malignant Cancer;0
+2000;2003;55;1;0;39;Myeloma;1
+2001;2009;49;0;1;104;Pancreas;0
+2001;2003;81;0;1;16;Other Cause of Death;0
+2002;2005;66;1;0;41;Myeloma;0
+2001;2006;72;1;0;62;Myeloma;3
+1999;2010;59;1;0;125;Myeloma;0
+1999;2011;51;0;1;148;Diabetes Mellitus;3
+2000;2005;75;1;0;57;Myeloma;1
+2000;2000;62;1;0;4;Myeloma;0
+2002;2009;62;0;1;83;Lung and Bronchus;0
+1996;2009;67;1;0;153;Myeloma;5
+2001;2014;65;1;0;146;Myeloma;0
+2000;2001;57;1;0;18;Myeloma;0
+2000;2010;51;0;1;124;Prostate;0
+1997;2001;62;0;1;49;Tongue;0
+1996;2005;69;1;0;108;Myeloma;1
+1996;2007;58;1;0;130;Myeloma;14
+2001;2015;53;1;0;161;Myeloma;1
+2000;2010;59;0;1;109;Other Acute Leukemia;2
+2000;2004;57;1;0;56;State DC not available or state DC available but no COD;14
+2001;2017;60;1;0;184;Myeloma;1
+2003;2005;82;0;1;25;Pancreas;1
+2002;2009;71;0;1;77;Non-Hodgkin Lymphoma;0
+2002;2005;81;0;1;29;Lung and Bronchus;0
+2003;2005;69;1;0;21;Myeloma;1
+2003;2006;65;0;1;41;Esophagus;0
+1990;2003;64;0;1;162;Lung and Bronchus;0
+1996;2011;53;0;1;186;Acute Myeloid Leukemia;3
+1999;2014;59;1;0;181;Myeloma;5
+1999;2004;75;1;0;59;Myeloma;0
+1999;2009;68;1;0;117;Myeloma;0
+2001;2004;62;0;1;25;Prostate;1
+2002;2004;60;1;0;29;Miscellaneous Malignant Cancer;1
+2002;2003;72;0;1;10;Lung and Bronchus;0
+2003;2007;61;1;0;42;Myeloma;3
+2003;2010;72;1;0;79;Miscellaneous Malignant Cancer;4
+2003;2003;82;1;0;2;Myeloma;2
+2003;2012;66;1;0;103;Myeloma;0
+2003;2005;71;1;0;26;Miscellaneous Malignant Cancer;10
+2003;2019;66;0;1;183;Other Cause of Death;4
+2003;2019;49;0;1;193;Septicemia;0
+2003;2018;68;0;1;181;Other Cause of Death;0
+2003;2010;52;1;0;88;Myeloma;1
+2003;2011;69;0;1;89;Other Cause of Death;0
+2003;2006;49;0;1;34;Diseases of Heart;1
+2003;2006;82;0;1;30;In situ, benign or unknown behavior neoplasm;0
+2004;2010;64;0;1;68;Other Cause of Death;5
+2004;2007;71;1;0;36;Myeloma;0
+2004;2009;79;1;0;57;Myeloma;1
+2004;2013;64;0;1;103;Lung and Bronchus;1
+2004;2011;80;1;0;83;Myeloma;1
+2004;2017;67;0;1;159;Pancreas;0
+2004;2016;54;1;0;141;Myeloma;0
+2004;2016;82;0;1;144;Colon excluding Rectum;0
+2004;2014;52;0;1;109;Other Cause of Death;1
+2006;2016;57;1;0;126;Myeloma;1
+2005;2015;53;0;1;114;Breast;5
+2005;2018;45;1;0;153;Myeloma;0
+2003;2011;57;1;0;93;Myeloma;3
+2005;2014;65;1;0;102;Myeloma;1
+2006;2010;71;1;0;56;Myeloma;0
+2006;2011;67;1;0;56;Myeloma;0
+2006;2011;61;0;1;51;Stomach;1
+2006;2006;66;0;1;5;Diabetes Mellitus;1
+2006;2018;69;0;1;151;Esophagus;0
+2006;2011;73;1;0;50;Myeloma;0
+2006;2007;76;0;1;7;Pancreas;0
+1998;2007;68;0;1;115;Colon excluding Rectum;19
+2006;2014;59;1;0;90;Myeloma;0
+2006;2009;73;1;0;31;Myeloma;5
+2007;2012;73;1;0;61;Myeloma;2
+2007;2009;90;0;1;29;Cerebrovascular Diseases;2
+2007;2007;80;0;1;3;Colon excluding Rectum;2
+2007;2011;70;1;0;52;Myeloma;1
+2007;2008;78;0;1;16;Pancreas;1
+2007;2011;75;1;0;45;Myeloma;1
+2007;2017;76;1;0;121;Myeloma;2
+2007;2007;78;1;0;2;Myeloma;0
+2006;2009;65;0;1;31;Lung and Bronchus;0
+2007;2008;81;0;1;14;Other Acute Leukemia;0
+2007;2014;51;1;0;73;Myeloma;0
+2007;2016;73;0;1;105;Rectum and Rectosigmoid Junction;2
+2007;2020;62;0;1;154;Brain and Other Nervous System;0
+2008;2012;73;1;0;51;Myeloma;2
+2008;2014;69;0;1;75;Colon excluding Rectum;2
+2008;2011;60;1;0;35;Myeloma;1
+2007;2008;59;1;0;6;Myeloma;1
+2008;2019;60;0;1;136;Lung and Bronchus;2
+2008;2015;56;1;0;89;Myeloma;1
+2008;2012;65;1;0;48;Myeloma;0
+2008;2010;79;0;1;19;Lung and Bronchus;0
+2007;2017;53;0;1;127;Acute Myeloid Leukemia;1
+2008;2010;71;1;0;24;Myeloma;2
+2008;2014;64;1;0;64;Myeloma;0
+2008;2018;74;0;1;116;Lung and Bronchus;3
+2009;2015;57;0;1;79;Pancreas;1
+2008;2017;58;1;0;107;State DC not available or state DC available but no COD;0
+2009;2017;84;0;1;94;Other Cause of Death;1
+2009;2019;68;0;1;113;Non-Hodgkin Lymphoma;1
+2007;2013;58;0;1;69;Other Cause of Death;1
+2009;2019;75;1;0;116;Myeloma;0
+2009;2012;62;0;1;38;Intrahepatic Bile Duct;1
+2009;2015;70;1;0;67;Myeloma;0
+2008;2016;56;1;0;98;Myeloma;2
+2010;2010;84;0;1;5;Diseases of Heart;0
+2010;2018;61;1;0;104;Myeloma;0
+2006;2010;73;0;1;44;Pancreas;1
+2010;2014;71;0;1;49;Non-Hodgkin Lymphoma;1
+2010;2020;81;1;0;119;Myeloma;1
+2010;2018;64;0;1;94;Acute Myeloid Leukemia;1
+2009;2013;72;1;0;49;Myeloma;0
+2009;2010;75;1;0;13;Miscellaneous Malignant Cancer;0
+2010;2017;69;0;1;92;Lung and Bronchus;0
+2010;2014;70;1;0;45;Miscellaneous Malignant Cancer;0
+2010;2011;77;0;1;11;Acute Myeloid Leukemia;3
+2010;2014;89;1;0;37;Myeloma;1
+2010;2012;65;1;0;19;Miscellaneous Malignant Cancer;1
+2011;2019;54;1;0;99;Myeloma;1
+2011;2019;59;1;0;102;Myeloma;1
+2010;2013;74;1;0;29;Myeloma;1
+2010;2016;62;1;0;64;Myeloma;4
+2011;2012;74;1;0;18;Miscellaneous Malignant Cancer;2
+2011;2012;62;0;1;17;Other Infectious and Parasitic Diseases including HIV;1
+2011;2012;84;0;1;7;Pancreas;0
+2010;2014;64;1;0;45;Myeloma;0
+2011;2014;61;1;0;34;Myeloma;1
+2011;2013;63;0;1;23;Brain and Other Nervous System;0
+2011;2014;55;1;0;45;Myeloma;0
+2011;2016;64;0;1;56;Lung and Bronchus;2
+2011;2018;59;0;1;74;Intrahepatic Bile Duct;2
+2011;2014;47;1;0;36;Myeloma;1
+2011;2017;76;1;0;68;Myeloma;2
+2009;2019;70;0;1;120;Pancreas;1
+2007;2010;68;0;1;34;Colon excluding Rectum;0
+2012;2012;68;1;0;2;Myeloma;2
+2011;2015;63;0;1;49;Kidney and Renal Pelvis;1
+2012;2014;73;1;0;24;Myeloma;1
+2012;2013;74;0;1;15;Stomach;1
+2012;2016;64;1;0;53;Myeloma;0
+2012;2020;55;0;1;99;Diseases of Heart;2
+2012;2017;66;1;0;64;Myeloma;1
+2012;2016;81;0;1;47;Non-Hodgkin Lymphoma;1
+2012;2015;85;1;0;26;State DC not available or state DC available but no COD;1
+2011;2014;72;0;1;33;Acute Myeloid Leukemia;0
+2012;2014;67;1;0;22;Myeloma;1
+2012;2019;77;1;0;82;Myeloma;4
+2012;2013;71;1;0;2;Miscellaneous Malignant Cancer;1
+2013;2013;53;1;0;1;Myeloma;0
+2013;2020;55;1;0;85;Myeloma;0
+2013;2017;71;1;0;51;Myeloma;0
+2013;2015;73;1;0;30;Myeloma;1
+2008;2020;67;0;1;146;Diseases of Heart;1
+2013;2017;74;1;0;51;Myeloma;1
+2012;2016;62;1;0;38;Myeloma;0
+2012;2018;79;1;0;80;Myeloma;1
+2013;2020;72;1;0;82;Myeloma;1
+2013;2015;85;1;0;15;Myeloma;1
+2014;2018;76;0;1;51;Pancreas;1
+2013;2019;62;0;1;70;In situ, benign or unknown behavior neoplasm;1
+2014;2020;82;0;1;73;Cerebrovascular Diseases;0
+2014;2017;89;0;1;37;Diseases of Heart;0
+2014;2019;66;0;1;60;Acute Lymphocytic Leukemia;0
+2014;2017;42;1;0;36;Aleukemic, Subleukemic and NOS;1
+2014;2020;51;1;0;66;Myeloma;1
+2015;2017;76;0;1;27;Other Cause of Death;4
+2015;2019;78;0;1;53;Diseases of Heart;1
+2015;2020;75;1;0;55;Myeloma;1
+2015;2019;68;0;1;46;Pancreas;0
+2015;2018;73;0;1;39;Lung and Bronchus;0
+2015;2018;84;1;0;36;Myeloma;0
+2016;2019;50;1;0;35;Myeloma;0
+2016;2018;71;1;0;28;Myeloma;4
+2016;2019;72;0;1;32;Liver;0
+2016;2018;69;0;1;23;Brain and Other Nervous System;0
+2016;2019;76;1;0;37;Myeloma;0
+2016;2020;71;0;1;55;Other Cause of Death;3
+2016;2019;68;0;1;35;Brain and Other Nervous System;1
+2012;2019;73;0;1;85;Corpus Uteri;0
+2017;2017;80;1;0;8;Myeloma;0
+2017;2017;64;0;1;1;Other Cause of Death;0
+2017;2019;65;1;0;22;Myeloma;2
+2016;2018;74;0;1;17;Intrahepatic Bile Duct;2
+2017;2020;66;0;1;37;Nephritis, Nephrotic Syndrome and Nephrosis;2
+2017;2018;75;0;1;16;Ovary;1
+2017;2019;85;1;0;27;Myeloma;1
+2013;2016;88;1;0;41;Myeloma;0
+2017;2019;68;0;1;18;Pancreas;1
+2018;2018;78;0;1;9;Diseases of Heart;1
+2018;2018;57;0;1;7;Kidney and Renal Pelvis;2
+2018;2018;74;1;0;0;Myeloma;1
+2018;2020;47;0;1;21;Other Cause of Death;1
+2019;2020;67;1;0;15;Myeloma;0
+2019;2020;76;1;0;13;Myeloma;1
+1977;1987;70;0;1;109;Non-Hodgkin Lymphoma;0
+1978;1979;77;1;0;11;Myeloma;0
+1975;1978;67;1;0;41;Myeloma;0
+1975;1976;78;1;0;15;Myeloma;1
+1975;1978;66;0;1;34;Ovary;1
+1975;1978;48;0;1;46;Lung and Bronchus;0
+1975;1982;75;0;1;80;Acute Myeloid Leukemia;1
+1975;1975;71;1;0;2;Myeloma;0
+1976;1979;58;0;1;30;Acute Myeloid Leukemia;0
+1976;1980;49;1;0;51;Myeloma;0
+1976;1976;52;1;0;4;Myeloma;0
+2002;2005;50;0;1;42;Other Cause of Death;0
+1977;1982;78;0;1;60;Lung and Bronchus;0
+1977;1984;53;1;0;78;Myeloma;0
+1977;1980;59;0;1;30;Non-Hodgkin Lymphoma;0
+1978;1994;77;0;1;196;Cerebrovascular Diseases;0
+1977;1981;69;1;0;50;Myeloma;0
+1977;1981;68;0;1;47;Nephritis, Nephrotic Syndrome and Nephrosis;1
+1977;1984;73;0;1;77;Chronic Myeloid Leukemia;0
+1978;1983;68;0;1;53;Acute Myeloid Leukemia;0
+1976;1988;68;1;0;143;Myeloma;1
+1979;1981;86;0;1;28;Rectum and Rectosigmoid Junction;1
+1978;1989;72;1;0;137;Myeloma;1
+1978;1980;58;0;1;15;Pancreas;1
+1977;1981;84;0;1;43;Prostate;0
+1979;1981;62;1;0;15;Myeloma;0
+1979;2007;56;0;1;341;Diseases of Heart;1
+1979;1980;70;1;0;8;Miscellaneous Malignant Cancer;2
+1980;1980;82;1;0;2;Myeloma;1
+1980;1984;68;1;0;55;Myeloma;0
+1979;1980;83;0;1;16;Lung and Bronchus;2
+1980;1986;66;1;0;68;Miscellaneous Malignant Cancer;0
+1980;1986;68;1;0;72;Myeloma;0
+1976;1982;70;0;1;75;Lung and Bronchus;5
+1980;1982;76;1;0;22;Myeloma;0
+1980;1982;68;0;1;13;Urinary Bladder;0
+1980;1984;70;0;1;48;Other Acute Leukemia;0
+1980;1988;69;0;1;86;Lung and Bronchus;0
+1980;1989;72;0;1;107;Soft Tissue including Heart;1
+1980;1985;65;1;0;63;Myeloma;0
+2004;2018;59;0;1;160;Chronic Lymphocytic Leukemia;1
+1981;1986;52;1;0;58;Myeloma;0
+1982;1983;79;1;0;10;Myeloma;0
+1981;1986;64;1;0;53;Myeloma;0
+1982;1982;54;0;1;4;Lung and Bronchus;0
+1982;1992;48;1;0;126;Myeloma;1
+1982;1986;68;1;0;52;Myeloma;0
+1977;1982;70;0;1;56;Diseases of Heart;0
+1982;1987;48;0;1;63;Acute Lymphocytic Leukemia;0
+1982;1988;63;1;0;70;Myeloma;0
+1982;1987;59;0;1;58;Other Acute Leukemia;1
+1983;1983;63;1;0;8;Myeloma;0
+1983;1989;73;1;0;73;Myeloma;0
+1983;1983;85;0;1;4;Esophagus;1
+1983;1987;79;1;0;47;Myeloma;0
+1983;1988;69;1;0;54;Myeloma;0
+1983;1984;75;1;0;2;Myeloma;0
+1983;1989;80;1;0;78;Myeloma;1
+1983;2001;39;1;0;208;Myeloma;0
+1983;1984;68;1;0;7;Myeloma;2
+1984;2007;64;0;1;280;Diseases of Heart;0
+1983;1992;68;0;1;97;Prostate;2
+1984;1989;68;1;0;59;Myeloma;2
+1984;1986;68;1;0;21;Myeloma;0
+1983;1985;77;1;0;26;Myeloma;1
+1983;1985;68;1;0;17;Myeloma;4
+1984;1987;61;0;1;37;Esophagus;0
+1984;1998;59;0;1;160;In situ, benign or unknown behavior neoplasm;13
+1984;1985;75;0;1;10;Diseases of Heart;0
+1984;1990;76;0;1;76;Stomach;0
+1985;2000;76;0;1;179;Atherosclerosis;2
+1985;2006;70;0;1;250;Colon excluding Rectum;0
+1985;1998;36;0;1;153;Diseases of Heart;0
+1985;1986;75;1;0;14;Myeloma;2
+1985;1985;66;1;0;6;Myeloma;0
+1985;1993;53;1;0;99;Myeloma;0
+1985;2007;60;0;1;267;Non-Hodgkin Lymphoma;1
+1986;1994;71;0;1;104;Pneumonia and Influenza;0
+1986;1986;72;1;0;0;Miscellaneous Malignant Cancer;0
+1986;1988;78;0;1;23;Lung and Bronchus;0
+1986;1986;71;0;1;2;Cerebrovascular Diseases;1
+1986;2010;35;0;1;278;Tonsil;1
+1986;1987;62;1;0;9;Myeloma;1
+1987;1987;71;1;0;9;Myeloma;0
+1986;1987;85;0;1;16;Other Acute Leukemia;0
+1986;1990;65;0;1;40;Diseases of Heart;0
+1987;1997;65;0;1;127;Urinary Bladder;4
+1984;1986;59;0;1;15;Diseases of Heart;13
+1987;1988;70;0;1;18;Lung and Bronchus;1
+1988;1992;72;0;1;44;Urinary Bladder;1
+1987;1990;67;0;1;33;Other Cause of Death;0
+1988;1994;62;1;0;73;Myeloma;1
+1988;1989;69;0;1;9;Lung and Bronchus;0
+1988;1997;46;0;1;104;Non-Hodgkin Lymphoma;0
+1988;1990;72;0;1;28;Acute Myeloid Leukemia;0
+1989;1995;57;1;0;74;Myeloma;0
+1989;2015;43;0;1;314;Brain and Other Nervous System;1
+1989;1993;68;0;1;48;Liver;0
+1989;1990;78;1;0;4;Myeloma;2
+1989;2001;44;0;1;146;Other Cause of Death;0
+1989;1992;88;1;0;26;Myeloma;1
+1989;1990;70;0;1;7;Diseases of Heart;1
+1990;2006;45;0;1;196;Pancreas;8
+1989;1994;48;1;0;54;Myeloma;0
+1989;1997;67;1;0;95;Myeloma;1
+1984;1990;60;0;1;66;Lung and Bronchus;0
+1990;1992;68;0;1;28;Soft Tissue including Heart;1
+1989;1991;87;1;0;26;Myeloma;0
+1990;1993;58;0;1;36;Brain and Other Nervous System;0
+1990;1997;64;1;0;80;Myeloma;0
+1985;1999;69;1;0;174;Myeloma;0
+1990;2004;64;1;0;165;Myeloma;0
+1990;2013;59;0;1;274;Other Cause of Death;0
+1991;1998;56;1;0;84;Myeloma;0
+1991;2003;66;0;1;143;Corpus Uteri;2
+1991;2005;63;0;1;172;Diseases of Heart;0
+1991;1997;49;0;1;79;Intrahepatic Bile Duct;0
+1991;2000;67;0;1;102;Nephritis, Nephrotic Syndrome and Nephrosis;1
+1991;1992;52;1;0;13;Myeloma;1
+1991;1995;59;1;0;43;Myeloma;2
+1991;1995;73;0;1;39;Diseases of Heart;0
+1991;1997;60;1;0;71;Myeloma;1
+1992;1992;74;1;0;5;Myeloma;1
+1990;2012;72;1;0;259;Myeloma;0
+1991;1992;82;0;1;21;Other Cause of Death;0
+1992;1996;77;0;1;53;Other Cause of Death;0
+1992;1996;56;1;0;55;Myeloma;0
+1992;2005;80;0;1;163;Larynx;0
+1992;1997;61;1;0;69;Myeloma;1
+1992;2002;65;0;1;126;Ureter;0
+1992;2003;50;1;0;128;Myeloma;2
+1992;1993;76;0;1;7;Non-Hodgkin Lymphoma;2
+1988;1998;78;0;1;124;Other Diseases of Arteries, Arterioles, Capillaries;0
+1993;2000;46;0;1;89;Septicemia;0
+1993;2010;78;1;0;201;Myeloma;1
+1991;2020;54;1;0;354;State DC not available or state DC available but no COD;0
+1993;2004;73;0;1;136;Diseases of Heart;0
+1994;2020;54;1;0;301;State DC not available or state DC available but no COD;0
+2010;2011;38;0;1;2;Other Infectious and Parasitic Diseases including HIV;1
+1994;1997;69;1;0;35;Myeloma;0
+1994;1998;82;0;1;40;Nephritis, Nephrotic Syndrome and Nephrosis;0
+1994;2006;64;1;0;145;Myeloma;0
+1992;1995;73;1;0;33;Myeloma;1
+1994;2009;59;0;1;181;Other Cause of Death;0
+1995;1998;62;1;0;32;Myeloma;0
+1995;2019;68;0;1;286;Pneumonia and Influenza;1
+1995;1999;78;1;0;45;Myeloma;0
+1995;2002;74;1;0;77;Myeloma;1
+1995;2011;72;0;1;198;Non-Hodgkin Lymphoma;0
+1995;1997;68;1;0;17;Myeloma;0
+1995;1998;73;1;0;36;Myeloma;0
+1996;1998;80;0;1;31;Stomach;0
+1996;2005;59;0;1;105;Lung and Bronchus;1
+1996;1997;79;0;1;3;Lung and Bronchus;0
+1997;1997;85;1;0;1;Myeloma;1
+1996;1997;76;0;1;12;Pancreas;5
+1996;2002;66;1;0;78;Myeloma;1
+1997;2019;71;0;1;267;Other Cause of Death;0
+1997;2002;68;1;0;56;Myeloma;1
+1996;2013;51;0;1;205;Acute Lymphocytic Leukemia;0
+1997;2006;71;1;0;104;Myeloma;2
+1997;2014;45;0;1;197;Diseases of Heart;0
+1997;2001;75;0;1;48;Diseases of Heart;0
+1997;2006;69;0;1;114;Nephritis, Nephrotic Syndrome and Nephrosis;1
+1997;2020;63;0;1;274;Other Oral Cavity and Pharynx;1
+1997;2013;55;1;0;188;Myeloma;3
+1996;1998;85;0;1;25;Pneumonia and Influenza;0
+1995;1998;90;0;1;34;Non-Hodgkin Lymphoma;0
+1996;2000;77;1;0;45;Myeloma;3
+1997;2000;85;1;0;31;Miscellaneous Malignant Cancer;1
+1998;2009;70;1;0;133;Myeloma;0
+1998;2001;76;0;1;42;Ureter;0
+1998;2019;70;0;1;244;Pancreas;3
+1998;2004;65;1;0;76;Myeloma;1
+1998;2008;54;1;0;124;Miscellaneous Malignant Cancer;0
+1998;1999;76;1;0;5;Myeloma;1
+1998;2006;50;0;1;88;Lung and Bronchus;0
+1999;2004;82;1;0;60;Myeloma;1
+1999;2003;77;1;0;48;Myeloma;0
+1999;2000;70;1;0;19;Myeloma;0
+1999;2017;67;0;1;217;Other Cause of Death;0
+1999;2012;57;0;1;161;Acute Myeloid Leukemia;0
+1999;2007;50;0;1;96;Intrahepatic Bile Duct;1
+1999;2008;51;1;0;113;Myeloma;0
+1981;2002;46;0;1;251;Diseases of Heart;1
+2000;2002;59;0;1;22;Diseases of Heart;0
+1999;2006;75;1;0;82;Miscellaneous Malignant Cancer;0
+1999;2000;64;0;1;4;Lung and Bronchus;2
+1999;2001;79;0;1;23;Other Cause of Death;0
+2000;2011;64;1;0;131;Myeloma;1
+2000;2003;74;0;1;33;Diseases of Heart;1
+2000;2001;81;1;0;11;Myeloma;1
+2000;2010;72;1;0;113;Myeloma;8
+2000;2009;71;1;0;105;Myeloma;0
+2000;2009;66;0;1;100;Pneumonia and Influenza;0
+2000;2002;79;0;1;24;Lung and Bronchus;5
+2001;2006;75;1;0;68;Myeloma;0
+2000;2015;50;1;0;173;Myeloma;1
+2001;2016;52;1;0;184;Miscellaneous Malignant Cancer;0
+2001;2006;73;1;0;64;Myeloma;0
+2001;2006;76;0;1;61;Diseases of Heart;0
+2001;2005;70;1;0;50;Myeloma;6
+2001;2005;64;1;0;44;Myeloma;1
+2001;2014;59;0;1;152;In situ, benign or unknown behavior neoplasm;0
+2000;2018;55;1;0;213;Myeloma;1
+2002;2007;65;0;1;62;Diseases of Heart;0
+2002;2017;57;0;1;190;Septicemia;2
+2002;2020;32;0;1;218;Soft Tissue including Heart;3
+2002;2010;71;1;0;99;Myeloma;0
+2001;2008;75;0;1;84;Accidents and Adverse Effects;0
+2002;2009;64;0;1;92;Esophagus;0
+2002;2009;51;1;0;81;Myeloma;0
+2002;2008;62;1;0;70;Myeloma;0
+2002;2007;52;1;0;60;Myeloma;2
+2002;2012;66;0;1;128;Lung and Bronchus;2
+2001;2005;83;1;0;50;Miscellaneous Malignant Cancer;0
+1997;2006;64;0;1;117;Corpus Uteri;0
+2002;2013;60;0;1;122;Lung and Bronchus;0
+2002;2005;69;0;1;35;Melanoma of the Skin;0
+2002;2009;54;1;0;83;Myeloma;1
+2002;2008;75;0;1;71;Diseases of Heart;1
+2002;2020;52;0;1;215;Uterus, NOS;1
+2003;2006;70;0;1;39;Non-Hodgkin Lymphoma;1
+2003;2019;59;1;0;190;Myeloma;0
+2003;2005;72;1;0;29;Myeloma;0
+2003;2014;78;0;1;125;Non-Hodgkin Lymphoma;0
+2003;2013;56;1;0;118;Myeloma;1
+2003;2005;77;1;0;31;Myeloma;0
+2003;2009;67;0;1;69;Uterus, NOS;1
+2003;2016;48;1;0;144;Miscellaneous Malignant Cancer;1
+2003;2011;57;1;0;99;Myeloma;0
+2004;2018;61;1;0;166;Myeloma;0
+2004;2005;79;1;0;0;Myeloma;0
+2004;2006;77;0;1;17;Colon excluding Rectum;1
+2004;2008;68;1;0;42;Myeloma;3
+2004;2018;54;0;1;171;Septicemia;2
+2004;2014;60;1;0;118;Myeloma;2
+2005;2010;52;1;0;61;Myeloma;1
+2005;2019;51;1;0;170;Myeloma;1
+2005;2015;61;1;0;129;Myeloma;1
+2005;2011;73;0;1;74;Nephritis, Nephrotic Syndrome and Nephrosis;1
+2004;2020;75;1;0;187;Myeloma;4
+2005;2007;72;0;1;20;Miscellaneous Malignant Cancer;0
+2005;2009;72;0;1;52;Breast;0
+2005;2016;78;0;1;132;Other Cause of Death;1
+2005;2015;69;0;1;119;Non-Hodgkin Lymphoma;1
+2005;2018;63;0;1;146;Diseases of Heart;1
+2005;2007;78;1;0;25;Myeloma;0
+2006;2006;86;1;0;5;Miscellaneous Malignant Cancer;1
+2006;2015;56;1;0;110;Myeloma;0
+2006;2009;59;0;1;29;Hypertension without Heart Disease;1
+2006;2006;76;1;0;1;Myeloma;0
+2006;2013;71;1;0;80;Myeloma;0
+2006;2007;53;0;1;7;Rectum and Rectosigmoid Junction;0
+2006;2011;70;0;1;63;Other Cause of Death;0
+2006;2017;68;1;0;129;Myeloma;1
+2006;2012;70;1;0;66;Myeloma;1
+2006;2009;76;0;1;39;Intrahepatic Bile Duct;0
+2007;2014;69;1;0;83;Myeloma;0
+2007;2012;58;1;0;56;Myeloma;0
+2007;2014;72;1;0;79;Myeloma;1
+2007;2016;77;0;1;110;Esophagus;0
+2007;2018;56;0;1;130;Kidney and Renal Pelvis;0
+2007;2017;68;1;0;118;Myeloma;1
+2007;2017;62;1;0;115;Myeloma;1
+2007;2011;56;1;0;42;Myeloma;1
+2007;2009;57;1;0;32;Myeloma;3
+2007;2008;56;1;0;13;Myeloma;0
+2007;2017;44;0;1;120;Diseases of Heart;0
+2008;2010;59;1;0;26;Myeloma;0
+2008;2017;82;1;0;103;Myeloma;0
+2005;2010;54;1;0;55;State DC not available or state DC available but no COD;2
+2008;2008;77;1;0;1;Myeloma;1
+2008;2014;54;1;0;62;Myeloma;1
+2008;2017;76;0;1;107;Chronic Obstructive Pulmonary Disease and Allied Cond;1
+2008;2008;85;0;1;5;Stomach;1
+2008;2014;67;0;1;65;Stomach;1
+2008;2010;83;0;1;19;Nephritis, Nephrotic Syndrome and Nephrosis;3
+2008;2009;81;1;0;19;Myeloma;5
+2007;2018;65;1;0;135;Myeloma;7
+2009;2014;77;1;0;63;Myeloma;2
+2005;2010;73;0;1;67;Nephritis, Nephrotic Syndrome and Nephrosis;0
+2009;2017;53;0;1;87;Melanoma of the Skin;0
+2009;2015;54;1;0;68;Myeloma;0
+2009;2011;80;0;1;21;Lung and Bronchus;0
+2009;2019;68;0;1;115;Hodgkin Lymphoma;1
+2010;2010;64;1;0;5;State DC not available or state DC available but no COD;3
+2010;2013;48;1;0;39;Myeloma;1
+2010;2016;71;0;1;70;Septicemia;3
+2010;2014;79;0;1;47;Diseases of Heart;1
+2010;2013;63;1;0;31;Miscellaneous Malignant Cancer;1
+2010;2014;70;0;1;38;Diseases of Heart;0
+2010;2018;67;0;1;100;In situ, benign or unknown behavior neoplasm;2
+2010;2014;82;0;1;43;Lung and Bronchus;2
+2011;2014;78;0;1;33;Intrahepatic Bile Duct;1
+2011;2012;75;1;0;13;Myeloma;0
+2011;2014;88;0;1;36;Miscellaneous Malignant Cancer;2
+2011;2020;64;0;1;102;Brain and Other Nervous System;0
+2011;2017;66;0;1;65;Other Cause of Death;5
+2011;2016;68;1;0;60;Myeloma;0
+2008;2012;71;0;1;44;Diseases of Heart;1
+2011;2012;90;0;1;5;Diseases of Heart;3
+2011;2012;86;1;0;16;Myeloma;1
+2012;2015;62;1;0;42;Myeloma;0
+2012;2018;64;1;0;66;Myeloma;0
+2006;2013;75;0;1;76;Lung and Bronchus;1
+2012;2016;65;0;1;55;Ovary;1
+2013;2015;71;0;1;23;Kidney and Renal Pelvis;0
+2012;2016;76;0;1;42;Chronic Obstructive Pulmonary Disease and Allied Cond;0
+2013;2019;62;0;1;76;Colon excluding Rectum;1
+2013;2020;76;1;0;88;Myeloma;1
+2013;2018;68;0;1;67;Acute Lymphocytic Leukemia;1
+2013;2013;82;1;0;1;Myeloma;0
+2013;2019;56;1;0;71;Myeloma;0
+2013;2014;65;0;1;16;Lung and Bronchus;1
+2013;2018;71;1;0;55;Myeloma;0
+2013;2018;61;1;0;61;Myeloma;0
+2013;2019;67;1;0;78;Myeloma;1
+2013;2019;57;1;0;68;Myeloma;0
+2014;2018;60;0;1;45;Lung and Bronchus;1
+2014;2020;73;0;1;69;Rectum and Rectosigmoid Junction;0
+2014;2020;59;0;1;77;Pancreas;3
+2014;2019;65;0;1;57;Lung and Bronchus;1
+2013;2016;77;0;1;30;Colon excluding Rectum;2
+2014;2020;63;0;1;70;Aleukemic, Subleukemic and NOS;4
+2015;2019;89;1;0;49;Myeloma;1
+2015;2019;83;0;1;43;Pancreas;1
+2015;2018;66;0;1;39;Ovary;1
+2016;2016;76;0;1;9;Lung and Bronchus;0
+2016;2020;69;0;1;51;Melanoma of the Skin;1
+2016;2020;70;0;1;47;Diseases of Heart;1
+2016;2020;70;1;0;51;Myeloma;0
+2016;2017;77;0;1;12;Non-Hodgkin Lymphoma;3
+2016;2020;75;0;1;51;Other Cause of Death;0
+2016;2018;71;0;1;14;Accidents and Adverse Effects;0
+2017;2020;72;1;0;34;Myeloma;0
+2017;2018;73;0;1;4;Small Intestine;0
+2017;2018;75;1;0;18;Myeloma;5
+2017;2019;61;0;1;19;Lung and Bronchus;1
+2017;2020;70;1;0;33;Myeloma;2
+2018;2018;74;1;0;5;Non-Hodgkin Lymphoma;0
+2018;2019;58;1;0;20;Miscellaneous Malignant Cancer;5
+1975;1981;69;0;1;76;Prostate;2
+1976;1977;82;0;1;2;Lung and Bronchus;0
+1976;1976;69;1;0;2;Myeloma;1
+1978;1978;85;0;1;7;Other Cause of Death;0
+1978;1990;57;0;1;143;Lung and Bronchus;9
+1979;1979;38;1;0;1;Myeloma;0
+1980;1980;78;1;0;7;Myeloma;0
+1979;1990;63;0;1;131;Diseases of Heart;21
+1981;1982;90;0;1;9;Diseases of Heart;2
+1982;1984;81;1;0;19;Myeloma;0
+1982;1982;81;0;1;1;Liver;0
+1983;1993;63;0;1;115;Colon excluding Rectum;1
+1982;1988;68;0;1;67;Other Acute Leukemia;1
+1983;1984;63;0;1;11;In situ, benign or unknown behavior neoplasm;0
+1984;1986;58;0;1;22;Lung and Bronchus;2
+1986;2000;47;0;1;175;Liver;1
+1986;2000;43;1;0;165;Myeloma;1
+1987;1990;84;1;0;37;Myeloma;1
+1987;1990;57;0;1;39;Nasopharynx;0
+1988;1991;70;1;0;35;Myeloma;1
+1988;1996;59;0;1;95;Other Endocrine including Thymus;1
+1989;1996;72;0;1;88;Stomach;0
+1990;1991;57;0;1;14;Lung and Bronchus;5
+1991;2000;80;1;0;98;Myeloma;2
+1991;1997;67;1;0;67;Myeloma;0
+1991;1991;88;1;0;3;Miscellaneous Malignant Cancer;1
+1992;1994;78;1;0;23;Myeloma;1
+1994;2001;77;0;1;77;Pancreas;0
+1994;1999;57;1;0;49;Myeloma;0
+1995;1996;78;0;1;13;Lung and Bronchus;0
+1996;2003;50;0;1;83;In situ, benign or unknown behavior neoplasm;1
+1997;2002;76;0;1;65;Other Cause of Death;1
+1998;2018;49;0;1;246;Non-Hodgkin Lymphoma;0
+1998;2010;73;1;0;145;Myeloma;1
+1999;2000;82;0;1;13;Colon excluding Rectum;0
+2000;2008;80;0;1;89;Non-Hodgkin Lymphoma;1
+2000;2011;67;1;0;129;Myeloma;1
+2000;2012;68;0;1;147;Diabetes Mellitus;2
+2000;2005;52;0;1;63;Lung and Bronchus;0
+2002;2004;74;1;0;25;Myeloma;0
+2003;2004;67;0;1;9;Stomach;1
+2004;2020;64;0;1;190;Diseases of Heart;3
+2004;2010;75;1;0;73;Myeloma;1
+2005;2010;60;1;0;61;Myeloma;7
+2005;2010;58;1;0;67;Miscellaneous Malignant Cancer;0
+2005;2013;50;0;1;91;Septicemia;7
+2005;2014;67;1;0;105;Myeloma;1
+2005;2014;73;1;0;110;In situ, benign or unknown behavior neoplasm;1
+2006;2016;66;1;0;116;Myeloma;0
+2007;2015;43;1;0;102;Myeloma;0
+2007;2013;62;1;0;78;Myeloma;0
+2007;2011;70;1;0;52;Myeloma;1
+2007;2007;86;0;1;5;Lung and Bronchus;2
+2009;2012;56;1;0;39;Myeloma;0
+2009;2011;67;0;1;23;Accidents and Adverse Effects;3
+2009;2015;69;1;0;80;Miscellaneous Malignant Cancer;1
+2010;2013;68;0;1;38;Chronic Liver Disease and Cirrhosis;1
+2011;2013;79;1;0;23;Myeloma;2
+2011;2014;66;1;0;24;Myeloma;1
+2012;2013;64;0;1;19;Lung and Bronchus;1
+2012;2020;61;0;1;93;Liver;12
+2013;2017;57;0;1;44;Diseases of Heart;3
+2013;2013;62;0;1;4;Melanoma of the Skin;1
+2013;2020;71;0;1;94;Miscellaneous Malignant Cancer;3
+2014;2018;80;1;0;39;Miscellaneous Malignant Cancer;1
+2015;2017;78;1;0;28;Myeloma;0
+2015;2020;80;1;0;52;Myeloma;0
+2016;2019;77;0;1;30;Other Cause of Death;2
+2017;2020;89;1;0;35;Myeloma;2
+2016;2017;67;1;0;13;Myeloma;1
+2018;2020;70;1;0;23;Myeloma;1
+1975;1976;85;0;1;8;Diseases of Heart;1
+1975;1980;64;0;1;63;Acute Myeloid Leukemia;1
+1975;1979;73;1;0;38;Myeloma;1
+1976;1976;73;0;1;1;Other Cause of Death;1
+1975;1978;82;1;0;38;Myeloma;4
+1975;1986;67;0;1;123;Colon excluding Rectum;0
+1976;2004;60;0;1;338;Cerebrovascular Diseases;0
+1976;1980;79;0;1;55;Diseases of Heart;0
+1976;1978;65;0;1;27;Other Cause of Death;1
+1975;1981;63;0;1;67;Lung and Bronchus;1
+1976;1980;68;0;1;47;Lung and Bronchus;1
+1977;1992;57;1;0;181;Myeloma;1
+1977;1979;62;1;0;22;Myeloma;1
+1978;1978;77;1;0;2;Myeloma;0
+1978;1981;55;1;0;44;Myeloma;0
+1978;1986;50;0;1;86;Other Acute Leukemia;0
+1978;1998;69;0;1;237;Colon excluding Rectum;2
+1978;1983;63;0;1;56;Urinary Bladder;1
+1979;1987;75;0;1;102;Pneumonia and Influenza;0
+1980;1983;77;0;1;40;Colon excluding Rectum;1
+1980;1991;53;0;1;139;Hodgkin Lymphoma;0
+1980;1985;70;1;0;67;Myeloma;1
+1980;1992;68;1;0;140;Myeloma;0
+1980;1984;70;1;0;49;Myeloma;0
+1980;1984;51;1;0;43;Miscellaneous Malignant Cancer;1
+2010;2017;77;0;1;88;Lung and Bronchus;1
+1981;1986;66;1;0;61;Myeloma;6
+1981;1983;69;0;1;22;Diseases of Heart;0
+1981;1987;54;1;0;69;Myeloma;0
+1981;1987;75;0;1;66;Acute Myeloid Leukemia;0
+1981;1988;64;0;1;76;Other Acute Leukemia;1
+1981;1984;66;0;1;40;Acute Myeloid Leukemia;0
+1982;1982;65;1;0;1;Myeloma;0
+1982;1982;79;0;1;2;Lung and Bronchus;1
+1982;1988;63;1;0;70;Myeloma;0
+1982;1985;71;1;0;32;Myeloma;1
+1982;1988;69;0;1;67;Colon excluding Rectum;0
+1983;1994;81;1;0;133;Myeloma;0
+1982;1986;71;1;0;40;Myeloma;3
+1982;1985;71;1;0;35;Myeloma;0
+1983;1984;75;1;0;18;Myeloma;1
+1982;1988;72;0;1;69;Diseases of Heart;0
+1983;1984;74;0;1;5;Non-Hodgkin Lymphoma;2
+1984;1998;70;0;1;174;Diseases of Heart;0
+1983;1990;67;1;0;76;Myeloma;0
+1983;1994;79;1;0;133;Myeloma;0
+1983;1989;49;1;0;75;Myeloma;0
+1984;1985;78;1;0;6;Myeloma;0
+1984;1984;79;1;0;4;Myeloma;1
+1984;1990;66;0;1;62;Diseases of Heart;0
+1984;1985;74;0;1;14;Nephritis, Nephrotic Syndrome and Nephrosis;1
+1984;1990;81;0;1;62;Lung and Bronchus;0
+1983;1984;65;1;0;11;Myeloma;0
+1984;1987;68;0;1;38;Pneumonia and Influenza;0
+1984;1990;71;1;0;70;Myeloma;1
+1984;1985;61;1;0;5;Myeloma;4
+1985;1988;87;1;0;30;Myeloma;0
+1985;2008;57;0;1;280;Pancreas;0
+1987;1989;73;0;1;24;Other Cause of Death;1
+1985;1994;71;1;0;106;Myeloma;0
+1983;2001;61;1;0;211;Myeloma;0
+1985;1996;65;1;0;125;Myeloma;1
+1984;1988;51;1;0;42;Myeloma;0
+1984;1985;89;0;1;0;Other Cause of Death;0
+1985;1992;76;1;0;91;Myeloma;0
+1985;1995;69;0;1;123;Prostate;1
+1986;1998;78;0;1;149;Prostate;1
+1986;1989;76;0;1;40;Other Acute Leukemia;1
+1986;2005;71;0;1;229;Diseases of Heart;0
+1986;1989;90;0;1;31;Stomach;0
+1986;1996;66;0;1;127;Acute Myeloid Leukemia;18
+1986;2006;69;0;1;239;Alzheimers (ICD-9 and 10 only);2
+1987;1987;82;0;1;9;Breast;0
+1986;1989;78;1;0;31;Miscellaneous Malignant Cancer;1
+1987;1988;80;0;1;10;Corpus Uteri;1
+1987;1994;54;1;0;81;Myeloma;1
+1987;1989;74;0;1;25;Other Infectious and Parasitic Diseases including HIV;15
+1987;2019;54;0;1;385;Diseases of Heart;1
+1987;1991;67;0;1;41;Diseases of Heart;1
+1987;1991;55;0;1;47;Other Cause of Death;0
+1988;1988;70;0;1;6;Pancreas;0
+1988;1999;55;0;1;136;Acute Myeloid Leukemia;0
+1988;1992;71;0;1;57;Lung and Bronchus;0
+1988;1997;61;1;0;106;Myeloma;0
+1988;2011;50;0;1;265;Colon excluding Rectum;0
+1988;1995;73;0;1;94;Rectum and Rectosigmoid Junction;0
+1988;1997;62;1;0;106;Myeloma;1
+1988;1991;64;1;0;30;Myeloma;0
+1989;2014;45;0;1;301;Esophagus;0
+1986;1988;67;1;0;26;Myeloma;3
+1988;1997;64;1;0;107;Myeloma;3
+1989;1999;68;0;1;121;Acute Myeloid Leukemia;0
+1989;1992;60;0;1;30;Other Acute Leukemia;1
+1989;1990;67;1;0;15;Myeloma;0
+1989;1997;76;0;1;91;Diseases of Heart;2
+1990;1991;68;1;0;18;Myeloma;0
+1988;2014;48;1;0;318;Myeloma;0
+1990;1996;78;0;1;74;Ovary;1
+1989;1994;74;1;0;51;Myeloma;0
+1989;1994;76;1;0;55;Myeloma;0
+1987;1990;78;1;0;35;Myeloma;1
+1990;1992;73;1;0;27;Myeloma;1
+1990;1993;69;0;1;32;Lung and Bronchus;0
+1989;1992;75;1;0;37;Myeloma;16
+1989;1997;72;0;1;90;Chronic Obstructive Pulmonary Disease and Allied Cond;2
+1990;2008;66;0;1;224;Other Cause of Death;0
+1991;2009;61;0;1;217;Diseases of Heart;0
+1991;1992;73;1;0;20;Myeloma;2
+1991;1993;80;0;1;29;Other Diseases of Arteries, Arterioles, Capillaries;1
+1991;1995;58;0;1;54;Acute Myeloid Leukemia;0
+1984;2004;59;1;0;234;Myeloma;0
+1991;1993;77;1;0;18;Myeloma;1
+1988;2001;53;1;0;157;Myeloma;0
+1991;1994;77;1;0;35;Myeloma;1
+1991;2002;73;1;0;123;Myeloma;1
+1992;1995;64;1;0;38;Myeloma;0
+1991;1991;86;1;0;4;Myeloma;0
+1992;1993;64;1;0;21;Myeloma;0
+1992;1999;83;0;1;75;Diseases of Heart;2
+1992;1994;73;1;0;19;Myeloma;0
+1993;1993;68;0;1;9;Diseases of Heart;0
+1992;1992;68;1;0;3;Myeloma;0
+1993;1996;74;0;1;36;Pancreas;0
+1992;1996;47;0;1;48;Melanoma of the Skin;0
+1991;1998;79;0;1;72;Other Cause of Death;0
+1992;1996;75;0;1;49;Pneumonia and Influenza;0
+1992;1995;74;0;1;35;Stomach;1
+1993;1997;52;1;0;51;Myeloma;0
+1992;1996;65;0;1;47;Prostate;0
+1993;2002;65;0;1;108;Chronic Obstructive Pulmonary Disease and Allied Cond;15
+1993;2006;68;1;0;164;Myeloma;0
+1993;1997;86;1;0;42;Myeloma;0
+1993;1994;86;1;0;20;Myeloma;0
+1994;2002;59;0;1;102;Diseases of Heart;1
+1993;2007;44;0;1;167;Lung and Bronchus;0
+1993;1996;82;0;1;29;Rectum and Rectosigmoid Junction;1
+1994;2002;81;0;1;98;Diseases of Heart;2
+1994;1997;64;0;1;42;Lung and Bronchus;1
+1994;2002;76;1;0;91;Myeloma;1
+1994;1995;71;0;1;15;Pancreas;0
+1995;2013;49;0;1;220;Prostate;1
+1995;1996;47;1;0;19;Myeloma;0
+1995;1997;69;1;0;29;Myeloma;0
+1994;1997;69;0;1;38;Lung and Bronchus;0
+1994;2001;80;1;0;81;Myeloma;0
+1995;2002;57;1;0;78;Myeloma;0
+1996;2016;63;0;1;250;Accidents and Adverse Effects;2
+1996;1996;74;0;1;6;Liver;0
+1996;2010;59;1;0;164;Myeloma;1
+1997;2018;58;1;0;261;Myeloma;0
+1997;2004;73;1;0;82;Myeloma;0
+1994;2006;70;1;0;140;Miscellaneous Malignant Cancer;1
+1997;1999;72;1;0;22;Miscellaneous Malignant Cancer;0
+1997;2000;51;1;0;26;Myeloma;1
+1995;2007;71;1;0;141;Myeloma;1
+1998;1998;73;0;1;4;Acute Myeloid Leukemia;0
+1998;2012;58;1;0;174;Myeloma;0
+1998;2019;43;1;0;253;Myeloma;0
+1998;2020;51;0;1;257;Diseases of Heart;0
+1999;2001;85;1;0;30;Myeloma;2
+1998;2005;75;0;1;76;Atherosclerosis;1
+1998;2002;71;1;0;45;Myeloma;1
+1998;2000;72;0;1;31;Lung and Bronchus;0
+1998;2000;72;1;0;28;Myeloma;0
+1998;1999;81;0;1;16;Lung and Bronchus;0
+1999;2020;47;0;1;255;Other Cause of Death;1
+1999;2001;46;1;0;21;Myeloma;1
+1999;2002;79;0;1;33;Prostate;1
+1999;1999;74;1;0;0;Myeloma;0
+1999;2008;70;0;1;106;Other Cause of Death;0
+1999;2019;59;1;0;245;Myeloma;2
+1999;2003;75;1;0;46;Myeloma;1
+1999;2016;56;0;1;210;Lung and Bronchus;0
+2000;2012;52;1;0;145;Myeloma;0
+2000;2006;70;1;0;81;Myeloma;0
+2000;2004;76;1;0;48;Myeloma;0
+2000;2008;74;1;0;94;Myeloma;0
+1999;2007;70;0;1;87;Colon excluding Rectum;0
+2000;2016;55;1;0;201;Myeloma;1
+2000;2015;70;0;1;178;Chronic Obstructive Pulmonary Disease and Allied Cond;0
+2001;2008;81;0;1;79;Diseases of Heart;0
+2001;2007;70;1;0;73;Myeloma;0
+1996;2002;76;1;0;72;Myeloma;3
+2000;2001;62;0;1;14;Lung and Bronchus;1
+2000;2005;74;1;0;60;Myeloma;0
+2001;2008;72;1;0;74;Myeloma;1
+2001;2003;82;0;1;20;In situ, benign or unknown behavior neoplasm;2
+2001;2013;56;1;0;147;Myeloma;1
+2000;2014;79;0;1;169;Breast;1
+2001;2010;52;0;1;110;In situ, benign or unknown behavior neoplasm;1
+2001;2003;66;0;1;25;Breast;0
+2001;2018;59;1;0;198;Myeloma;0
+2001;2009;66;0;1;98;Other Cause of Death;0
+2001;2020;67;0;1;222;Diseases of Heart;1
+2001;2004;66;1;0;43;Myeloma;0
+2001;2016;59;1;0;175;Myeloma;0
+2002;2011;56;1;0;99;Myeloma;2
+2000;2012;64;1;0;140;Miscellaneous Malignant Cancer;0
+2002;2014;47;0;1;141;Breast;1
+2002;2017;56;0;1;175;Pancreas;1
+2002;2005;79;1;0;40;Myeloma;0
+2003;2007;49;0;1;55;Other Cause of Death;3
+2003;2004;84;1;0;15;Myeloma;0
+2003;2016;70;1;0;156;Myeloma;2
+2004;2006;63;1;0;30;Myeloma;0
+2003;2007;78;1;0;49;Myeloma;0
+2001;2006;75;1;0;60;Myeloma;3
+2004;2012;73;1;0;93;Miscellaneous Malignant Cancer;1
+2004;2010;71;0;1;73;Peritoneum, Omentum and Mesentery;0
+2004;2004;88;1;0;7;Myeloma;1
+2004;2009;76;1;0;61;Myeloma;0
+2004;2020;65;1;0;188;Myeloma;0
+2005;2006;68;0;1;16;Other Diseases of Arteries, Arterioles, Capillaries;2
+2004;2009;57;0;1;59;Accidents and Adverse Effects;0
+2005;2009;72;1;0;48;Myeloma;2
+2005;2012;65;0;1;85;Esophagus;2
+2004;2015;82;0;1;126;Diseases of Heart;1
+2005;2008;78;1;0;31;Myeloma;1
+2004;2014;54;1;0;122;Miscellaneous Malignant Cancer;1
+2005;2017;48;0;1;153;Pancreas;0
+2005;2010;80;1;0;68;Myeloma;6
+2005;2014;57;1;0;100;Myeloma;1
+2005;2007;43;0;1;24;Other Urinary Organs;0
+2005;2010;58;0;1;62;Rectum and Rectosigmoid Junction;0
+2005;2007;69;0;1;26;Acute Myeloid Leukemia;2
+2005;2006;73;1;0;13;Myeloma;1
+2005;2010;47;1;0;66;Myeloma;0
+2005;2006;79;1;0;19;Myeloma;1
+2005;2009;61;0;1;53;Suicide and Self-Inflicted Injury;1
+2006;2009;70;1;0;39;Myeloma;1
+2004;2010;83;1;0;77;Myeloma;2
+2005;2020;53;1;0;184;Miscellaneous Malignant Cancer;1
+2006;2011;70;0;1;59;Thyroid;1
+2006;2009;62;0;1;38;Lung and Bronchus;0
+2006;2014;68;0;1;98;Diseases of Heart;0
+2006;2017;50;1;0;136;Miscellaneous Malignant Cancer;1
+2006;2020;67;1;0;163;Myeloma;1
+2006;2017;63;1;0;131;Myeloma;0
+2006;2007;69;1;0;15;Miscellaneous Malignant Cancer;0
+2006;2009;77;0;1;29;Brain and Other Nervous System;1
+2003;2008;84;1;0;52;Myeloma;0
+2006;2011;57;0;1;54;In situ, benign or unknown behavior neoplasm;0
+2007;2012;74;1;0;69;Myeloma;1
+2007;2018;61;1;0;134;Miscellaneous Malignant Cancer;2
+2007;2016;57;0;1;102;Diseases of Heart;0
+2007;2008;49;1;0;12;Miscellaneous Malignant Cancer;0
+2007;2009;76;1;0;25;Myeloma;1
+2007;2011;79;1;0;43;Myeloma;1
+2007;2020;51;1;0;149;Myeloma;0
+2007;2009;81;1;0;16;Myeloma;1
+2002;2013;75;0;1;128;Lung and Bronchus;3
+2008;2017;70;0;1;112;Miscellaneous Malignant Cancer;0
+2008;2013;69;1;0;63;Miscellaneous Malignant Cancer;1
+2008;2018;79;0;1;114;Alzheimers (ICD-9 and 10 only);1
+2008;2011;71;1;0;33;Myeloma;0
+2008;2017;83;1;0;109;Myeloma;1
+2009;2018;62;1;0;103;Myeloma;0
+2009;2015;69;1;0;70;Miscellaneous Malignant Cancer;2
+2009;2017;57;0;1;105;Diseases of Heart;1
+2009;2018;55;1;0;113;Myeloma;2
+2009;2018;48;1;0;107;Myeloma;1
+2009;2014;64;0;1;59;Rectum and Rectosigmoid Junction;1
+2009;2011;71;0;1;24;Pancreas;0
+2009;2010;82;1;0;9;Myeloma;1
+2009;2015;73;1;0;76;Myeloma;2
+2009;2016;61;1;0;86;Miscellaneous Malignant Cancer;1
+2009;2013;70;1;0;50;Myeloma;2
+2009;2013;48;1;0;42;Myeloma;1
+2010;2014;66;1;0;57;Myeloma;0
+2010;2014;57;0;1;42;Other Infectious and Parasitic Diseases including HIV;0
+2010;2011;82;0;1;15;In situ, benign or unknown behavior neoplasm;0
+2010;2015;65;1;0;60;Myeloma;1
+2010;2017;60;0;1;82;Atherosclerosis;1
+2010;2019;60;1;0;107;Myeloma;0
+2010;2020;57;1;0;116;Myeloma;1
+2010;2017;61;1;0;79;Myeloma;1
+2008;2016;67;1;0;90;Myeloma;0
+2010;2020;79;1;0;118;Myeloma;0
+2011;2011;69;1;0;3;Myeloma;1
+2011;2016;66;1;0;54;Myeloma;1
+2011;2015;51;1;0;52;Myeloma;0
+2011;2012;63;1;0;11;Miscellaneous Malignant Cancer;1
+2011;2020;82;1;0;113;Myeloma;1
+2008;2012;88;1;0;48;Myeloma;0
+2011;2019;51;0;1;90;Acute Myeloid Leukemia;0
+2011;2015;64;1;0;50;Myeloma;0
+2011;2014;74;0;1;37;Diseases of Heart;0
+2011;2020;68;1;0;108;Myeloma;0
+2011;2017;68;1;0;74;Myeloma;3
+2011;2013;75;1;0;26;Myeloma;0
+2012;2018;63;1;0;77;Myeloma;1
+2012;2020;69;1;0;102;Myeloma;1
+2012;2020;50;1;0;100;Myeloma;0
+2012;2015;82;0;1;38;Other Cause of Death;0
+2012;2020;62;0;1;93;Acute Myeloid Leukemia;1
+2012;2012;69;1;0;0;Myeloma;0
+2012;2016;79;0;1;49;Urinary Bladder;3
+2013;2020;58;0;1;92;Non-Hodgkin Lymphoma;1
+2012;2020;64;0;1;90;Miscellaneous Malignant Cancer;0
+2013;2019;66;1;0;79;Myeloma;0
+2013;2016;65;0;1;40;Ovary;0
+2013;2020;79;1;0;86;Myeloma;1
+2012;2020;63;1;0;93;Myeloma;1
+2012;2014;75;1;0;25;Miscellaneous Malignant Cancer;1
+2013;2018;69;0;1;70;Diseases of Heart;0
+2013;2019;73;1;0;74;Myeloma;0
+2013;2019;60;1;0;80;Myeloma;2
+2013;2015;70;1;0;16;Myeloma;0
+2013;2018;74;0;1;56;Other Infectious and Parasitic Diseases including HIV;0
+2013;2015;75;1;0;22;Myeloma;0
+2013;2014;74;1;0;6;Myeloma;0
+2014;2019;83;1;0;57;Myeloma;1
+2014;2019;69;0;1;58;Acute Myeloid Leukemia;0
+2014;2017;71;1;0;31;Myeloma;1
+2013;2017;86;1;0;47;Myeloma;1
+2013;2018;75;1;0;62;Myeloma;0
+2014;2015;65;1;0;11;Miscellaneous Malignant Cancer;0
+2014;2015;59;1;0;11;Miscellaneous Malignant Cancer;1
+2014;2017;60;1;0;35;Myeloma;1
+2015;2015;81;1;0;1;Myeloma;0
+2014;2014;72;1;0;8;Miscellaneous Malignant Cancer;0
+2015;2016;50;1;0;14;Aleukemic, Subleukemic and NOS;0
+2014;2015;56;1;0;9;Myeloma;0
+2015;2020;69;1;0;63;Myeloma;1
+2015;2016;60;0;1;18;Diseases of Heart;1
+2015;2016;90;1;0;10;Myeloma;1
+2015;2018;57;0;1;37;Gallbladder;1
+2015;2017;80;0;1;31;Other Cause of Death;0
+2016;2020;69;1;0;52;Myeloma;0
+2016;2020;80;0;1;52;Other Cause of Death;0
+2016;2016;79;0;1;4;Other Cause of Death;1
+2015;2018;87;0;1;24;Diseases of Heart;0
+2017;2019;76;1;0;28;Myeloma;2
+2017;2020;75;1;0;31;Myeloma;0
+2017;2019;83;1;0;26;Myeloma;0
+2016;2020;79;1;0;47;Myeloma;1
+2017;2019;72;1;0;18;Myeloma;0
+2016;2018;67;1;0;25;Myeloma;1
+2016;2020;74;0;1;47;Esophagus;3
+2017;2020;74;0;1;35;Other Cause of Death;0
+2018;2020;87;1;0;24;Myeloma;1
+2012;2017;79;1;0;49;Myeloma;1
+2018;2020;65;1;0;22;Myeloma;0
+2018;2018;75;0;1;2;Other Cause of Death;0
+2018;2018;87;0;1;0;Diseases of Heart;1
+2020;2020;78;1;0;2;Non-Hodgkin Lymphoma;0
+2020;2020;74;1;0;10;Myeloma;1
+2020;2020;68;0;1;1;Colon excluding Rectum;0
+1976;1978;62;0;1;21;Colon excluding Rectum;1
+1986;1991;60;1;0;56;Myeloma;0
+1975;1978;63;1;0;37;Myeloma;0
+1979;1984;75;1;0;61;Myeloma;2
+1980;1989;85;1;0;106;Myeloma;0
+1981;1981;78;1;0;10;Myeloma;0
+1987;1990;75;0;1;45;Colon excluding Rectum;0
+1978;1983;61;0;1;71;Lung and Bronchus;0
+1980;1984;86;0;1;53;Colon excluding Rectum;0
+1984;1991;51;0;1;85;Bones and Joints;0
+1985;2015;47;0;1;367;Ovary;0
+1984;1999;70;0;1;177;Nephritis, Nephrotic Syndrome and Nephrosis;0
+1987;1989;57;1;0;19;Myeloma;0
+1987;2005;50;1;0;215;Miscellaneous Malignant Cancer;1
+1986;1990;59;1;0;41;Myeloma;14
+1987;1990;69;0;1;35;Diseases of Heart;0
+1989;1990;78;0;1;16;Melanoma of the Skin;0
+1989;1990;68;0;1;13;Pancreas;0
+1989;1990;86;1;0;4;Myeloma;0
+1989;1996;56;1;0;76;Myeloma;11
+1989;2013;72;0;1;279;Other Cause of Death;0
+1990;1991;68;1;0;15;Myeloma;0
+1991;2013;44;0;1;266;Soft Tissue including Heart;1
+1991;1993;66;0;1;18;Stomach;1
+1992;1996;67;0;1;53;Other Cause of Death;0
+1992;1996;71;0;1;48;Ovary;1
+1993;2001;60;1;0;97;Myeloma;1
+1993;2005;62;0;1;147;Miscellaneous Malignant Cancer;0
+1994;1995;64;1;0;13;Myeloma;0
+1993;1997;68;1;0;42;Myeloma;0
+1993;1994;70;0;1;8;Prostate;0
+1994;2003;41;0;1;105;Hodgkin Lymphoma;1
+1993;1998;69;1;0;58;Myeloma;1
+1994;1996;69;0;1;18;Urinary Bladder;1
+1994;1995;71;0;1;16;Brain and Other Nervous System;0
+1993;1995;71;1;0;33;Myeloma;1
+1994;2008;70;0;1;163;Septicemia;0
+1996;2003;46;0;1;88;Other Cause of Death;1
+1996;1998;74;1;0;19;Miscellaneous Malignant Cancer;0
+1997;1999;65;1;0;23;Myeloma;2
+1997;2020;71;0;1;269;Diabetes Mellitus;4
+1999;2010;58;0;1;139;Liver;0
+1998;2008;77;1;0;112;Miscellaneous Malignant Cancer;0
+1999;2004;77;1;0;59;Myeloma;1
+2000;2006;56;1;0;71;Myeloma;1
+2000;2012;64;0;1;148;Brain and Other Nervous System;0
+2001;2001;68;1;0;4;Myeloma;1
+2001;2014;68;0;1;154;Gallbladder;3
+1995;2012;70;1;0;202;Myeloma;0
+2001;2006;66;1;0;50;Myeloma;0
+2002;2007;67;0;1;65;Lung and Bronchus;0
+2002;2007;78;0;1;59;Other Cause of Death;1
+2001;2011;47;0;1;114;Non-Hodgkin Lymphoma;0
+2000;2005;78;1;0;68;Myeloma;1
+1998;2005;60;0;1;89;Melanoma of the Skin;2
+2002;2011;70;0;1;110;Non-Hodgkin Lymphoma;1
+2003;2008;67;1;0;58;Myeloma;1
+2002;2003;77;1;0;17;Myeloma;0
+2002;2011;73;0;1;99;Uterus, NOS;1
+2003;2012;31;0;1;113;Other Infectious and Parasitic Diseases including HIV;0
+2003;2007;77;1;0;47;Myeloma;0
+2004;2011;77;1;0;88;Myeloma;3
+2004;2012;52;1;0;99;Myeloma;1
+2006;2006;73;0;1;6;Pancreas;3
+2006;2013;62;1;0;89;Miscellaneous Malignant Cancer;0
+2003;2010;78;0;1;89;Breast;0
+2004;2018;80;1;0;166;Myeloma;0
+2007;2008;87;1;0;21;Myeloma;4
+2006;2006;65;0;1;3;Lung and Bronchus;1
+1996;2001;68;0;1;61;Diseases of Heart;1
+2007;2012;68;0;1;54;Chronic Obstructive Pulmonary Disease and Allied Cond;0
+2008;2013;68;0;1;59;Other Cause of Death;0
+2008;2010;64;1;0;24;Myeloma;1
+2008;2019;56;1;0;134;Myeloma;2
+2008;2017;64;1;0;97;Miscellaneous Malignant Cancer;0
+2009;2012;58;0;1;42;Breast;1
+2008;2014;56;0;1;83;Other Cause of Death;1
+2009;2011;85;1;0;15;Myeloma;5
+2009;2010;78;1;0;4;Myeloma;1
+2008;2014;68;0;1;67;Colon excluding Rectum;8
+2010;2012;82;1;0;23;Myeloma;2
+2010;2013;77;1;0;47;Myeloma;8
+2011;2018;65;1;0;84;Myeloma;1
+2007;2017;59;0;1;127;Accidents and Adverse Effects;1
+2011;2015;61;0;1;54;Ovary;0
+2012;2013;77;0;1;15;Colon excluding Rectum;0
+2012;2016;59;0;1;48;Rectum and Rectosigmoid Junction;0
+2008;2014;61;0;1;73;Liver;0
+2011;2019;66;0;1;96;Other Cause of Death;11
+2012;2013;59;1;0;10;Myeloma;0
+2012;2012;65;1;0;3;Myeloma;0
+2012;2018;61;0;1;71;Stomach;15
+2013;2020;63;1;0;80;Myeloma;1
+2014;2019;50;0;1;64;Accidents and Adverse Effects;0
+2013;2019;68;1;0;62;Miscellaneous Malignant Cancer;0
+2014;2018;66;1;0;51;Myeloma;0
+2013;2019;81;0;1;77;Diseases of Heart;1
+2014;2018;45;0;1;46;Acute Myeloid Leukemia;0
+2013;2016;69;0;1;31;Liver;1
+2016;2019;74;0;1;37;Lung and Bronchus;0
+2016;2018;66;1;0;26;Myeloma;0
+2016;2017;81;0;1;9;Kidney and Renal Pelvis;0
+2015;2019;79;0;1;50;Diseases of Heart;1
+2016;2017;65;1;0;17;Myeloma;8
+2017;2019;58;0;1;24;Chronic Obstructive Pulmonary Disease and Allied Cond;0
+2018;2019;65;1;0;13;Miscellaneous Malignant Cancer;2
+2018;2018;76;1;0;7;Myeloma;1
+2019;2020;71;1;0;20;Myeloma;3
+2019;2020;64;1;0;0;Myeloma;0
+1975;1982;71;1;0;85;State DC not available or state DC available but no COD;0
+1975;1981;57;1;0;76;Myeloma;1
+1975;1980;55;1;0;56;Myeloma;1
+1975;1999;28;1;0;290;Myeloma;0
+1975;1984;37;0;1;108;Non-Hodgkin Lymphoma;2
+1976;1976;81;1;0;0;Myeloma;0
+1976;1983;50;1;0;84;Myeloma;0
+1977;1978;87;0;1;21;Urinary Bladder;1
+1975;1986;48;0;1;133;Other Myeloid/Monocytic Leukemia;0
+1977;1978;77;0;1;14;Lung and Bronchus;1
+1977;1987;75;0;1;122;Chronic Obstructive Pulmonary Disease and Allied Cond;0
+1977;1984;70;0;1;83;Lung and Bronchus;1
+1977;1979;80;1;0;25;Myeloma;0
+1977;1979;60;1;0;26;Myeloma;0
+1977;1982;46;1;0;61;Myeloma;2
+1977;1977;90;0;1;0;Pneumonia and Influenza;0
+1976;1977;76;0;1;11;Diseases of Heart;0
+1976;1984;72;1;0;90;Myeloma;0
+1978;1983;87;0;1;65;Colon excluding Rectum;1
+1978;1981;74;1;0;33;Myeloma;0
+1978;1984;79;0;1;66;Pneumonia and Influenza;1
+1979;1988;64;1;0;111;Myeloma;0
+1978;1980;68;0;1;22;Colon excluding Rectum;2
+1978;1979;72;0;1;9;Diseases of Heart;0
+1979;1979;72;1;0;0;Myeloma;0
+1979;1987;56;0;1;94;Breast;1
+1979;1984;75;0;1;58;Non-Hodgkin Lymphoma;0
+1980;1982;77;0;1;21;Chronic Liver Disease and Cirrhosis;21
+1980;1985;75;1;0;60;Myeloma;0
+1980;1981;60;1;0;17;Myeloma;4
+1980;1982;77;1;0;19;Myeloma;1
+1980;1993;54;0;1;158;Other Cause of Death;0
+1981;1981;80;0;1;3;Lung and Bronchus;0
+1981;1986;66;0;1;59;Lung and Bronchus;0
+1981;1985;62;1;0;48;Myeloma;0
+1982;1984;52;1;0;25;Myeloma;1
+1988;1997;72;1;0;100;Myeloma;1
+1982;1983;67;1;0;12;Myeloma;1
+1982;1988;66;1;0;68;Myeloma;3
+1982;1984;69;1;0;21;Myeloma;0
+1982;1995;65;0;1;155;Other Cause of Death;0
+1983;1985;76;0;1;28;Diseases of Heart;0
+1983;1984;62;0;1;12;Breast;1
+1983;1984;69;0;1;15;Non-Hodgkin Lymphoma;4
+1983;1990;69;1;0;87;Myeloma;0
+1978;1991;45;1;0;156;Myeloma;0
+1979;1986;63;0;1;83;Prostate;0
+1983;1986;76;0;1;30;Colon excluding Rectum;2
+1983;1986;63;0;1;42;Acute Myeloid Leukemia;1
+1983;1984;66;0;1;12;Esophagus;0
+1983;1990;59;0;1;84;Colon excluding Rectum;1
+1984;1984;82;0;1;3;Nephritis, Nephrotic Syndrome and Nephrosis;1
+1984;1986;55;0;1;25;Esophagus;0
+1983;1985;62;0;1;15;Corpus Uteri;0
+1983;1984;90;0;1;12;Diseases of Heart;11
+1982;1985;75;0;1;37;Pancreas;1
+1981;1993;65;0;1;151;Diseases of Heart;0
+1985;1986;70;0;1;8;Chronic Myeloid Leukemia;0
+1985;1993;68;0;1;91;Acute Myeloid Leukemia;1
+1985;1993;66;1;0;86;Myeloma;0
+1985;1989;69;0;1;44;Pancreas;0
+1986;1991;70;1;0;57;Myeloma;3
+1985;1986;77;0;1;14;Lung and Bronchus;0
+1986;1987;65;1;0;11;Myeloma;1
+1986;2001;67;1;0;176;Miscellaneous Malignant Cancer;0
+1986;1997;66;1;0;124;Myeloma;1
+1986;1996;64;1;0;118;Myeloma;2
+1987;1994;75;1;0;91;Myeloma;0
+1987;1988;65;1;0;11;Myeloma;1
+1987;1995;82;0;1;86;Diseases of Heart;0
+1987;1987;89;1;0;1;Myeloma;0
+1986;1989;62;1;0;42;Myeloma;0
+1987;1988;68;1;0;16;Myeloma;0
+1988;2018;43;0;1;359;Pancreas;0
+1988;1989;84;1;0;22;Myeloma;0
+1987;1988;73;0;1;8;Cerebrovascular Diseases;0
+1988;1992;79;0;1;47;Pancreas;0
+1987;1994;72;1;0;86;Myeloma;0
+1986;1992;76;1;0;69;Myeloma;12
+1988;2003;60;1;0;184;Myeloma;0
+1988;1992;74;0;1;41;Acute Myeloid Leukemia;1
+1988;2004;69;0;1;182;Pneumonia and Influenza;0
+1988;1992;45;0;1;40;Other Endocrine including Thymus;1
+1989;1991;68;1;0;23;Myeloma;0
+1988;1997;57;0;1;116;Non-Hodgkin Lymphoma;19
+1989;2011;55;0;1;265;Diseases of Heart;2
+1988;1989;73;0;1;16;Diseases of Heart;0
+1990;1992;74;0;1;32;Liver;0
+1990;1990;84;1;0;1;Myeloma;1
+1990;1998;85;0;1;90;Diseases of Heart;1
+1990;2004;57;0;1;164;In situ, benign or unknown behavior neoplasm;0
+1990;1992;79;0;1;29;Non-Hodgkin Lymphoma;0
+1990;1998;67;1;0;93;Myeloma;0
+1990;2000;79;1;0;119;Myeloma;7
+1990;1995;68;1;0;54;Myeloma;2
+1990;1998;47;0;1;87;Lung and Bronchus;0
+1991;2014;42;0;1;285;In situ, benign or unknown behavior neoplasm;0
+1990;1993;64;1;0;28;Myeloma;1
+1991;1991;81;0;1;9;Chronic Myeloid Leukemia;0
+1995;1996;77;1;0;13;Myeloma;2
+1991;1999;90;0;1;102;Diseases of Heart;1
+1991;1999;63;1;0;104;Myeloma;1
+1990;2016;50;0;1;308;Rectum and Rectosigmoid Junction;2
+1991;1993;77;1;0;23;Myeloma;0
+1991;1995;57;0;1;47;Pneumonia and Influenza;4
+1991;2005;62;0;1;166;Lung and Bronchus;1
+1990;1992;72;0;1;22;Diseases of Heart;1
+1991;2014;68;0;1;269;Bones and Joints;0
+1991;1993;42;0;1;28;Other Infectious and Parasitic Diseases including HIV;5
+1991;1992;82;0;1;7;Other Biliary;0
+1988;1996;70;0;1;96;Colon excluding Rectum;0
+1991;1995;68;0;1;36;Lung and Bronchus;1
+1982;1992;75;0;1;127;Acute Myeloid Leukemia;0
+1992;2004;67;0;1;144;Diseases of Heart;2
+1992;1993;81;1;0;10;Myeloma;1
+1991;1993;73;1;0;15;Myeloma;0
+1992;1999;81;0;1;85;Corpus Uteri;0
+1991;1998;63;0;1;77;Colon excluding Rectum;0
+1989;1993;68;1;0;47;Myeloma;1
+1992;2003;72;1;0;134;Myeloma;1
+1992;1994;72;1;0;27;Myeloma;0
+1990;2006;73;0;1;192;Melanoma of the Skin;0
+1992;1998;67;0;1;64;Other Cause of Death;0
+1992;1996;73;0;1;52;Lung and Bronchus;1
+1992;1993;88;1;0;6;Myeloma;0
+1992;1998;72;1;0;69;Myeloma;0
+1991;2004;72;1;0;156;Myeloma;1
+1992;1996;75;0;1;44;Diseases of Heart;0
+1992;1997;75;1;0;57;Myeloma;0
+1993;2005;68;1;0;145;Myeloma;1
+1992;2003;59;0;1;133;Non-Hodgkin Lymphoma;0
+1993;2001;49;1;0;103;Myeloma;0
+1993;1994;78;1;0;12;Myeloma;0
+1990;1997;68;1;0;82;Myeloma;0
+1993;2004;45;1;0;135;Myeloma;0
+1993;1994;64;0;1;15;Kidney and Renal Pelvis;1
+1993;1994;78;0;1;13;Chronic Myeloid Leukemia;3
+1993;2014;44;1;0;250;Myeloma;1
+1990;2008;59;0;1;219;Diseases of Heart;4
+1993;2019;43;0;1;304;Bones and Joints;0
+1994;1995;76;1;0;18;Myeloma;1
+1994;2012;45;1;0;220;Myeloma;1
+1990;2007;76;0;1;205;Diseases of Heart;0
+1994;1997;77;0;1;31;Chronic Myeloid Leukemia;0
+1994;2010;68;0;1;194;Other Infectious and Parasitic Diseases including HIV;2
+1994;1995;83;0;1;14;Breast;0
+1994;1994;86;1;0;3;Myeloma;0
+1992;1996;66;1;0;38;Myeloma;2
+1994;2008;51;1;0;166;Myeloma;1
+1994;2000;53;1;0;77;Myeloma;0
+1994;2004;71;1;0;124;Myeloma;0
+1992;2009;60;0;1;204;Diseases of Heart;0
+1995;2000;80;1;0;58;Myeloma;0
+1994;2007;71;0;1;145;Other Cause of Death;2
+1995;1998;74;0;1;37;Diseases of Heart;1
+1991;2003;54;0;1;138;Stomach;1
+1995;2009;81;0;1;175;Diseases of Heart;0
+1995;2002;57;0;1;90;Colon excluding Rectum;1
+1995;1997;69;1;0;29;Myeloma;0
+1995;2010;51;1;0;175;Myeloma;0
+1995;2006;75;0;1;135;Pneumonia and Influenza;0
+1995;2008;47;0;1;156;Chronic Liver Disease and Cirrhosis;3
+1995;2016;67;0;1;246;Cerebrovascular Diseases;0
+1995;2001;71;0;1;66;Other Myeloid/Monocytic Leukemia;1
+1995;2009;71;1;0;164;Myeloma;0
+1994;1998;68;0;1;43;Acute Myeloid Leukemia;0
+1996;2010;54;1;0;170;Myeloma;0
+1996;2007;71;1;0;138;Myeloma;1
+1996;2002;57;1;0;81;Miscellaneous Malignant Cancer;0
+1996;1996;79;1;0;8;Myeloma;0
+1996;2003;81;0;1;80;Stomach;0
+1996;2002;73;0;1;75;Thyroid;10
+1996;2012;59;0;1;187;Other Cause of Death;0
+1996;2003;73;0;1;88;Kidney and Renal Pelvis;0
+1996;2002;69;1;0;74;Myeloma;1
+1996;2003;65;0;1;87;Pancreas;0
+1996;1998;78;0;1;14;Acute Myeloid Leukemia;1
+1997;1999;62;1;0;26;Myeloma;0
+1996;2010;66;1;0;168;In situ, benign or unknown behavior neoplasm;3
+1997;2001;67;0;1;56;Pancreas;0
+1997;1999;65;1;0;27;Myeloma;0
+1997;1999;66;1;0;21;Myeloma;0
+1995;1999;66;0;1;52;Melanoma of the Skin;1
+2006;2017;82;0;1;133;Accidents and Adverse Effects;1
+1989;1999;53;0;1;118;Rectum and Rectosigmoid Junction;0
+1997;2008;66;1;0;122;Myeloma;0
+1997;1998;58;0;1;10;Kidney and Renal Pelvis;7
+1999;2009;76;0;1;122;Other Cause of Death;1
+1996;1999;76;0;1;36;Diseases of Heart;0
+1996;2002;51;1;0;75;Myeloma;0
+1998;2001;70;1;0;42;Myeloma;0
+1998;1998;75;0;1;2;Diseases of Heart;0
+1998;1998;49;0;1;2;Intrahepatic Bile Duct;0
+1998;2004;79;1;0;76;Myeloma;1
+1998;2003;73;0;1;53;Lung and Bronchus;0
+1998;2013;57;0;1;177;Lung and Bronchus;0
+1992;2007;52;0;1;184;Salivary Gland;0
+1998;2005;73;0;1;85;Rectum and Rectosigmoid Junction;1
+1998;2005;45;0;1;73;Breast;0
+1998;2014;60;1;0;182;Myeloma;0
+1999;2000;79;1;0;19;Myeloma;0
+1999;2005;51;1;0;71;Miscellaneous Malignant Cancer;1
+1999;2001;70;0;1;31;Lung and Bronchus;0
+1999;2004;67;1;0;59;Myeloma;0
+1998;2010;57;1;0;139;Myeloma;0
+1999;2010;58;1;0;131;Myeloma;1
+1999;2010;53;1;0;127;Miscellaneous Malignant Cancer;0
+1999;2005;77;0;1;73;Diabetes Mellitus;0
+1999;2012;55;0;1;154;Nephritis, Nephrotic Syndrome and Nephrosis;0
+1999;2001;41;0;1;17;Lung and Bronchus;0
+1999;2002;55;0;1;36;Colon excluding Rectum;2
+2000;2012;55;1;0;146;Myeloma;0
+1999;2010;53;1;0;127;Myeloma;0
+1999;2004;73;0;1;61;Other Acute Leukemia;0
+2000;2008;69;0;1;98;Non-Hodgkin Lymphoma;0
+2000;2018;69;0;1;218;Other Cause of Death;0
+2000;2005;66;0;1;62;Melanoma of the Skin;0
+2000;2004;78;1;0;42;Myeloma;0
+2000;2009;55;1;0;116;Myeloma;0
+1999;2002;66;1;0;38;Myeloma;4
+2000;2007;78;1;0;82;Myeloma;0
+2001;2001;68;0;1;10;Liver;0
+2000;2001;74;0;1;9;Pancreas;0
+2001;2003;69;0;1;27;Acute Myeloid Leukemia;2
+2001;2001;75;1;0;2;Myeloma;0
+2000;2011;59;1;0;133;Myeloma;1
+2000;2009;73;0;1;108;Pneumonia and Influenza;1
+2001;2001;72;0;1;1;In situ, benign or unknown behavior neoplasm;0
+2001;2002;75;1;0;8;Myeloma;1
+2001;2002;69;0;1;10;Other Biliary;0
+2000;2006;75;0;1;71;Diseases of Heart;1
+2001;2005;65;1;0;43;Myeloma;0
+2001;2003;63;1;0;21;Myeloma;0
+2001;2006;74;0;1;56;Pancreas;3
+2001;2007;75;0;1;76;Miscellaneous Malignant Cancer;0
+2001;2009;66;1;0;93;Myeloma;1
+2001;2018;57;1;0;196;Myeloma;0
+2001;2016;70;1;0;179;Myeloma;0
+2002;2007;64;0;1;67;Nose, Nasal Cavity and Middle Ear;0
+2002;2004;74;0;1;27;Liver;0
+2002;2002;74;1;0;1;Myeloma;1
+2002;2004;69;1;0;21;Myeloma;0
+2002;2004;77;0;1;24;Accidents and Adverse Effects;1
+2002;2012;62;0;1;118;Lung and Bronchus;0
+2000;2003;75;0;1;26;Chronic Obstructive Pulmonary Disease and Allied Cond;0
+2000;2008;73;1;0;91;Myeloma;0
+2002;2020;57;0;1;214;Acute Lymphocytic Leukemia;0
+2002;2007;81;0;1;61;Urinary Bladder;0
+2002;2004;56;1;0;22;Myeloma;1
+2002;2017;59;1;0;175;Myeloma;1
+2002;2010;73;0;1;94;Brain and Other Nervous System;0
+2002;2005;70;1;0;28;Myeloma;0
+2002;2005;77;1;0;34;Myeloma;2
+2002;2010;64;1;0;103;Myeloma;0
+2002;2009;61;1;0;77;Myeloma;0
+2003;2008;55;1;0;69;Myeloma;0
+2002;2005;68;0;1;29;Diseases of Heart;0
+2003;2005;62;1;0;25;Myeloma;1
+2002;2009;62;1;0;85;Myeloma;0
+2003;2007;85;0;1;54;Chronic Obstructive Pulmonary Disease and Allied Cond;1
+2002;2008;72;0;1;64;Brain and Other Nervous System;1
+2002;2004;75;1;0;19;Miscellaneous Malignant Cancer;0
+2003;2006;79;1;0;35;Myeloma;1
+2003;2006;69;1;0;34;Myeloma;0
+2003;2012;63;1;0;114;Myeloma;0
+2003;2011;75;1;0;96;Myeloma;0
+2002;2020;54;0;1;215;Chronic Obstructive Pulmonary Disease and Allied Cond;10
+2003;2010;57;0;1;79;Non-Hodgkin Lymphoma;0
+2003;2006;73;0;1;29;Urinary Bladder;0
+2003;2012;64;1;0;102;Myeloma;0
+2003;2008;81;0;1;58;Stomach;0
+2003;2009;69;1;0;74;Myeloma;2
+1999;2007;74;1;0;96;Myeloma;0
+2003;2003;57;1;0;4;Myeloma;1
+2003;2012;53;1;0;112;Miscellaneous Malignant Cancer;1
+2003;2020;48;1;0;203;Myeloma;0
+2003;2005;79;1;0;29;Myeloma;0
+2004;2010;79;0;1;72;Colon excluding Rectum;0
+2003;2007;75;1;0;43;Myeloma;2
+2004;2016;61;1;0;149;Myeloma;2
+2003;2009;69;1;0;74;Myeloma;8
+2003;2020;67;0;1;196;Acute Lymphocytic Leukemia;1
+2004;2019;57;0;1;184;Aortic Aneurysm and Dissection;0
+2004;2011;58;0;1;84;Ovary;0
+2004;2012;70;0;1;95;Pancreas;0
+2004;2016;71;0;1;149;Other Cause of Death;0
+2004;2010;61;1;0;69;Myeloma;0
+2002;2008;71;1;0;73;Myeloma;0
+2004;2019;52;0;1;176;Small Intestine;2
+2004;2006;46;1;0;18;Aleukemic, Subleukemic and NOS;1
+2004;2012;75;0;1;97;Ovary;2
+2004;2007;71;1;0;32;Myeloma;0
+2004;2005;68;1;0;1;Myeloma;1
+2004;2017;60;1;0;145;Myeloma;0
+2004;2009;57;0;1;55;Tongue;2
+2004;2005;81;0;1;1;Diseases of Heart;1
+2005;2019;63;0;1;174;Melanoma of the Skin;3
+2005;2007;63;1;0;33;Myeloma;0
+2005;2005;83;1;0;6;Myeloma;2
+2005;2009;75;0;1;44;In situ, benign or unknown behavior neoplasm;0
+2005;2007;70;1;0;26;Myeloma;0
+2005;2011;68;0;1;65;Colon excluding Rectum;0
+2006;2014;67;0;1;95;Other Cause of Death;1
+2006;2008;76;0;1;30;Colon excluding Rectum;3
+2006;2020;57;0;1;168;Other Cause of Death;2
+2006;2011;72;1;0;57;Myeloma;1
+2006;2010;68;1;0;52;Myeloma;1
+2005;2016;71;1;0;127;Myeloma;0
+2006;2006;63;1;0;3;Myeloma;0
+2006;2012;70;0;1;68;Lung and Bronchus;1
+2006;2013;84;0;1;77;Prostate;0
+2006;2008;78;1;0;19;Myeloma;0
+2006;2017;57;0;1;132;Septicemia;1
+2006;2013;69;1;0;84;Myeloma;0
+2006;2019;55;1;0;157;Myeloma;2
+2007;2014;72;0;1;82;Other Cause of Death;1
+2007;2012;57;1;0;70;Myeloma;1
+2007;2010;76;1;0;32;Myeloma;0
+2007;2018;63;1;0;133;Myeloma;0
+2007;2014;48;1;0;79;Myeloma;0
+2007;2016;62;1;0;105;Myeloma;0
+2007;2012;79;1;0;60;Myeloma;0
+2007;2015;52;1;0;89;Myeloma;0
+2007;2011;58;1;0;45;Myeloma;1
+2007;2007;67;0;1;1;Kidney and Renal Pelvis;0
+2007;2011;74;1;0;43;Myeloma;3
+2007;2014;68;1;0;79;Myeloma;1
+2008;2019;62;0;1;131;Brain and Other Nervous System;1
+2008;2017;62;1;0;111;Myeloma;0
+2008;2014;52;1;0;77;Myeloma;0
+2008;2017;69;1;0;111;Myeloma;2
+2008;2009;88;1;0;7;Myeloma;5
+2008;2008;87;0;1;3;Chronic Obstructive Pulmonary Disease and Allied Cond;1
+2008;2011;72;0;1;31;Lung and Bronchus;1
+2008;2014;84;0;1;63;Other Cause of Death;3
+2008;2018;47;1;0;110;Myeloma;1
+2009;2013;47;1;0;56;Myeloma;1
+2008;2010;61;1;0;15;Miscellaneous Malignant Cancer;2
+2009;2017;71;1;0;102;Miscellaneous Malignant Cancer;3
+2009;2012;68;1;0;46;Myeloma;0
+2009;2019;54;1;0;120;Myeloma;0
+2008;2010;56;1;0;20;Myeloma;0
+2008;2009;85;0;1;4;Lung and Bronchus;1
+2009;2016;49;0;1;82;Colon excluding Rectum;0
+2009;2018;69;1;0;115;Myeloma;1
+2008;2020;66;0;1;134;Pancreas;0
+2009;2011;73;1;0;25;Myeloma;0
+2009;2013;74;1;0;42;Myeloma;0
+2009;2020;66;1;0;130;Myeloma;0
+2009;2013;73;1;0;48;Myeloma;3
+2009;2014;53;0;1;54;Diabetes Mellitus;1
+2009;2016;57;0;1;77;Soft Tissue including Heart;1
+2009;2010;82;1;0;6;Myeloma;5
+2009;2011;68;1;0;19;Myeloma;1
+2010;2020;60;1;0;118;Myeloma;1
+2010;2014;62;0;1;48;Other Cause of Death;1
+2010;2014;77;1;0;51;Myeloma;3
+2010;2018;78;1;0;92;Myeloma;3
+2010;2015;78;1;0;57;Myeloma;1
+2010;2013;58;1;0;36;Myeloma;0
+2010;2013;63;1;0;39;Myeloma;6
+2010;2013;65;1;0;38;Myeloma;1
+2010;2014;57;1;0;48;Myeloma;1
+2010;2014;70;1;0;45;Miscellaneous Malignant Cancer;1
+2010;2011;75;0;1;10;Cerebrovascular Diseases;1
+2010;2016;72;0;1;68;Pancreas;2
+2010;2015;68;1;0;54;Myeloma;2
+2011;2016;47;1;0;63;Aleukemic, Subleukemic and NOS;0
+2011;2020;69;1;0;114;Myeloma;0
+2011;2016;67;1;0;63;Myeloma;2
+2011;2013;61;0;1;21;Acute Lymphocytic Leukemia;1
+2011;2017;86;0;1;71;Other Cause of Death;1
+2011;2016;82;0;1;64;Esophagus;1
+2011;2012;79;1;0;14;Myeloma;0
+2011;2015;66;1;0;47;Myeloma;2
+2010;2012;77;1;0;23;Myeloma;0
+2011;2019;57;0;1;97;Other Cause of Death;1
+2011;2018;57;1;0;77;Myeloma;1
+2011;2015;66;1;0;45;Myeloma;1
+2011;2018;61;0;1;76;Kidney and Renal Pelvis;0
+2011;2013;74;0;1;15;Acute Myeloid Leukemia;2
+2011;2020;64;1;0;98;Myeloma;2
+2011;2018;42;0;1;80;Other Infectious and Parasitic Diseases including HIV;2
+2011;2014;82;1;0;36;Myeloma;1
+2012;2014;58;1;0;28;Myeloma;0
+2012;2016;65;0;1;48;Diseases of Heart;0
+2011;2018;68;0;1;79;Chronic Obstructive Pulmonary Disease and Allied Cond;0
+2012;2016;68;1;0;43;Myeloma;0
+2012;2015;79;0;1;36;Cerebrovascular Diseases;0
+2012;2014;81;1;0;25;Myeloma;5
+2012;2014;74;1;0;24;Myeloma;0
+2012;2017;76;1;0;56;Myeloma;0
+2012;2017;69;0;1;58;Stomach;1
+2012;2016;70;1;0;40;Myeloma;2
+2012;2016;82;0;1;42;Non-Hodgkin Lymphoma;1
+2012;2018;84;0;1;72;Lung and Bronchus;1
+2012;2018;67;0;1;70;Pancreas;2
+2013;2014;79;0;1;16;Liver;0
+2012;2017;71;1;0;57;Myeloma;2
+2013;2018;76;1;0;59;Myeloma;0
+2013;2015;71;0;1;31;Pancreas;1
+2013;2015;80;0;1;25;Lung and Bronchus;2
+2013;2014;62;1;0;11;Myeloma;0
+2013;2014;86;1;0;15;Myeloma;2
+2013;2014;77;1;0;15;Myeloma;0
+2013;2016;49;0;1;30;Pneumonia and Influenza;1
+2013;2015;74;1;0;17;Aleukemic, Subleukemic and NOS;3
+2013;2014;65;1;0;3;Miscellaneous Malignant Cancer;0
+2013;2016;62;0;1;36;Stomach;0
+2013;2018;62;0;1;51;Accidents and Adverse Effects;0
+2013;2015;65;1;0;17;Myeloma;2
+2014;2017;74;1;0;35;Myeloma;0
+2014;2016;76;0;1;22;Pancreas;1
+2014;2020;59;0;1;77;Hodgkin Lymphoma;2
+2014;2016;51;1;0;21;Miscellaneous Malignant Cancer;1
+2014;2015;86;1;0;18;Myeloma;1
+2014;2017;62;1;0;34;Myeloma;1
+2014;2020;67;0;1;73;Lung and Bronchus;1
+2015;2019;84;0;1;50;Lung and Bronchus;0
+2014;2019;57;1;0;52;Myeloma;1
+2015;2020;64;0;1;70;Urinary Bladder;0
+2015;2019;68;1;0;51;Myeloma;2
+2015;2020;61;0;1;60;Lung and Bronchus;0
+2015;2018;75;1;0;37;Myeloma;0
+2015;2020;67;1;0;62;Myeloma;1
+2015;2016;73;1;0;4;Myeloma;1
+2016;2018;83;0;1;22;Urinary Bladder;1
+2016;2019;63;0;1;41;In situ, benign or unknown behavior neoplasm;0
+2016;2019;72;0;1;41;Nephritis, Nephrotic Syndrome and Nephrosis;0
+2016;2017;57;1;0;5;Myeloma;0
+2016;2019;31;1;0;36;Miscellaneous Malignant Cancer;5
+2015;2019;64;1;0;37;Myeloma;0
+2016;2020;76;1;0;48;Myeloma;1
+2016;2018;69;1;0;21;Myeloma;1
+2016;2020;67;1;0;47;Miscellaneous Malignant Cancer;0
+2017;2020;81;0;1;46;Other Cause of Death;0
+2017;2019;65;0;1;31;Kidney and Renal Pelvis;3
+2017;2018;65;0;1;20;Diseases of Heart;0
+2016;2017;77;0;1;6;Chronic Lymphocytic Leukemia;0
+2017;2017;63;1;0;2;Myeloma;1
+2017;2017;72;0;1;1;Cerebrovascular Diseases;0
+2017;2018;73;0;1;11;Brain and Other Nervous System;1
+2017;2019;81;0;1;18;Diseases of Heart;1
+2017;2019;59;1;0;18;Myeloma;0
+2017;2018;78;0;1;6;Kidney and Renal Pelvis;0
+2018;2019;77;0;1;8;Other Cause of Death;0
+2018;2019;80;1;0;9;Myeloma;1
+2019;2019;84;1;0;6;Myeloma;0
+2019;2020;90;0;1;17;Accidents and Adverse Effects;0
+2019;2020;82;1;0;16;Myeloma;1
+2019;2020;75;1;0;8;Myeloma;1
+1976;1981;68;0;1;67;Acute Myeloid Leukemia;0
+1976;1983;55;0;1;84;Prostate;0
+1977;1993;57;0;1;200;Other Cause of Death;1
+1977;2008;51;0;1;373;Other Acute Leukemia;1
+1978;2019;39;0;1;497;Septicemia;0
+1978;1980;57;0;1;26;Uterus, NOS;12
+1981;1982;75;1;0;22;Myeloma;0
+1982;1989;63;0;1;92;Other Cause of Death;3
+1983;1985;76;1;0;29;Myeloma;0
+1984;1987;73;0;1;45;Cervix Uteri;1
+1984;1991;54;1;0;86;Myeloma;0
+1984;1989;74;1;0;64;Myeloma;0
+1984;1985;63;0;1;10;Pancreas;0
+1985;1992;85;0;1;79;Other Biliary;1
+1985;2014;53;0;1;349;Soft Tissue including Heart;1
+1986;1988;69;1;0;19;Myeloma;0
+1986;1994;57;1;0;98;Myeloma;0
+1986;1990;69;0;1;43;Colon excluding Rectum;0
+1982;1988;67;1;0;79;Myeloma;1
+1986;1988;69;0;1;25;Lung and Bronchus;1
+1986;1989;63;0;1;28;Ovary;0
+1996;2016;30;1;0;230;Myeloma;0
+1996;1998;77;1;0;28;Myeloma;0
+1998;1999;71;1;0;19;Myeloma;0
+1998;2010;58;1;0;141;Myeloma;1
+1998;2008;76;1;0;117;Myeloma;1
+1999;2002;80;1;0;29;Myeloma;0
+1999;2011;41;1;0;137;Myeloma;0
+1999;2004;69;1;0;54;Myeloma;0
+1999;2002;72;1;0;34;Myeloma;0
+2000;2015;70;0;1;181;Other Cause of Death;1
+1999;2001;73;1;0;23;Myeloma;1
+2001;2013;62;1;0;143;Myeloma;1
+2001;2003;53;1;0;29;Myeloma;0
+2001;2018;64;0;1;207;Pancreas;0
+2002;2003;64;1;0;11;Myeloma;0
+2002;2013;58;0;1;131;Acute Myeloid Leukemia;0
+2003;2013;75;1;0;117;Myeloma;0
+2003;2012;69;0;1;108;Lung and Bronchus;1
+2004;2005;54;1;0;20;Myeloma;0
+2004;2013;58;1;0;106;Myeloma;1
+2004;2006;59;0;1;25;Chronic Obstructive Pulmonary Disease and Allied Cond;1
+2005;2018;56;1;0;159;Myeloma;0
+2004;2009;67;1;0;61;Myeloma;1
+1987;1990;74;0;1;27;Colon excluding Rectum;0
+1988;1989;72;1;0;13;Myeloma;1
+1989;1989;49;1;0;3;Aleukemic, Subleukemic and NOS;0
+1990;2019;48;0;1;346;Miscellaneous Malignant Cancer;1
+1990;1997;76;1;0;91;Myeloma;1
+1991;1996;64;1;0;62;Myeloma;0
+1991;2014;40;0;1;269;Acute Myeloid Leukemia;0
+1993;2001;79;0;1;102;Miscellaneous Malignant Cancer;10
+1995;1999;78;0;1;51;Lung and Bronchus;1
+1994;1997;82;1;0;39;Myeloma;0
+1995;2005;63;0;1;124;Diseases of Heart;1
+1995;2005;65;1;0;112;Myeloma;0
+2000;2012;65;1;0;150;Myeloma;2
+2003;2010;51;1;0;85;Miscellaneous Malignant Cancer;1
+2004;2007;82;0;1;41;Pancreas;2
+2007;2010;79;1;0;45;Myeloma;1
+2006;2017;43;1;0;124;Myeloma;4
+2007;2007;77;1;0;1;Myeloma;0
+2007;2010;66;1;0;29;Myeloma;1
+2008;2014;54;1;0;82;Myeloma;1
+2008;2008;69;1;0;3;Myeloma;0
+2008;2013;64;0;1;64;Brain and Other Nervous System;0
+2008;2013;74;1;0;68;Miscellaneous Malignant Cancer;1
+2008;2018;54;1;0;122;Myeloma;7
+2009;2018;71;1;0;107;Myeloma;1
+2009;2015;68;0;1;77;Suicide and Self-Inflicted Injury;1
+2009;2013;79;1;0;46;Myeloma;1
+2010;2012;65;1;0;23;Miscellaneous Malignant Cancer;5
+2010;2018;61;0;1;94;Cerebrovascular Diseases;2
+2008;2012;69;0;1;48;Acute Myeloid Leukemia;0
+2010;2015;81;0;1;57;Chronic Obstructive Pulmonary Disease and Allied Cond;1
+2011;2013;65;1;0;29;Myeloma;0
+2011;2012;70;1;0;19;Myeloma;2
+2006;2007;73;0;1;4;Non-Hodgkin Lymphoma;0
+2008;2008;66;1;0;6;Myeloma;4
+2009;2017;56;1;0;91;Myeloma;1
+2010;2019;78;0;1;104;Prostate;0
+2011;2012;72;1;0;9;Myeloma;0
+2011;2016;73;1;0;59;Myeloma;2
+2012;2018;74;1;0;69;Myeloma;0
+2012;2015;52;1;0;33;Myeloma;0
+2012;2018;65;1;0;81;Myeloma;2
+2012;2014;63;1;0;20;Myeloma;0
+2012;2018;75;1;0;70;Myeloma;0
+2012;2018;82;0;1;73;Diseases of Heart;1
+2013;2015;80;1;0;22;Aleukemic, Subleukemic and NOS;1
+2013;2020;70;1;0;86;Myeloma;0
+2015;2020;82;0;1;59;Urinary Bladder;1
+2014;2020;81;1;0;74;Myeloma;0
+2013;2019;72;0;1;64;Lung and Bronchus;1
+2015;2018;58;1;0;37;Aleukemic, Subleukemic and NOS;0
+2016;2019;69;1;0;33;Myeloma;0
+2015;2019;62;1;0;56;Myeloma;1
+2005;2017;68;0;1;136;Accidents and Adverse Effects;1
+2016;2020;67;1;0;48;Myeloma;1
+2016;2020;72;1;0;45;Miscellaneous Malignant Cancer;0
+2016;2017;56;0;1;11;Lung and Bronchus;2
+2016;2018;72;1;0;18;Myeloma;1
+2014;2020;73;0;1;76;Thyroid;2
+2016;2018;65;1;0;16;Myeloma;1
+2017;2017;71;1;0;4;Myeloma;0
+2018;2020;76;0;1;24;Suicide and Self-Inflicted Injury;1
+2019;2020;74;0;1;6;Brain and Other Nervous System;1
+2020;2020;73;1;0;3;Myeloma;2
+1976;2002;52;0;1;311;Chronic Obstructive Pulmonary Disease and Allied Cond;1
+1976;1976;67;1;0;1;Myeloma;0
+1976;1994;71;0;1;219;Diseases of Heart;1
+1977;1985;59;1;0;88;Myeloma;0
+1978;1992;50;1;0;170;Myeloma;1
+1977;1995;66;0;1;214;Other Cause of Death;0
+1978;2000;51;0;1;263;Nephritis, Nephrotic Syndrome and Nephrosis;3
+1979;1981;54;0;1;24;Colon excluding Rectum;0
+1979;1984;62;0;1;52;Non-Hodgkin Lymphoma;0
+1981;1986;78;1;0;55;Myeloma;1
+1982;1983;63;1;0;20;Myeloma;0
+1983;1989;65;0;1;62;In situ, benign or unknown behavior neoplasm;0
+1983;1989;77;1;0;71;Myeloma;1
+1984;1989;70;1;0;67;Myeloma;0
+1984;1989;73;0;1;66;Acute Myeloid Leukemia;0
+1984;1986;72;1;0;26;Myeloma;0
+1985;1988;79;1;0;36;Myeloma;0
+1985;1987;70;0;1;26;Non-Hodgkin Lymphoma;0
+1986;1989;65;1;0;41;Myeloma;0
+1986;1989;82;0;1;33;Acute Myeloid Leukemia;0
+1986;2019;44;0;1;389;Diseases of Heart;0
+2009;2017;57;0;1;95;Lung and Bronchus;1
+1986;1988;77;1;0;29;Myeloma;1
+1987;1993;69;1;0;67;Myeloma;0
+1987;2012;51;0;1;296;Septicemia;0
+1987;1990;67;0;1;33;Diseases of Heart;0
+1988;1995;67;1;0;83;Myeloma;0
+1988;1990;69;1;0;31;Myeloma;0
+1988;1993;45;0;1;67;Soft Tissue including Heart;0
+1989;1993;79;0;1;55;Lung and Bronchus;1
+1989;1996;54;0;1;81;Acute Myeloid Leukemia;1
+1987;2011;55;0;1;296;Other Cause of Death;0
+1989;1996;75;0;1;75;Diseases of Heart;2
+1989;1990;60;0;1;6;Corpus Uteri;1
+1989;1989;67;0;1;0;Lung and Bronchus;0
+1989;1992;60;1;0;38;Myeloma;0
+1990;1996;46;0;1;72;Acute Myeloid Leukemia;0
+1987;1992;66;0;1;66;Chronic Obstructive Pulmonary Disease and Allied Cond;12
+1991;1999;70;0;1;93;Ovary;1
+1991;2009;66;0;1;216;Nephritis, Nephrotic Syndrome and Nephrosis;0
+1991;1992;61;1;0;9;Myeloma;0
+1991;1995;90;1;0;47;Myeloma;1
+1991;1995;64;0;1;39;Prostate;1
+1991;1993;76;0;1;18;Diseases of Heart;1
+1991;2018;29;0;1;320;Urinary Bladder;1
+1989;1998;69;1;0;103;Myeloma;1
+1991;1995;75;0;1;44;Pancreas;1
+1991;1993;66;1;0;26;Myeloma;0
+1992;1994;63;0;1;26;Pancreas;1
+1992;1999;58;0;1;89;Prostate;0
+1986;1994;71;1;0;104;Myeloma;0
+1993;1995;68;1;0;17;Myeloma;0
+1993;2002;71;0;1;107;Prostate;0
+1993;2016;47;0;1;277;Septicemia;1
+1993;2014;60;0;1;248;Diseases of Heart;0
+1993;1997;62;1;0;41;Myeloma;0
+1994;1994;61;0;1;8;Pancreas;0
+1994;1995;73;1;0;12;Myeloma;1
+1994;2004;45;1;0;120;Myeloma;0
+1994;1995;69;1;0;12;Myeloma;1
+1995;1996;64;0;1;17;Lung and Bronchus;1
+1995;2006;55;0;1;134;Lung and Bronchus;0
+1993;2000;45;1;0;77;Myeloma;0
+1995;2010;47;1;0;184;State DC not available or state DC available but no COD;0
+1995;1997;60;0;1;24;Non-Hodgkin Lymphoma;0
+1995;2002;50;1;0;86;Myeloma;0
+1995;2013;53;0;1;219;Diseases of Heart;0
+1996;1996;83;0;1;3;Cerebrovascular Diseases;0
+1996;2019;53;0;1;266;Pancreas;0
+1997;2000;73;1;0;29;Myeloma;0
+1997;2009;74;1;0;142;Myeloma;1
+1995;1997;72;1;0;23;Myeloma;1
+1997;2003;51;1;0;68;Myeloma;2
+1997;2015;48;1;0;209;Myeloma;0
+1997;2018;44;0;1;250;Pancreas;1
+1999;2012;60;0;1;156;Chronic Obstructive Pulmonary Disease and Allied Cond;0
+1999;2016;44;0;1;209;Other Myeloid/Monocytic Leukemia;0
+1999;2006;66;1;0;85;Myeloma;1
+1998;2006;71;0;1;92;Chronic Obstructive Pulmonary Disease and Allied Cond;0
+1999;2009;64;0;1;126;Other Cause of Death;2
+1999;2004;55;1;0;53;Myeloma;2
+1999;2015;54;0;1;190;Pneumonia and Influenza;1
+2000;2001;84;1;0;17;Myeloma;0
+2000;2009;66;1;0;110;Myeloma;0
+1998;2001;76;0;1;28;Pancreas;1
+2000;2005;50;0;1;60;Nephritis, Nephrotic Syndrome and Nephrosis;1
+2000;2017;56;0;1;212;Diseases of Heart;1
+1999;2013;63;0;1;166;Colon excluding Rectum;1
+1998;2008;70;0;1;115;Cerebrovascular Diseases;0
+2001;2016;62;1;0;189;Myeloma;0
+2001;2005;78;0;1;56;Colon excluding Rectum;0
+2001;2004;77;1;0;35;Miscellaneous Malignant Cancer;0
+2000;2013;44;1;0;158;Myeloma;2
+1999;2002;58;0;1;29;Lung and Bronchus;0
+2002;2004;52;0;1;30;Breast;0
+2001;2003;71;1;0;19;Miscellaneous Malignant Cancer;0
+2001;2006;62;0;1;62;Cerebrovascular Diseases;9
+2002;2003;64;1;0;18;Miscellaneous Malignant Cancer;1
+2002;2004;60;1;0;27;Myeloma;0
+2003;2006;68;1;0;40;Miscellaneous Malignant Cancer;0
+2003;2005;83;1;0;28;Myeloma;0
+2003;2012;45;1;0;108;Myeloma;0
+2003;2008;81;1;0;57;Myeloma;0
+2002;2015;53;1;0;149;Myeloma;0
+1998;2020;63;1;0;269;Myeloma;0
+1999;2005;78;0;1;72;Lung and Bronchus;2
+2004;2013;47;0;1;101;Acute Myeloid Leukemia;2
+2004;2016;67;0;1;136;Diseases of Heart;0
+2004;2004;42;0;1;1;Ovary;0
+2004;2007;62;0;1;36;Brain and Other Nervous System;0
+2005;2006;82;0;1;7;Other Cause of Death;0
+2005;2015;57;0;1;130;Lung and Bronchus;2
+2004;2008;74;1;0;38;Myeloma;2
+2004;2016;72;0;1;143;Prostate;0
+2004;2013;75;1;0;118;Myeloma;0
+2005;2009;73;0;1;49;Diseases of Heart;1
+2005;2018;56;1;0;147;Myeloma;0
+2006;2008;64;1;0;31;Myeloma;0
+2006;2006;63;0;1;2;Lung and Bronchus;0
+2006;2019;56;1;0;159;Myeloma;3
+2006;2006;82;1;0;3;Miscellaneous Malignant Cancer;2
+2005;2012;47;0;1;80;Other Infectious and Parasitic Diseases including HIV;1
+2007;2012;69;1;0;60;Myeloma;0
+2007;2019;50;0;1;145;Soft Tissue including Heart;0
+2007;2007;74;0;1;1;Other Infectious and Parasitic Diseases including HIV;1
+2007;2009;65;0;1;19;Non-Hodgkin Lymphoma;1
+2007;2014;53;1;0;85;Miscellaneous Malignant Cancer;11
+2007;2013;76;0;1;73;Other Cause of Death;1
+2006;2015;43;0;1;111;Prostate;8
+2008;2008;81;1;0;6;Myeloma;2
+2008;2014;65;1;0;70;Myeloma;0
+2008;2019;42;1;0;127;Myeloma;0
+2008;2012;64;0;1;47;Lung and Bronchus;0
+2008;2014;66;0;1;67;Prostate;2
+2008;2009;88;0;1;3;Prostate;2
+2007;2009;64;1;0;20;Myeloma;0
+2009;2014;82;1;0;66;Myeloma;0
+2008;2017;66;0;1;103;Non-Hodgkin Lymphoma;6
+2009;2015;73;1;0;80;Myeloma;0
+2007;2018;61;0;1;125;Accidents and Adverse Effects;0
+2009;2019;62;1;0;120;Myeloma;1
+2009;2012;72;1;0;32;Myeloma;1
+2009;2019;65;0;1;116;Colon excluding Rectum;2
+2010;2017;68;1;0;84;Myeloma;0
+2009;2018;76;0;1;106;Lung and Bronchus;1
+2009;2013;59;0;1;50;Lung and Bronchus;5
+2009;2017;70;0;1;95;Cerebrovascular Diseases;5
+2009;2011;83;1;0;24;Myeloma;1
+2010;2016;67;1;0;70;Myeloma;2
+2010;2014;58;1;0;50;Myeloma;1
+2010;2016;60;0;1;72;Acute Myeloid Leukemia;1
+2010;2015;81;0;1;56;Nephritis, Nephrotic Syndrome and Nephrosis;1
+2010;2011;60;1;0;4;Myeloma;0
+2010;2015;51;1;0;52;Myeloma;2
+2010;2018;67;1;0;94;Myeloma;3
+2010;2020;45;1;0;111;Myeloma;0
+2010;2017;50;1;0;85;Myeloma;1
+2010;2015;74;1;0;61;Myeloma;1
+2010;2017;59;1;0;83;Myeloma;2
+2010;2015;71;1;0;55;Myeloma;0
+2010;2011;48;0;1;5;Other Endocrine including Thymus;2
+2011;2016;65;0;1;69;Acute Myeloid Leukemia;1
+2011;2013;53;1;0;25;Myeloma;1
+2011;2013;54;1;0;25;Myeloma;3
+2011;2016;60;0;1;66;Acute Myeloid Leukemia;0
+2011;2020;66;1;0;101;Miscellaneous Malignant Cancer;0
+2011;2013;80;1;0;22;Myeloma;0
+2009;2014;70;0;1;62;Breast;1
+2009;2012;83;0;1;37;In situ, benign or unknown behavior neoplasm;0
+2011;2019;55;0;1;93;Nephritis, Nephrotic Syndrome and Nephrosis;0
+2009;2015;72;0;1;70;Acute Myeloid Leukemia;4
+2011;2013;44;0;1;16;Rectum and Rectosigmoid Junction;0
+1990;2010;59;1;0;244;Myeloma;4
+2012;2018;64;0;1;78;Soft Tissue including Heart;1
+2012;2015;62;1;0;39;Myeloma;1
+2012;2014;65;0;1;25;Lung and Bronchus;1
+2012;2015;69;1;0;30;Myeloma;0
+2012;2020;59;0;1;99;Urinary Bladder;0
+2012;2020;42;1;0;99;Myeloma;0
+2012;2013;65;1;0;12;Myeloma;1
+2012;2018;61;1;0;70;Myeloma;0
+2013;2017;46;1;0;49;Aleukemic, Subleukemic and NOS;1
+2013;2020;69;1;0;81;Myeloma;1
+2012;2016;73;1;0;44;Myeloma;1
+2012;2019;53;1;0;83;Myeloma;0
+2013;2017;67;0;1;46;In situ, benign or unknown behavior neoplasm;0
+2013;2020;63;0;1;91;Accidents and Adverse Effects;0
+2013;2015;69;1;0;22;Myeloma;1
+2013;2018;69;1;0;49;Myeloma;0
+2014;2020;71;0;1;76;Lung and Bronchus;1
+2014;2019;57;0;1;59;Acute Myeloid Leukemia;0
+2014;2018;78;1;0;53;Myeloma;1
+2013;2015;73;1;0;22;Myeloma;5
+2011;2016;80;1;0;59;Miscellaneous Malignant Cancer;1
+2013;2020;45;1;0;79;Myeloma;1
+2014;2019;72;1;0;57;Myeloma;0
+2003;2017;69;1;0;166;Myeloma;0
+2014;2019;58;1;0;57;Myeloma;0
+2014;2015;75;1;0;2;Myeloma;2
+2015;2019;63;0;1;58;Pancreas;0
+2006;2016;61;0;1;115;Cerebrovascular Diseases;0
+2015;2020;66;0;1;56;Liver;1
+2015;2018;52;0;1;36;Acute Myeloid Leukemia;1
+2015;2020;42;1;0;50;Myeloma;2
+2015;2020;47;1;0;65;Myeloma;0
+2015;2020;52;1;0;61;Myeloma;1
+2015;2018;82;1;0;43;Myeloma;1
+2015;2018;71;0;1;34;Stomach;1
+2016;2020;69;0;1;50;Lung and Bronchus;1
+2015;2019;48;1;0;50;Myeloma;1
+1989;1991;76;1;0;21;State DC not available or state DC available but no COD;0
+2016;2017;73;0;1;10;Lung and Bronchus;2
+2016;2018;79;0;1;21;Lung and Bronchus;1
+2017;2017;73;1;0;2;Miscellaneous Malignant Cancer;1
+2013;2016;69;0;1;32;Nephritis, Nephrotic Syndrome and Nephrosis;0
+2017;2018;66;0;1;14;Colon excluding Rectum;1
+2017;2020;64;1;0;41;Myeloma;0
+2017;2020;68;0;1;27;Lung and Bronchus;1
+2018;2018;66;0;1;0;Septicemia;0
+2018;2020;73;0;1;30;Hypertension without Heart Disease;1
+2018;2020;67;0;1;14;Diseases of Heart;3
+2019;2020;88;1;0;18;Miscellaneous Malignant Cancer;0
+2019;2020;55;1;0;14;Myeloma;1

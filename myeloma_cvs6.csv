@@ -1,0 +1,162 @@
+"Age recode with single ages and 90+";"Race recode (W, B, AI, API)";"Sex";"EMD";"EMD Site - labeled";"COD to site recode";"SEER cause-specific death classification";"Survival"
+45;White;Female;9731/3: Solitary plasmacytoma of bone;C41.0-Bones of skull and face and associated joints;Myeloma;Dead (attributable to this cancer dx);213
+70;White;Male;9734/3: Extraosseous plasmacytoma;C32.9-Larynx, NOS;Myeloma;Dead (attributable to this cancer dx);55
+65;White;Female;9734/3: Extraosseous plasmacytoma;C49.2-Conn, subcutaneous, other soft tis: lower limb, hip;Myeloma;Dead (attributable to this cancer dx);61
+62;Asian or Pacific Islander;Female;9731/3: Solitary plasmacytoma of bone;C41.9-Bone, NOS;Myeloma;Dead (attributable to this cancer dx);128
+73;White;Male;9731/3: Solitary plasmacytoma of bone;C41.9-Bone, NOS;Myeloma;Dead (attributable to this cancer dx);60
+67;White;Male;9734/3: Extraosseous plasmacytoma;C16.9-Stomach, NOS;Myeloma;Dead (attributable to this cancer dx);28
+69;White;Male;9731/3: Solitary plasmacytoma of bone;C41.3-Rib, sternum, clavicle and associated joints;Myeloma;Dead (attributable to this cancer dx);87
+59;White;Male;9734/3: Extraosseous plasmacytoma;C25.0-Head of pancreas;Myeloma;Dead (attributable to this cancer dx);36
+74;Asian or Pacific Islander;Female;9731/3: Solitary plasmacytoma of bone;C41.9-Bone, NOS;Myeloma;Dead (attributable to this cancer dx);99
+67;Asian or Pacific Islander;Male;9731/3: Solitary plasmacytoma of bone;C41.2-Vertebral column;Myeloma;Dead (attributable to this cancer dx);17
+43;White;Male;9731/3: Solitary plasmacytoma of bone;C40.2-Long bones of lower limb and associated joints;Myeloma;Dead (attributable to this cancer dx);355
+47;White;Male;9734/3: Extraosseous plasmacytoma;C62.9-Testis, NOS;Myeloma;Dead (attributable to this cancer dx);68
+75;White;Male;9734/3: Extraosseous plasmacytoma;C64.9-Kidney, NOS;Myeloma;Dead (attributable to this cancer dx);22
+56;White;Male;9734/3: Extraosseous plasmacytoma;C22.0-Liver;Myeloma;Dead (attributable to this cancer dx);14
+69;White;Male;9734/3: Extraosseous plasmacytoma;C44.7-Skin of lower limb and hip;Myeloma;Dead (attributable to this cancer dx);64
+67;White;Male;9734/3: Extraosseous plasmacytoma;C72.9-Nervous system, NOS;Myeloma;Dead (attributable to this cancer dx);188
+64;White;Male;9731/3: Solitary plasmacytoma of bone;C41.3-Rib, sternum, clavicle and associated joints;Myeloma;Dead (attributable to this cancer dx);0
+60;White;Male;9731/3: Solitary plasmacytoma of bone;C41.2-Vertebral column;Myeloma;Dead (attributable to this cancer dx);185
+52;Asian or Pacific Islander;Female;9734/3: Extraosseous plasmacytoma;C16.9-Stomach, NOS;Myeloma;Dead (attributable to this cancer dx);91
+47;American Indian/Alaska Native;Female;9731/3: Solitary plasmacytoma of bone;C41.4-Pelvic bones, sacrum, coccyx and associated joints;Myeloma;Dead (attributable to this cancer dx);57
+54;Asian or Pacific Islander;Male;9731/3: Solitary plasmacytoma of bone;C41.2-Vertebral column;Myeloma;Dead (attributable to this cancer dx);195
+66;White;Female;9731/3: Solitary plasmacytoma of bone;C41.0-Bones of skull and face and associated joints;Myeloma;Dead (attributable to this cancer dx);58
+58;Asian or Pacific Islander;Male;9734/3: Extraosseous plasmacytoma;C03.9-Gum, NOS;Myeloma;Dead (attributable to this cancer dx);31
+69;Black;Male;9734/3: Extraosseous plasmacytoma;C49.0-Conn, subcutaneous, other soft tis: head, face, neck;Myeloma;Dead (attributable to this cancer dx);31
+43;White;Female;9734/3: Extraosseous plasmacytoma;C77.8-Lymph nodes of multiple regions;Myeloma;Dead (attributable to this cancer dx);132
+65;White;Male;9734/3: Extraosseous plasmacytoma;C44.5-Skin of trunk;Myeloma;Dead (attributable to this cancer dx);29
+52;Asian or Pacific Islander;Male;9734/3: Extraosseous plasmacytoma;C22.0-Liver;Myeloma;Dead (attributable to this cancer dx);49
+63;White;Male;9734/3: Extraosseous plasmacytoma;C49.6-Conn, subcutaneous, other soft tis: trunk, NOS;Myeloma;Dead (attributable to this cancer dx);24
+63;White;Male;9731/3: Solitary plasmacytoma of bone;C40.0-Long bones: upper limb, scapula, and associated joints;Myeloma;Dead (attributable to this cancer dx);331
+51;Black;Female;9731/3: Solitary plasmacytoma of bone;C41.2-Vertebral column;Myeloma;Dead (attributable to this cancer dx);65
+65;Black;Female;9734/3: Extraosseous plasmacytoma;C69.6-Orbit, NOS;Myeloma;Dead (attributable to this cancer dx);12
+46;White;Male;9734/3: Extraosseous plasmacytoma;C49.9-Conn, subcutaneous and other soft tissues, NOS;Aleukemic, Subleukemic and NOS;Dead (attributable to this cancer dx);64
+59;Black;Female;9731/3: Solitary plasmacytoma of bone;C41.0-Bones of skull and face and associated joints;Myeloma;Dead (attributable to this cancer dx);54
+42;Black;Male;9731/3: Solitary plasmacytoma of bone;C41.2-Vertebral column;Myeloma;Dead (attributable to this cancer dx);80
+48;White;Male;9731/3: Solitary plasmacytoma of bone;C41.3-Rib, sternum, clavicle and associated joints;Myeloma;Dead (attributable to this cancer dx);100
+47;White;Male;9734/3: Extraosseous plasmacytoma;C25.1-Body of pancreas;Myeloma;Dead (attributable to this cancer dx);355
+40;Black;Male;9731/3: Solitary plasmacytoma of bone;C41.1-Mandible;Myeloma;Dead (attributable to this cancer dx);193
+59;Black;Female;9734/3: Extraosseous plasmacytoma;C34.1-Upper lobe, lung;Myeloma;Dead (attributable to this cancer dx);131
+75;White;Male;9734/3: Extraosseous plasmacytoma;C14.0-Pharynx, NOS;Myeloma;Dead (attributable to this cancer dx);94
+53;White;Male;9734/3: Extraosseous plasmacytoma;C49.1-Conn, subcutaneous, other soft tis: upr limb, shoulder;Myeloma;Dead (attributable to this cancer dx);147
+73;Asian or Pacific Islander;Female;9731/3: Solitary plasmacytoma of bone;C41.9-Bone, NOS;Myeloma;Dead (attributable to this cancer dx);39
+77;White;Male;9734/3: Extraosseous plasmacytoma;C49.3-Conn, subcutaneous, other soft tis: thorax;Myeloma;Dead (attributable to this cancer dx);113
+42;White;Female;9734/3: Extraosseous plasmacytoma;C50.9-Breast, NOS;Myeloma;Dead (attributable to this cancer dx);9
+64;White;Female;9734/3: Extraosseous plasmacytoma;C20.9-Rectum, NOS;Myeloma;Dead (attributable to this cancer dx);93
+63;White;Female;9731/3: Solitary plasmacytoma of bone;C41.3-Rib, sternum, clavicle and associated joints;Myeloma;Dead (attributable to this cancer dx);168
+53;White;Female;9731/3: Solitary plasmacytoma of bone;C41.4-Pelvic bones, sacrum, coccyx and associated joints;Myeloma;Dead (attributable to this cancer dx);115
+71;White;Female;9731/3: Solitary plasmacytoma of bone;C40.1-Short bones of upper limb and associated joints;Myeloma;Dead (attributable to this cancer dx);66
+68;White;Male;9731/3: Solitary plasmacytoma of bone;C41.2-Vertebral column;Myeloma;Dead (attributable to this cancer dx);22
+56;White;Male;9734/3: Extraosseous plasmacytoma;C44.5-Skin of trunk;Myeloma;Dead (attributable to this cancer dx);48
+74;White;Male;9734/3: Extraosseous plasmacytoma;C38.4-Pleura, NOS;Myeloma;Dead (attributable to this cancer dx);63
+60;White;Female;9731/3: Solitary plasmacytoma of bone;C41.9-Bone, NOS;Myeloma;Dead (attributable to this cancer dx);48
+80;White;Male;9731/3: Solitary plasmacytoma of bone;C41.3-Rib, sternum, clavicle and associated joints;Myeloma;Dead (attributable to this cancer dx);73
+62;White;Male;9734/3: Extraosseous plasmacytoma;C49.4-Conn, subcutaneous, other soft tis: abdomen;Myeloma;Dead (attributable to this cancer dx);14
+69;White;Female;9734/3: Extraosseous plasmacytoma;C22.0-Liver;Myeloma;Dead (attributable to this cancer dx);66
+61;White;Female;9734/3: Extraosseous plasmacytoma;C67.9-Bladder, NOS;Myeloma;Dead (attributable to this cancer dx);21
+64;Black;Female;9731/3: Solitary plasmacytoma of bone;C41.3-Rib, sternum, clavicle and associated joints;Myeloma;Dead (attributable to this cancer dx);52
+54;White;Female;9731/3: Solitary plasmacytoma of bone;C41.3-Rib, sternum, clavicle and associated joints;Myeloma;Dead (attributable to this cancer dx);189
+78;White;Male;9731/3: Solitary plasmacytoma of bone;C34.9-Lung, NOS;Myeloma;Dead (attributable to this cancer dx);73
+51;White;Male;9731/3: Solitary plasmacytoma of bone;C41.0-Bones of skull and face and associated joints;Myeloma;Dead (attributable to this cancer dx);136
+43;White;Male;9731/3: Solitary plasmacytoma of bone;C40.0-Long bones: upper limb, scapula, and associated joints;Myeloma;Dead (attributable to this cancer dx);166
+65;White;Female;9731/3: Solitary plasmacytoma of bone;C41.2-Vertebral column;Myeloma;Dead (attributable to this cancer dx);154
+58;White;Female;9731/3: Solitary plasmacytoma of bone;C41.9-Bone, NOS;Myeloma;Dead (attributable to this cancer dx);216
+65;White;Female;9731/3: Solitary plasmacytoma of bone;C41.0-Bones of skull and face and associated joints;Myeloma;Dead (attributable to this cancer dx);283
+51;White;Male;9731/3: Solitary plasmacytoma of bone;C41.4-Pelvic bones, sacrum, coccyx and associated joints;Myeloma;Dead (attributable to this cancer dx);45
+53;White;Male;9731/3: Solitary plasmacytoma of bone;C41.0-Bones of skull and face and associated joints;Myeloma;Dead (attributable to this cancer dx);114
+52;White;Male;9731/3: Solitary plasmacytoma of bone;C41.2-Vertebral column;Myeloma;Dead (attributable to this cancer dx);22
+63;White;Male;9731/3: Solitary plasmacytoma of bone;C34.9-Lung, NOS;Myeloma;Dead (attributable to this cancer dx);78
+68;White;Male;9734/3: Extraosseous plasmacytoma;C17.1-Jejunum;Myeloma;Dead (attributable to this cancer dx);27
+69;White;Male;9734/3: Extraosseous plasmacytoma;C49.3-Conn, subcutaneous, other soft tis: thorax;Myeloma;Dead (attributable to this cancer dx);86
+65;White;Female;9731/3: Solitary plasmacytoma of bone;C41.2-Vertebral column;Myeloma;Dead (attributable to this cancer dx);112
+36;White;Female;9731/3: Solitary plasmacytoma of bone;C41.2-Vertebral column;Myeloma;Dead (attributable to this cancer dx);90
+71;White;Male;9734/3: Extraosseous plasmacytoma;C44.4-Skin of scalp and neck;Myeloma;Dead (attributable to this cancer dx);59
+66;White;Male;9734/3: Extraosseous plasmacytoma;C39.0-Upper respiratory tract, NOS;Myeloma;Dead (attributable to this cancer dx);68
+70;White;Female;9734/3: Extraosseous plasmacytoma;C42.1-Bone marrow;Myeloma;Dead (attributable to this cancer dx);26
+59;White;Female;9734/3: Extraosseous plasmacytoma;C49.6-Conn, subcutaneous, other soft tis: trunk, NOS;Myeloma;Dead (attributable to this cancer dx);53
+46;White;Female;9731/3: Solitary plasmacytoma of bone;C40.2-Long bones of lower limb and associated joints;Myeloma;Dead (attributable to this cancer dx);30
+71;White;Female;9731/3: Solitary plasmacytoma of bone;C40.0-Long bones: upper limb, scapula, and associated joints;Myeloma;Dead (attributable to this cancer dx);61
+55;White;Female;9734/3: Extraosseous plasmacytoma;C71.6-Cerebellum, NOS;Myeloma;Dead (attributable to this cancer dx);29
+66;White;Male;9731/3: Solitary plasmacytoma of bone;C41.3-Rib, sternum, clavicle and associated joints;Myeloma;Dead (attributable to this cancer dx);104
+62;White;Female;9734/3: Extraosseous plasmacytoma;C31.3-Sphenoid sinus;Myeloma;Dead (attributable to this cancer dx);99
+62;White;Male;9734/3: Extraosseous plasmacytoma;C44.4-Skin of scalp and neck;Myeloma;Dead (attributable to this cancer dx);113
+55;White;Male;9731/3: Solitary plasmacytoma of bone;C41.2-Vertebral column;Myeloma;Dead (attributable to this cancer dx);42
+67;White;Female;9731/3: Solitary plasmacytoma of bone;C41.4-Pelvic bones, sacrum, coccyx and associated joints;Myeloma;Dead (attributable to this cancer dx);70
+63;White;Female;9731/3: Solitary plasmacytoma of bone;C41.0-Bones of skull and face and associated joints;Myeloma;Dead (attributable to this cancer dx);50
+52;Black;Female;9734/3: Extraosseous plasmacytoma;C49.5-Conn, subcutaneous, other soft tis: pelvis;Myeloma;Dead (attributable to this cancer dx);42
+78;White;Male;9734/3: Extraosseous plasmacytoma;C34.1-Upper lobe, lung;Myeloma;Dead (attributable to this cancer dx);14
+45;Asian or Pacific Islander;Male;9731/3: Solitary plasmacytoma of bone;C40.2-Long bones of lower limb and associated joints;Myeloma;Dead (attributable to this cancer dx);45
+78;Black;Male;9734/3: Extraosseous plasmacytoma;C42.1-Bone marrow;Myeloma;Dead (attributable to this cancer dx);49
+67;White;Female;9734/3: Extraosseous plasmacytoma;C44.6-Skin of upper limb and shoulder;Myeloma;Dead (attributable to this cancer dx);24
+69;White;Female;9734/3: Extraosseous plasmacytoma;C38.4-Pleura, NOS;Myeloma;Dead (attributable to this cancer dx);34
+49;White;Female;9734/3: Extraosseous plasmacytoma;C09.9-Tonsil, NOS;Myeloma;Dead (attributable to this cancer dx);65
+64;White;Male;9734/3: Extraosseous plasmacytoma;C49.5-Conn, subcutaneous, other soft tis: pelvis;Aleukemic, Subleukemic and NOS;Dead (attributable to this cancer dx);34
+58;White;Male;9734/3: Extraosseous plasmacytoma;C44.9-Skin, NOS;Myeloma;Dead (attributable to this cancer dx);61
+60;White;Male;9731/3: Solitary plasmacytoma of bone;C41.9-Bone, NOS;Myeloma;Dead (attributable to this cancer dx);60
+80;White;Female;9731/3: Solitary plasmacytoma of bone;C41.0-Bones of skull and face and associated joints;Myeloma;Dead (attributable to this cancer dx);30
+64;White;Female;9731/3: Solitary plasmacytoma of bone;C41.0-Bones of skull and face and associated joints;Myeloma;Dead (attributable to this cancer dx);50
+64;White;Male;9731/3: Solitary plasmacytoma of bone;C41.9-Bone, NOS;Myeloma;Dead (attributable to this cancer dx);56
+42;Black;Male;9731/3: Solitary plasmacytoma of bone;C41.3-Rib, sternum, clavicle and associated joints;Myeloma;Dead (attributable to this cancer dx);152
+88;Black;Female;9731/3: Solitary plasmacytoma of bone;C41.2-Vertebral column;Myeloma;Dead (attributable to this cancer dx);2
+52;Black;Male;9734/3: Extraosseous plasmacytoma;C38.3-Mediastinum, NOS;Myeloma;Dead (attributable to this cancer dx);10
+71;Black;Male;9734/3: Extraosseous plasmacytoma;C49.4-Conn, subcutaneous, other soft tis: abdomen;Myeloma;Dead (attributable to this cancer dx);0
+55;White;Male;9731/3: Solitary plasmacytoma of bone;C40.0-Long bones: upper limb, scapula, and associated joints;Myeloma;Dead (attributable to this cancer dx);146
+68;White;Female;9731/3: Solitary plasmacytoma of bone;C41.2-Vertebral column;Myeloma;Dead (attributable to this cancer dx);60
+67;White;Female;9734/3: Extraosseous plasmacytoma;C77.1-Intrathoracic lymph nodes;Myeloma;Dead (attributable to this cancer dx);129
+70;White;Female;9731/3: Solitary plasmacytoma of bone;C40.0-Long bones: upper limb, scapula, and associated joints;Myeloma;Dead (attributable to this cancer dx);84
+58;White;Male;9734/3: Extraosseous plasmacytoma;C49.2-Conn, subcutaneous, other soft tis: lower limb, hip;Myeloma;Dead (attributable to this cancer dx);141
+72;Black;Female;9731/3: Solitary plasmacytoma of bone;C42.1-Bone marrow;Myeloma;Dead (attributable to this cancer dx);183
+81;Black;Female;9731/3: Solitary plasmacytoma of bone;C40.2-Long bones of lower limb and associated joints;Myeloma;Dead (attributable to this cancer dx);64
+63;White;Male;9734/3: Extraosseous plasmacytoma;C34.1-Upper lobe, lung;Myeloma;Dead (attributable to this cancer dx);16
+57;Black;Male;9731/3: Solitary plasmacytoma of bone;C40.2-Long bones of lower limb and associated joints;Myeloma;Dead (attributable to this cancer dx);17
+71;White;Male;9734/3: Extraosseous plasmacytoma;C16.2-Body of stomach;State DC not available or state DC available but no COD;Dead (missing/unknown COD);28
+90;Black;Male;9734/3: Extraosseous plasmacytoma;C49.3-Conn, subcutaneous, other soft tis: thorax;Myeloma;Dead (attributable to this cancer dx);5
+71;White;Female;9731/3: Solitary plasmacytoma of bone;C40.2-Long bones of lower limb and associated joints;Myeloma;Dead (attributable to this cancer dx);64
+53;White;Female;9731/3: Solitary plasmacytoma of bone;C41.2-Vertebral column;Myeloma;Dead (attributable to this cancer dx);52
+60;Asian or Pacific Islander;Female;9731/3: Solitary plasmacytoma of bone;C41.4-Pelvic bones, sacrum, coccyx and associated joints;Myeloma;Dead (attributable to this cancer dx);51
+69;White;Female;9731/3: Solitary plasmacytoma of bone;C41.4-Pelvic bones, sacrum, coccyx and associated joints;Myeloma;Dead (attributable to this cancer dx);37
+85;White;Female;9731/3: Solitary plasmacytoma of bone;C41.9-Bone, NOS;Myeloma;Dead (attributable to this cancer dx);10
+62;White;Female;9731/3: Solitary plasmacytoma of bone;C41.1-Mandible;Myeloma;Dead (attributable to this cancer dx);22
+60;White;Male;9734/3: Extraosseous plasmacytoma;C49.2-Conn, subcutaneous, other soft tis: lower limb, hip;Myeloma;Dead (attributable to this cancer dx);81
+63;Black;Male;9734/3: Extraosseous plasmacytoma;C34.9-Lung, NOS;Myeloma;Dead (attributable to this cancer dx);107
+68;Black;Female;9734/3: Extraosseous plasmacytoma;C34.9-Lung, NOS;Miscellaneous Malignant Cancer;Dead (attributable to this cancer dx);44
+72;White;Male;9734/3: Extraosseous plasmacytoma;C49.1-Conn, subcutaneous, other soft tis: upr limb, shoulder;Myeloma;Dead (attributable to this cancer dx);10
+71;White;Male;9731/3: Solitary plasmacytoma of bone;C41.2-Vertebral column;Myeloma;Dead (attributable to this cancer dx);9
+57;Black;Male;9734/3: Extraosseous plasmacytoma;C48.0-Retroperitoneum;Myeloma;Dead (attributable to this cancer dx);40
+77;White;Female;9731/3: Solitary plasmacytoma of bone;C41.3-Rib, sternum, clavicle and associated joints;Myeloma;Dead (attributable to this cancer dx);116
+77;White;Female;9731/3: Solitary plasmacytoma of bone;C41.0-Bones of skull and face and associated joints;Myeloma;Dead (attributable to this cancer dx);64
+51;White;Female;9734/3: Extraosseous plasmacytoma;C49.0-Conn, subcutaneous, other soft tis: head, face, neck;Myeloma;Dead (attributable to this cancer dx);194
+60;White;Male;9734/3: Extraosseous plasmacytoma;C49.2-Conn, subcutaneous, other soft tis: lower limb, hip;Myeloma;Dead (attributable to this cancer dx);77
+64;White;Male;9734/3: Extraosseous plasmacytoma;C80.9-Unknown primary site;Myeloma;Dead (attributable to this cancer dx);29
+74;White;Male;9731/3: Solitary plasmacytoma of bone;C41.9-Bone, NOS;Myeloma;Dead (attributable to this cancer dx);172
+43;Black;Male;9731/3: Solitary plasmacytoma of bone;C40.2-Long bones of lower limb and associated joints;Myeloma;Dead (attributable to this cancer dx);94
+59;White;Male;9734/3: Extraosseous plasmacytoma;C49.3-Conn, subcutaneous, other soft tis: thorax;Myeloma;Dead (attributable to this cancer dx);59
+55;Black;Female;9734/3: Extraosseous plasmacytoma;C42.1-Bone marrow;Myeloma;Dead (attributable to this cancer dx);66
+70;White;Male;9731/3: Solitary plasmacytoma of bone;C40.0-Long bones: upper limb, scapula, and associated joints;Myeloma;Dead (attributable to this cancer dx);105
+53;White;Female;9734/3: Extraosseous plasmacytoma;C05.0-Hard palate;Myeloma;Dead (attributable to this cancer dx);161
+63;White;Female;9731/3: Solitary plasmacytoma of bone;C40.2-Long bones of lower limb and associated joints;Myeloma;Dead (attributable to this cancer dx);62
+60;White;Female;9734/3: Extraosseous plasmacytoma;C49.2-Conn, subcutaneous, other soft tis: lower limb, hip;Myeloma;Dead (attributable to this cancer dx);142
+56;Black;Female;9731/3: Solitary plasmacytoma of bone;C41.0-Bones of skull and face and associated joints;Myeloma;Dead (attributable to this cancer dx);42
+49;White;Female;9731/3: Solitary plasmacytoma of bone;C40.0-Long bones: upper limb, scapula, and associated joints;Myeloma;Dead (attributable to this cancer dx);105
+82;White;Male;9734/3: Extraosseous plasmacytoma;C69.6-Orbit, NOS;Myeloma;Dead (attributable to this cancer dx);27
+73;Black;Female;9731/3: Solitary plasmacytoma of bone;C41.2-Vertebral column;Myeloma;Dead (attributable to this cancer dx);57
+69;White;Female;9734/3: Extraosseous plasmacytoma;C44.5-Skin of trunk;Myeloma;Dead (attributable to this cancer dx);21
+80;White;Male;9734/3: Extraosseous plasmacytoma;C11.9-Nasopharynx, NOS;Myeloma;Dead (attributable to this cancer dx);54
+64;White;Male;9734/3: Extraosseous plasmacytoma;C42.1-Bone marrow;Myeloma;Dead (attributable to this cancer dx);27
+59;White;Female;9734/3: Extraosseous plasmacytoma;C31.2-Frontal sinus;Myeloma;Dead (attributable to this cancer dx);104
+62;White;Female;9731/3: Solitary plasmacytoma of bone;C40.0-Long bones: upper limb, scapula, and associated joints;Myeloma;Dead (attributable to this cancer dx);96
+64;Black;Female;9734/3: Extraosseous plasmacytoma;C49.3-Conn, subcutaneous, other soft tis: thorax;Myeloma;Dead (attributable to this cancer dx);12
+66;White;Female;9734/3: Extraosseous plasmacytoma;C49.4-Conn, subcutaneous, other soft tis: abdomen;Myeloma;Dead (attributable to this cancer dx);82
+36;White;Male;9734/3: Extraosseous plasmacytoma;C17.8-Overlapping lesion of small intestine;Myeloma;Dead (attributable to this cancer dx);76
+51;Black;Male;9734/3: Extraosseous plasmacytoma;C77.0-Lymph nodes of head, face & neck;Myeloma;Dead (attributable to this cancer dx);35
+60;White;Male;9731/3: Solitary plasmacytoma of bone;C41.2-Vertebral column;Myeloma;Dead (attributable to this cancer dx);94
+79;White;Female;9734/3: Extraosseous plasmacytoma;C34.1-Upper lobe, lung;Myeloma;Dead (attributable to this cancer dx);68
+72;White;Male;9734/3: Extraosseous plasmacytoma;C42.1-Bone marrow;Myeloma;Dead (attributable to this cancer dx);57
+80;White;Male;9734/3: Extraosseous plasmacytoma;C13.9-Hypopharynx, NOS;Myeloma;Dead (attributable to this cancer dx);25
+45;Black;Male;9731/3: Solitary plasmacytoma of bone;C41.2-Vertebral column;Myeloma;Dead (attributable to this cancer dx);80
+83;White;Male;9734/3: Extraosseous plasmacytoma;C62.9-Testis, NOS;Myeloma;Dead (attributable to this cancer dx);164
+56;White;Female;9734/3: Extraosseous plasmacytoma;C49.6-Conn, subcutaneous, other soft tis: trunk, NOS;Miscellaneous Malignant Cancer;Dead (attributable to this cancer dx);188
+65;White;Female;9734/3: Extraosseous plasmacytoma;C72.0-Spinal cord;Myeloma;Dead (attributable to this cancer dx);37
+66;White;Female;9731/3: Solitary plasmacytoma of bone;C41.9-Bone, NOS;Myeloma;Dead (attributable to this cancer dx);177
+51;Black;Male;9734/3: Extraosseous plasmacytoma;C49.3-Conn, subcutaneous, other soft tis: thorax;Myeloma;Dead (attributable to this cancer dx);26
+63;White;Female;9731/3: Solitary plasmacytoma of bone;C41.4-Pelvic bones, sacrum, coccyx and associated joints;Myeloma;Dead (attributable to this cancer dx);41

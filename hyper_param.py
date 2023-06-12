@@ -11,7 +11,7 @@ from tensorflow.keras.layers import Dropout
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.optimizers import Adam
 import tensorflow as tf
-from tensorflow.keras.wrappers.scikit_learn import KerasClassifier
+from tensorflow.keras.wrappers.scikit_learn import KerasRegressor
 from sklearn.model_selection import RandomizedSearchCV
 
 def get_mlp_model(hiddenLayerOne=784, hiddenLayerTwo=256,
@@ -46,20 +46,24 @@ def basic_net(trainData, trainLabels, testData, testLabels):
     model = get_mlp_model()
     # train the network (i.e., no hyperparameter tuning)
     print("[INFO] training model...")
-    H = model.fit(x=trainData, y=trainLabels,
+    cb_list = [EarlyStopping(patience=20)]
+    history = model.fit(x=trainData, y=trainLabels,
                   validation_data=(testData, testLabels),
                   verbose=0,
                   batch_size=64,
-                  epochs=20)
+                  callbacks=cb_list,
+                  epochs=200)
     # make predictions on the test set and evaluate it
     print("[INFO] evaluating network...")
     score = model.evaluate(testData, testLabels)
-#    print(type(score))
-#    print("score: {:.4f}".format(score))[1]
+    print(type(score))
+    print(str(score))
+    # print("score: {:.4f}".format(score))[1]
+    return history
 
 def hyper_net(trainData, trainLabels, testData, testLabels):
     print("[INFO] initializing model...")
-    model = KerasClassifier(build_fn=get_mlp_model, verbose=0)
+    model = KerasRegressor(build_fn=get_mlp_model, verbose=0)
     # define a grid of the hyperparameter search space
     hiddenLayerOne = [8, 32, 64]
     hiddenLayerTwo = [8, 32, 64]

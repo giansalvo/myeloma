@@ -38,8 +38,7 @@ from tensorflow.keras import layers
 from tensorflow.keras.callbacks import EarlyStopping
 import os
 import sys
-from hyper_param import basic_net
-from hyper_param import hyper_net
+from hyper_param import basic_net, get_mlp_model, hyper_net
 
 # FIELD_YEAR_OF_DIAGNOSIS = "Year of diagnosis (1975-2019 by 5)"
 # FIELD_PATIENT_ID = "Patient ID"
@@ -107,19 +106,12 @@ def denormalization(X, X_max, X_min):
 
 def build_and_compile_model(num_input):
     model = keras.Sequential([
-        layers.Dense(256, kernel_initializer='he_normal', input_dim=num_input, activation='relu'),
-        layers.Dense(128, kernel_initializer='he_normal', activation='relu'),
-        # layers.Dense(64, kernel_initializer='he_normal', activation='relu'),
+        layers.Dense(256, input_dim=num_input, activation='relu'),
+        layers.Dense(64, activation='relu'),
         layers.Dense(1, activation='sigmoid')
     ])
 
-    # layers.Dense(64, kernel_initializer='he_normal', input_dim=num_input, activation='relu'),
-    # layers.Dense(128, kernel_initializer='he_normal', activation='relu'),
-    # layers.Dense(64, kernel_initializer='he_normal', activation='relu'),
-    # layers.Dense(1, activation='sigmoid')
-
-    # mean_absolute_error
-    # Valid loss function for correlation: Mean Squared Error, Mean Absolute Error
+    # Valid loss function for correlation: mean_squared_error, mean_absolute_error
     model.compile(loss='mean_squared_error',
                  optimizer=tf.keras.optimizers.Adam(0.001),
                   metrics=["mean_absolute_error"])
@@ -155,8 +147,8 @@ def plot_scatter(x, y, train_features, train_labels):
   plt.savefig(fname)
   plt.close()
 
-def fit_net(model, x, y, batch_size=BATCH_SIZE, val_size=VAL_SIZE, epochs=EPOCHS):
-    cb_list = [EarlyStopping(patience=20)]
+def fit_net(model, x, y, batch_size=BATCH_SIZE, val_size=VAL_SIZE, epochs=EPOCHS, patience=PATIENCE):
+    cb_list = [EarlyStopping(patience=patience)]
     history = model.fit(
         x,
         y,
@@ -220,21 +212,22 @@ def main():
     cm = corr_matrix[FIELD_SURVIVAL].sort_values(ascending=False)
     print(cm)
 
-    print("Before normalization:")
-    print(dataset.describe().transpose())
+    print("[NORMALIZATION]")
+    # print(dataset.describe().transpose())
     # Normalization of all dataset (features and labels)
     y_min = dataset[FIELD_SURVIVAL].min()
     y_max = dataset[FIELD_SURVIVAL].max()
-    dataset = normalization2(dataset)
-    print("after normalization:")
-    print(dataset.describe().transpose())
+    dataset_norm = normalization2(dataset)
+    # print(dataset_norm.describe().transpose())
 
     # split dataset train and test
-    train_dataset = dataset.sample(frac=TRAIN_SIZE, random_state=0)
-    test_dataset = dataset.drop(train_dataset.index)
+    train_dataset_norm = dataset_norm.sample(frac=TRAIN_SIZE, random_state=0)
+    test_dataset_norm = dataset_norm.drop(train_dataset_norm.index)
+    print("train_dataset_norm={}, test_dataset_norm={}"
+          .format(train_dataset_norm.shape, test_dataset_norm.shape))
 
     # Visual inspection of the data
-    sns.pairplot(train_dataset[[FIELD_YEAR_OF_DIAGNOSIS,
+    sns.pairplot(train_dataset_norm[[FIELD_YEAR_OF_DIAGNOSIS,
                                 FIELD_YEAR_DEATH,
                                 FIELD_AGE,
                                 FIELD_SEER_CAUSE_SPECIFIC,
@@ -243,17 +236,21 @@ def main():
     plt.savefig(fname)
     plt.close()
 
-    print("Analytic analysis of the dataset:")
-    print(train_dataset.describe().transpose())
+    # print("Analytic analysis of the dataset:")
+    # print(train_dataset_norm.describe().transpose())
 
     #  Split features from labels
-    train_features = train_dataset.copy()
-    test_features = test_dataset.copy()
-    # remove column "survival"
-    train_labels = train_features.pop(FIELD_SURVIVAL)
-    test_labels = test_features.pop(FIELD_SURVIVAL)
-    print("train_features.head()\n" + str(train_features.head().transpose()))
-    print("train_labels.head()\n" + str(train_labels.head().transpose()))
+    train_features_norm = dataset_norm.sample(frac=TRAIN_SIZE, random_state=0)
+    test_features_norm = dataset_norm.drop(train_dataset_norm.index)
+     # remove column "survival"
+    train_labels_norm = train_features_norm.pop(FIELD_SURVIVAL)
+    test_labels_norm = test_features_norm.pop(FIELD_SURVIVAL)
+    # print("train_features.head()\n" + str(train_features_norm.head().transpose()))
+    # print("train_labels.head()\n" + str(train_labels_norm.head().transpose()))
+    print("train features={}, train labels={} test_features_norm={} test_labels_norm={}"
+          .format(train_features_norm.shape, train_labels_norm.shape,  test_features_norm.shape, test_labels_norm.shape))
+
+
 
     ##################################################
     # history = basic_net(train_features, train_labels, test_features, test_labels)
@@ -262,7 +259,8 @@ def main():
     # hyper_net(train_features, train_labels, test_features, test_labels)
     ##################################################
 
-    model = build_and_compile_model(train_features.shape[1])
+    model = build_and_compile_model(train_features_norm.shape[1])
+    # model = basic_net(train_features_norm, train_labels_norm, test_features_norm, test_labels_norm)
     model.summary()
     model.save(TEMP_WEIGHT_FNAME)
 
@@ -326,34 +324,50 @@ def main():
 
     # EVALUATE ON TEST SET
     results = []
-    model = tf.keras.models.load_model(TEMP_WEIGHT_FNAME, custom_objects={"r_squared" : r_squared})
+
+    history = fit_net(model, train_features_norm, train_labels_norm, batch_size=BATCH_SIZE, val_size=VAL_SIZE, epochs=EPOCHS,
+                     patience=PATIENCE)
+    fname = os.path.join(PATH_OUTPUT, "test_loss_X.png")
+    plot_loss(history, fname)
+    x_test_norm = test_features_norm.iloc[:200]
+    y_test_norm = test_labels_norm.iloc[:200]
+    y_test = denormalization(y_test_norm, y_max, y_min)
+    res = model.evaluate(x_test_norm, y_test, batch_size=128, verbose=0)
+    results.append(res)
+    print(str(res))
+    exit(1)
+
 
     i = 0
     ss = ShuffleSplit(n_splits=KFOLD_NUM, random_state=RANDOM_SEED, test_size=TEST_SIZE, train_size=TRAIN_SIZE)
-    for i, (X_i, Y_i) in enumerate(ss.split(test_dataset)):
+    # kf = KFold(n_splits=5, random_state=None, shuffle=False)
+    # for i, (train_index, test_index) in enumerate(kf.split(test_dataset_norm)):
+    #     print("Train: " + str(train_index) + "\n Test: " + str(test_index))
+    # exit(1)
+    for i, (X_i, Y_i) in enumerate(ss.split(test_dataset_norm)):
         print("Fold n.{} ".format(i), end="")
         # for j in range(10):
         #     print(X_i[j], end=", ")
         # print("")
         model = tf.keras.models.load_model(TEMP_WEIGHT_FNAME, custom_objects={"r_squared": r_squared})
-        x_test = test_features.iloc[Y_i]
-        y_test = test_labels.iloc[Y_i]
+        x_test_norm = test_features_norm.iloc[Y_i]
+        y_test_norm = test_labels_norm.iloc[Y_i]
 
-        history = fit_net(model, x_test, y_test, val_size=VAL_SIZE, epochs=EPOCHS)
+        history = fit_net(model, x_test_norm, y_test_norm, batch_size=BATCH_SIZE, val_size=VAL_SIZE, epochs=EPOCHS, patience=PATIENCE)
         fname = os.path.join(PATH_OUTPUT, "test_loss_" + str(i) + ".png")
         plot_loss(history, fname)
 
         # denormalization
         # x_test = x_test * (y_max - y_min) + y_min
-        y_test = denormalization(y_test, y_max, y_min)
-        res = model.evaluate(x_test, y_test, batch_size=128, verbose=0)
+        y_test = denormalization(y_test_norm, y_max, y_min)
+        res = model.evaluate(x_test_norm, y_test, batch_size=128, verbose=0)
         results.append(res)
 
         # evaluate on test set
         # make predictions on the testset and plot
-        test_predictions = model.predict(test_features).flatten()
+        test_predictions = model.predict(test_features_norm).flatten()
         a = plt.axes(aspect='equal')
-        plt.scatter(test_labels, test_predictions)
+        plt.scatter(test_labels_norm, test_predictions)
         plt.title("Test set, fold " + str(i))
         plt.suptitle("Scatter plot on testset")
         plt.title("Fold " + str(i))
@@ -368,7 +382,7 @@ def main():
         plt.close()
 
         # check the error distribution:
-        error = test_predictions - test_labels
+        error = test_predictions - test_labels_norm
         plt.hist(error, bins=25)
         plt.xlabel('Prediction Error [Survival]')
         _ = plt.ylabel('Count')
