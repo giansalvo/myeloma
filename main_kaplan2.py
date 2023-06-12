@@ -119,20 +119,20 @@ def clean_csv(path_input, path_output):
                     year_death = int(year_death)
                     if year_diag > year_death:
                         # bug
-                        print("Error: year_diag > year_death: {} > {}".format(year_diag, year_death))
+                        # print("Error: year_diag > year_death: {} > {}".format(year_diag, year_death))
                         continue
                     if year_diag < 1975 or year_diag > 2023:
-                        print("Error: year_diag out of range {}".format(year_diag))
+                        # print("Error: year_diag out of range {}".format(year_diag))
                         continue
                     if year_death < 1975 or year_death > 2023:
-                        print("Error: year_death out of range {}".format(year_death))
+                        # print("Error: year_death out of range {}".format(year_death))
                         continue
-                    time = (year_death - year_diag)*12
+                    time = (year_death - year_diag)
                     death_flag = 1
                 sex = row[FIELD_N_SEX]
                 if sex != "Male" and sex != "Female":
                     # bug
-                    print("Error: sex out of range")
+                    # print("Error: sex out of range")
                     continue
                 race = row[FIELD_N_RACE]
 
