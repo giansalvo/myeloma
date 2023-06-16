@@ -140,10 +140,10 @@ def clean_csv(path_input, path_output):
                     if year_death < 1975 or year_death > 2023:
                         # print("Error: year_death out of range {}".format(year_death))
                         continue
-                    time = (year_death - year_diag)
+                    time = (year_death - year_diag)*10
                     death_flag = 1
                 #################################
-                # time and death_flag
+                # sex
                 #################################
                 sex = row[FIELD_N_SEX]
                 if sex != "Male" and sex != "Female":
@@ -151,7 +151,7 @@ def clean_csv(path_input, path_output):
                     # print("Error: sex out of range")
                     continue
                 #################################
-                # time and death_flag
+                # age
                 #################################
                 age = row[FIELD_N_AGE].split()[0]
                 if age == "90+":
@@ -215,8 +215,9 @@ def main():
     for s in df['sex'].unique():
         flag = df['sex'] == s
         kmf.fit(T[flag], event_observed=E[flag], label=s)
-        kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,10.))
+        kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,120.))
     plt.title("Survival curves by Sex")
+    plt.xlabel('months')
     plt.show()
     plt.close()
     print(kmf.median_survival_time_)
@@ -226,8 +227,9 @@ def main():
     for s in df['race'].unique():
         flag = df['race'] == s
         kmf.fit(T[flag], event_observed=E[flag], label=s)
-        kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,10.))
+        kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,120.))
     plt.title("Survival curves by Race")
+    plt.xlabel('months')
     plt.show()
     plt.close()
     print(kmf.median_survival_time_)
@@ -237,7 +239,7 @@ def main():
     for s in df[FIELD_MALIGNANT].unique():
         flag = df[FIELD_MALIGNANT] == s
         kmf.fit(T[flag], event_observed=E[flag], label=s)
-        kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,10.))
+        kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,120.))
     plt.title("Survival curves by First Malignant")
     plt.show()
     plt.close()
@@ -248,8 +250,9 @@ def main():
     for s in df["age_class"].unique():
         flag = df["age_class"] == s
         kmf.fit(T[flag], event_observed=E[flag], label=s)
-        kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,10.))
+        kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,120.))
     plt.title("Survival curves by Age Class")
+    plt.xlabel('months')
     plt.show()
     plt.close()
     print(kmf.median_survival_time_)
@@ -259,8 +262,9 @@ def main():
     for s in df[FIELD_AJCC].unique():
         flag = df[FIELD_AJCC] == s
         kmf.fit(T[flag], event_observed=E[flag], label=s)
-        kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,10.))
+        kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,120.))
     plt.title("Survival curves by AJCC")
+    plt.xlabel('months')
     plt.legend(bbox_to_anchor=(0, 0), loc="upper center", mode="expand", ncol=1)
     plt.tight_layout()
     plt.show()
@@ -272,11 +276,12 @@ def main():
     for s in df[FIELD_DIAG_CONFIRM].unique():
         flag = df[FIELD_DIAG_CONFIRM] == s
         kmf.fit(T[flag], event_observed=E[flag], label=s)
-        kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,10.))
+        kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,120.))
     # place legend below plot
     plt.legend(bbox_to_anchor=(0, 0), loc="upper center", mode="expand", ncol=1)
     plt.tight_layout()
     plt.title("Survival curves by Diagnostic Confirmation")
+    plt.xlabel('months')
     plt.show()
     plt.close()
     print(kmf.median_survival_time_)
