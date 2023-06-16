@@ -76,6 +76,7 @@ FIELD_DIAG_CONFIRM = "Diagnostic Confirmation"
 FIELD_AJCC = "AJCC ID (2018+)"
 FIELD_MALIGNANT = "First malignant primary indicator"
 FIELD_TOT_TUMORS = "Total number of in situ/malignant tumors for patient"
+FILD_AGE = "Age recode with single ages and 90+"
 FIELD_YEAR_DEATH = "Year of death recode"
 
 
@@ -87,6 +88,7 @@ FIELD_N_DIAG_CONFIRM = 3
 FIELD_N_AJCC = 4
 FIELD_N_MALIGNANT = 6
 FIELD_N_TOT_TUMORS = 7
+FIELD_N_AGE = 9
 FIELD_N_YEAR_DEATH = 10
 
 def add_virgolette(s):
@@ -99,6 +101,7 @@ def write_header(f):
     print(add_virgolette(FIELD_DIAG_CONFIRM), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette(FIELD_MALIGNANT), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette(FIELD_AJCC), file=f, end=FIELD_SEPARATOR)
+    print(add_virgolette("age_class"), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette("sex"), file=f)
     FIELD_DIAG_CONFIRM
 
@@ -147,6 +150,33 @@ def clean_csv(path_input, path_output):
                     # bug
                     # print("Error: sex out of range")
                     continue
+                #################################
+                # time and death_flag
+                #################################
+                age = row[FIELD_N_AGE].split()[0]
+                if age == "90+":
+                    age_class = "90+"
+                else:
+                    age = int(age)
+                    if age < 10:
+                        age_class = "0-9 years"
+                    elif age < 20:
+                        age_class = "10-19 years"
+                    elif age < 30:
+                        age_class = "20-29 years"
+                    elif age < 40:
+                        age_class = "30-39 years"
+                    elif age < 50:
+                        age_class = "40-49 years"
+                    elif age < 60:
+                        age_class = "50-59 years"
+                    elif age < 70:
+                        age_class = "60-69 years"
+                    elif age < 80:
+                        age_class = "70-79 years"
+                    elif age < 90:
+                        age_class = "80-89 years"
+
                 diag_confirm = row[FIELD_N_DIAG_CONFIRM]
                 malignant = row[FIELD_N_MALIGNANT]
                 ajcc = row[FIELD_N_AJCC]
@@ -159,6 +189,7 @@ def clean_csv(path_input, path_output):
                 print(diag_confirm, end=FIELD_SEPARATOR, file=foutput)
                 print(malignant, end=FIELD_SEPARATOR, file=foutput)
                 print(ajcc, end=FIELD_SEPARATOR, file=foutput)
+                print(age_class, end=FIELD_SEPARATOR, file=foutput)
                 print(sex, file=foutput)
 
                 line_count += 1
@@ -184,7 +215,7 @@ def main():
     for s in df['sex'].unique():
         flag = df['sex'] == s
         kmf.fit(T[flag], event_observed=E[flag], label=s)
-        kmf.plot_survival_function(ax=ax)
+        kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,10.))
     plt.title("Survival curves by Sex")
     plt.show()
     plt.close()
@@ -195,7 +226,7 @@ def main():
     for s in df['race'].unique():
         flag = df['race'] == s
         kmf.fit(T[flag], event_observed=E[flag], label=s)
-        kmf.plot_survival_function(ax=ax)
+        kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,10.))
     plt.title("Survival curves by Race")
     plt.show()
     plt.close()
@@ -206,8 +237,19 @@ def main():
     for s in df[FIELD_MALIGNANT].unique():
         flag = df[FIELD_MALIGNANT] == s
         kmf.fit(T[flag], event_observed=E[flag], label=s)
-        kmf.plot_survival_function(ax=ax)
+        kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,10.))
     plt.title("Survival curves by First Malignant")
+    plt.show()
+    plt.close()
+    print(kmf.median_survival_time_)
+
+    ax = plt.subplot(111)
+    kmf = KaplanMeierFitter()
+    for s in df["age_class"].unique():
+        flag = df["age_class"] == s
+        kmf.fit(T[flag], event_observed=E[flag], label=s)
+        kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,10.))
+    plt.title("Survival curves by Age Class")
     plt.show()
     plt.close()
     print(kmf.median_survival_time_)
@@ -217,7 +259,7 @@ def main():
     for s in df[FIELD_AJCC].unique():
         flag = df[FIELD_AJCC] == s
         kmf.fit(T[flag], event_observed=E[flag], label=s)
-        kmf.plot_survival_function(ax=ax)
+        kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,10.))
     plt.title("Survival curves by AJCC")
     plt.legend(bbox_to_anchor=(0, 0), loc="upper center", mode="expand", ncol=1)
     plt.tight_layout()
@@ -230,7 +272,7 @@ def main():
     for s in df[FIELD_DIAG_CONFIRM].unique():
         flag = df[FIELD_DIAG_CONFIRM] == s
         kmf.fit(T[flag], event_observed=E[flag], label=s)
-        kmf.plot_survival_function(ax=ax)
+        kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,10.))
     # place legend below plot
     plt.legend(bbox_to_anchor=(0, 0), loc="upper center", mode="expand", ncol=1)
     plt.tight_layout()
