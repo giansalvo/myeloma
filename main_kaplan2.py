@@ -69,19 +69,22 @@ PATH_PRED_ERR = "kaplan"
 TEST_RATIO = 0.2
 N_SPLIT = 10
 
+FIELD_SEX = "Sex"
 FIELD_YEAR_OF_DIAGNOSIS = "Year of diagnosis"
 FIELD_RACE = "Race recode (W, B, AI, API)"
-FIELD_SEX = "Sex"
 FIELD_DIAG_CONFIRM = "Diagnostic Confirmation"
+FIELD_AJCC = "AJCC ID (2018+)"
 FIELD_MALIGNANT = "First malignant primary indicator"
 FIELD_TOT_TUMORS = "Total number of in situ/malignant tumors for patient"
 FIELD_YEAR_DEATH = "Year of death recode"
+
 
 # INPUT
 FIELD_N_SEX = 0
 FIELD_N_YEAR_OF_DIAGNOSIS = 1
 FIELD_N_RACE = 2
 FIELD_N_DIAG_CONFIRM = 3
+FIELD_N_AJCC = 4
 FIELD_N_MALIGNANT = 6
 FIELD_N_TOT_TUMORS = 7
 FIELD_N_YEAR_DEATH = 10
@@ -93,7 +96,12 @@ def write_header(f):
     print(add_virgolette("time"), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette("died"), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette("race"), file=f, end=FIELD_SEPARATOR)
+    print(add_virgolette(FIELD_DIAG_CONFIRM), file=f, end=FIELD_SEPARATOR)
+    print(add_virgolette(FIELD_MALIGNANT), file=f, end=FIELD_SEPARATOR)
+    print(add_virgolette(FIELD_AJCC), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette("sex"), file=f)
+    FIELD_DIAG_CONFIRM
+
     return(0)
 
 
@@ -105,12 +113,14 @@ def clean_csv(path_input, path_output):
             header = next(csv_reader)  # store the headers and advance reader pointer
             write_header(foutput)
             for row in csv_reader:
+                #################################
+                # time and death_flag
+                #################################
                 year_diag = row[FIELD_N_YEAR_OF_DIAGNOSIS]
                 year_death = row[FIELD_N_YEAR_DEATH]
                 if (year_diag == "Patient ID") or (year_death == "Year of death recode"):
                     # bug in the csv file
                     continue
-
                 if year_death == "Alive at last contact":
                     time = 0
                     death_flag = 0
@@ -129,17 +139,26 @@ def clean_csv(path_input, path_output):
                         continue
                     time = (year_death - year_diag)
                     death_flag = 1
+                #################################
+                # time and death_flag
+                #################################
                 sex = row[FIELD_N_SEX]
                 if sex != "Male" and sex != "Female":
                     # bug
                     # print("Error: sex out of range")
                     continue
+                diag_confirm = row[FIELD_N_DIAG_CONFIRM]
+                malignant = row[FIELD_N_MALIGNANT]
+                ajcc = row[FIELD_N_AJCC]
                 race = row[FIELD_N_RACE]
 
                 # print record
                 print(str(time), end=FIELD_SEPARATOR, file=foutput)
                 print(str(death_flag), end=FIELD_SEPARATOR, file=foutput)
                 print(race, end=FIELD_SEPARATOR, file=foutput)
+                print(diag_confirm, end=FIELD_SEPARATOR, file=foutput)
+                print(malignant, end=FIELD_SEPARATOR, file=foutput)
+                print(ajcc, end=FIELD_SEPARATOR, file=foutput)
                 print(sex, file=foutput)
 
                 line_count += 1
@@ -182,6 +201,43 @@ def main():
     plt.close()
     print(kmf.median_survival_time_)
 
+    ax = plt.subplot(111)
+    kmf = KaplanMeierFitter()
+    for s in df[FIELD_MALIGNANT].unique():
+        flag = df[FIELD_MALIGNANT] == s
+        kmf.fit(T[flag], event_observed=E[flag], label=s)
+        kmf.plot_survival_function(ax=ax)
+    plt.title("Survival curves by First Malignant")
+    plt.show()
+    plt.close()
+    print(kmf.median_survival_time_)
+
+    ax = plt.subplot(111)
+    kmf = KaplanMeierFitter()
+    for s in df[FIELD_AJCC].unique():
+        flag = df[FIELD_AJCC] == s
+        kmf.fit(T[flag], event_observed=E[flag], label=s)
+        kmf.plot_survival_function(ax=ax)
+    plt.title("Survival curves by AJCC")
+    plt.legend(bbox_to_anchor=(0, 0), loc="upper center", mode="expand", ncol=1)
+    plt.tight_layout()
+    plt.show()
+    plt.close()
+    print(kmf.median_survival_time_)
+
+    ax = plt.subplot(111)
+    kmf = KaplanMeierFitter()
+    for s in df[FIELD_DIAG_CONFIRM].unique():
+        flag = df[FIELD_DIAG_CONFIRM] == s
+        kmf.fit(T[flag], event_observed=E[flag], label=s)
+        kmf.plot_survival_function(ax=ax)
+    # place legend below plot
+    plt.legend(bbox_to_anchor=(0, 0), loc="upper center", mode="expand", ncol=1)
+    plt.tight_layout()
+    plt.title("Survival curves by Diagnostic Confirmation")
+    plt.show()
+    plt.close()
+    print(kmf.median_survival_time_)
 
 
 if __name__ == '__main__':
