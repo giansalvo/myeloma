@@ -111,12 +111,15 @@ ddist <- datadist(myeloma)
 options(datadist='ddist')
 surv.cox <- Survival(mod.cox)
 nom.cox <- nomogram(mod.cox, 
-  fun=list(function(x) surv.cox(200, x)),
+  fun=list(function(x) surv.cox(1, x)),
   funlabel=c("Survival Probability"),
   lp=FALSE)
 plot(nom.cox)
-plot(nom.cox, fun.side=list(c(rep(c(1,3),5),1,1,1,1), c(1,1,1,rep(c(3,1))))     
-           
+#plot(nom.cox, 
+     fun.side=list(c(rep(c(1,3),5),1,1,1,1), 
+                   c(1,1,1,rep(c(3,1)))))
+print(nom.cox)
+
 ###########################################################
 ############################################################
 #Random Forests Model
