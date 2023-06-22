@@ -22,9 +22,8 @@ ggplot(myeloma, aes(x=EMD)) + geom_bar()
 ggplot(myeloma, aes(x=EMD_site)) + geom_bar()
 
 #create pie chart
-pie(table(myeloma$EDS_site), labels = paste(round(prop.table(table(myeloma))*100), "%", sep = ""), 
-    col = heat.colors(5), main = "Vehicles proportions - n: 400")
-
+t <- table(myeloma$EMD_site)
+pie(t)
 
 
 ##########################################
