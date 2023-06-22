@@ -35,6 +35,8 @@ autoplot(km_AG_fit)
 cox <- coxph(Surv(time, status) ~ trt + celltype + karno                   + diagtime + age + prior , data = vet)
 summary(cox)
 
+ggforest(cox, data = veteran)
+
 cox_fit <- survfit(cox)
 #plot(cox_fit, main = "cph model", xlab="Days")
 autoplot(cox_fit)
