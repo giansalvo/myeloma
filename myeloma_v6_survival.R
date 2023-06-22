@@ -32,12 +32,12 @@ km <- with(myeloma, Surv(time, died))
 head(km,80)
 km_fit <- survfit(Surv(time, died) ~ 1, data=myeloma)
 summary(km_fit, times = c(1, 30, 60, 90, 120, 150, 180))
-ggsurvplot(km_fit, xlab = "months")
+ggsurvplot(km_fit, xlab = "months", pval = TRUE, conf.int = TRUE)
 
 ########################################
 #Next, we look at survival curves by sex
 km_sex_fit <- survfit(Surv(time, died) ~ sex, data=myeloma)
-ggsurvplot(km_sex_fit, xlab = "months")
+ggsurvplot(km_sex_fit, xlab = "months", pval = TRUE, conf.int = TRUE)
 
 #perform log rank test
 survdiff(Surv(time, died) ~ sex, data=myeloma)
@@ -47,7 +47,7 @@ survdiff(Surv(time, died) ~ sex, data=myeloma)
 myel_AG1 <- mutate(myeloma, AG1 = ifelse((age < 60), "LT60", "OV60"),
               AG1 = factor(AG1))
 km_AG_fit <- survfit(Surv(time, died) ~ AG1, data=myel_AG1)
-ggsurvplot(km_AG_fit, xlab = "months")
+ggsurvplot(km_AG_fit, xlab = "months", pval = TRUE, conf.int = TRUE)
 #perform log rank test
 survdiff(Surv(time, died) ~ AG1, data=myel_AG1)
 
@@ -56,7 +56,7 @@ survdiff(Surv(time, died) ~ AG1, data=myel_AG1)
 myel_AG2 <- mutate(myeloma, AG2 = ifelse((age < 65), "LT65", "OV65"),
                    AG2 = factor(AG2))
 km_AG_fit <- survfit(Surv(time, died) ~ AG2, data=myel_AG2)
-ggsurvplot(km_AG_fit, xlab = "months")
+ggsurvplot(km_AG_fit, xlab = "months", pval = TRUE, conf.int = TRUE)
 #perform log rank test
 survdiff(Surv(time, died) ~ AG2, data=myel_AG2)
 
@@ -65,7 +65,7 @@ survdiff(Surv(time, died) ~ AG2, data=myel_AG2)
 myel_AG3 <- mutate(myeloma, AG3 = ifelse((age < 70), "LT70", "OV70"),
                    AG3 = factor(AG3))
 km_AG_fit <- survfit(Surv(time, died) ~ AG3, data=myel_AG3)
-ggsurvplot(km_AG_fit, xlab = "months")
+ggsurvplot(km_AG_fit, xlab = "months", pval = TRUE, conf.int = TRUE)
 #perform log rank test
 survdiff(Surv(time, died) ~ AG3, data=myel_AG3)
 
@@ -73,14 +73,14 @@ survdiff(Surv(time, died) ~ AG3, data=myel_AG3)
 ########################################
 #look at survival by race
 km_race_fit <- survfit(Surv(time, died) ~ race, data=myeloma)
-ggsurvplot(km_race_fit, xlab = "months")
+ggsurvplot(km_race_fit, xlab = "months", pval = TRUE, conf.int = TRUE)
 #perform log rank test
 survdiff(Surv(time, died) ~ race, data=myeloma)
 
 ########################################
 #look at survival by EMD
 km_EMD_fit <- survfit(Surv(time, died) ~ EMD, data=myeloma)
-ggsurvplot(km_EMD_fit, xlab = "months")
+ggsurvplot(km_EMD_fit, xlab = "months", pval = TRUE, conf.int = TRUE)
 #perform log rank test
 survdiff(Surv(time, died) ~ EMD, data=myeloma)
 
