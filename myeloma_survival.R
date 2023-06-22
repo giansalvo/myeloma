@@ -23,6 +23,9 @@ autoplot(km_fit)
 km_sex_fit <- survfit(Surv(time, died) ~ sex, data=myeloma)
 autoplot(km_sex_fit)
 
+#perform log rank test
+survdiff(Surv(time, died) ~ sex, data=myeloma)
+
 #look at survival by age
 #vet <- mutate(myeloma, AG = ifelse((age < 60), "LT60", "OV60"),
 #              AG = factor(AG),
@@ -32,9 +35,13 @@ autoplot(km_sex_fit)
 km_AG_fit <- survfit(Surv(time, died) ~ age_class, data=myeloma)
 autoplot(km_AG_fit)
 
+
+#####################################
 # Fit Cox Model
 cox <- coxph(Surv(time, died) ~ sex + age_class + race + diagnosis + first_malignant + AJCC , data = myeloma)
 summary(cox)
+
+ggforest(cox, data = myeloma)
 
 cox_fit <- survfit(cox)
 #plot(cox_fit, main = "cph model", xlab="Days")
