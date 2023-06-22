@@ -91,6 +91,11 @@ FIELD_N_TOT_TUMORS = 7
 FIELD_N_AGE = 9
 FIELD_N_YEAR_DEATH = 10
 
+# OUTPUT
+OUT_AJCC = "AJCC"
+OUT_DIAGNOSIS = "diagnosis"
+OUT_FIRST_MALIGNANT = "first_malignant"
+
 def add_virgolette(s):
     return '\"' + s + '\"'
 
@@ -98,13 +103,11 @@ def write_header(f):
     print(add_virgolette("time"), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette("died"), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette("race"), file=f, end=FIELD_SEPARATOR)
-    print(add_virgolette(FIELD_DIAG_CONFIRM), file=f, end=FIELD_SEPARATOR)
-    print(add_virgolette(FIELD_MALIGNANT), file=f, end=FIELD_SEPARATOR)
-    print(add_virgolette(FIELD_AJCC), file=f, end=FIELD_SEPARATOR)
+    print(add_virgolette(OUT_DIAGNOSIS), file=f, end=FIELD_SEPARATOR)
+    print(add_virgolette(OUT_FIRST_MALIGNANT), file=f, end=FIELD_SEPARATOR)
+    print(add_virgolette(OUT_AJCC), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette("age_class"), file=f, end=FIELD_SEPARATOR)
     print(add_virgolette("sex"), file=f)
-    FIELD_DIAG_CONFIRM
-
     return(0)
 
 
@@ -218,7 +221,7 @@ def main():
         kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,120.))
     plt.title("Survival curves by Sex")
     plt.xlabel('months')
-    plt.show()
+    plt.savefig("kaplan_sex.png")
     plt.close()
     print(kmf.median_survival_time_)
 
@@ -230,18 +233,18 @@ def main():
         kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,120.))
     plt.title("Survival curves by Race")
     plt.xlabel('months')
-    plt.show()
+    plt.savefig("kaplan_race.png")
     plt.close()
     print(kmf.median_survival_time_)
 
     ax = plt.subplot(111)
     kmf = KaplanMeierFitter()
-    for s in df[FIELD_MALIGNANT].unique():
-        flag = df[FIELD_MALIGNANT] == s
+    for s in df[OUT_FIRST_MALIGNANT].unique():
+        flag = df[OUT_FIRST_MALIGNANT] == s
         kmf.fit(T[flag], event_observed=E[flag], label=s)
         kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,120.))
     plt.title("Survival curves by First Malignant")
-    plt.show()
+    plt.savefig("kaplan_first_malignant.png")
     plt.close()
     print(kmf.median_survival_time_)
 
@@ -253,28 +256,28 @@ def main():
         kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,120.))
     plt.title("Survival curves by Age Class")
     plt.xlabel('months')
-    plt.show()
+    plt.savefig("kaplan_age.png")
     plt.close()
     print(kmf.median_survival_time_)
 
     ax = plt.subplot(111)
     kmf = KaplanMeierFitter()
-    for s in df[FIELD_AJCC].unique():
-        flag = df[FIELD_AJCC] == s
+    for s in df[OUT_AJCC].unique():
+        flag = df[OUT_AJCC] == s
         kmf.fit(T[flag], event_observed=E[flag], label=s)
         kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,120.))
     plt.title("Survival curves by AJCC")
     plt.xlabel('months')
     plt.legend(bbox_to_anchor=(0, 0), loc="upper center", mode="expand", ncol=1)
     plt.tight_layout()
-    plt.show()
+    plt.savefig("kaplan_AJCC.png")
     plt.close()
     print(kmf.median_survival_time_)
 
     ax = plt.subplot(111)
     kmf = KaplanMeierFitter()
-    for s in df[FIELD_DIAG_CONFIRM].unique():
-        flag = df[FIELD_DIAG_CONFIRM] == s
+    for s in df[OUT_DIAGNOSIS].unique():
+        flag = df[OUT_DIAGNOSIS] == s
         kmf.fit(T[flag], event_observed=E[flag], label=s)
         kmf.plot_survival_function(ax=ax, ci_show=False, loc=slice(0.,120.))
     # place legend below plot
@@ -282,7 +285,7 @@ def main():
     plt.tight_layout()
     plt.title("Survival curves by Diagnostic Confirmation")
     plt.xlabel('months')
-    plt.show()
+    plt.savefig("kaplan_diagnosis.png")
     plt.close()
     print(kmf.median_survival_time_)
 
