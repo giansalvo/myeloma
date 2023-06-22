@@ -9,6 +9,7 @@ library(ggfortify)
 library(autoplotly)
 library(survminer)
 library(tidyverse) # function "%>%"
+library("rms")
 
 myeloma <- read.csv("myeloma_v6_survival_clean.csv", header=TRUE, sep = ";")
 head(myeloma)
@@ -102,6 +103,20 @@ aa_fit <-aareg(Surv(time, died) ~ sex + age_class1 + race,
 summary(aa_fit)  # provides a more complete summary of results
 autoplot(aa_fit)
 
+###########################################################
+###########################################################
+# NOMOGRAM
+mod.cox <- cph(Surv(time, died) ~ sex + age_class1 + race + EMD, data = myeloma,  surv=TRUE)
+ddist <- datadist(myeloma)
+options(datadist='ddist')
+surv.cox <- Survival(mod.cox)
+nom.cox <- nomogram(mod.cox, 
+  fun=list(function(x) surv.cox(200, x)),
+  funlabel=c("Survival Probability"),
+  lp=FALSE)
+plot(nom.cox)
+plot(nom.cox, fun.side=list(c(rep(c(1,3),5),1,1,1,1), c(1,1,1,rep(c(3,1))))     
+           
 ###########################################################
 ############################################################
 #Random Forests Model
