@@ -116,8 +116,8 @@ nom.cox <- nomogram(mod.cox,
   lp=FALSE)
 plot(nom.cox)
 #plot(nom.cox, 
-     fun.side=list(c(rep(c(1,3),5),1,1,1,1), 
-                   c(1,1,1,rep(c(3,1)))))
+#     fun.side=list(c(rep(c(1,3),5),1,1,1,1), 
+#                   c(1,1,1,rep(c(3,1)))))
 print(nom.cox)
 
 ###########################################################
